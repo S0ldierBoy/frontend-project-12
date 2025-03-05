@@ -1,5 +1,6 @@
 install:
 	npm install
+	npm install --prefix frontend
 
 start-backend:
 	npx start-server -s ./frontend/dist
