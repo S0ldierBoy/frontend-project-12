@@ -1,11 +1,11 @@
 //import './index.css';
 import LoginForm from "./pages/loginPage.jsx";
+import RegistrationForm from "./pages/registerPage.jsx";
 
 function App() {
     return (
         <div className="auth-container">
             <div className="card">
-                <h2>Sign Up</h2>
                 <LoginForm/>
             </div>
         </div>
