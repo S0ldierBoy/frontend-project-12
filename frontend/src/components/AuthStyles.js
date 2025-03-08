@@ -175,6 +175,10 @@ const StyledWrapper = styled.div`
         text-decoration: none;
     }
 
+    .no-wrap {
+        white-space: nowrap;
+    }
+
     .login-box a.a2:hover {
         background: transparent;
         color: #aaa;
