@@ -2,7 +2,7 @@ import React from 'react';
 import StyledWrapper from "../components/AuthStyles.js";
 import {Link} from 'react-router-dom';
 
-const RegistrationForm = () => {
+const RegistrationPage = () => {
     return (<StyledWrapper>
         <div className="login-box">
             <p>Sign Up</p>
@@ -28,12 +28,12 @@ const RegistrationForm = () => {
                     Submit
                 </a>
             </form>
-            <p className="no-wrap">
+            <p>
                 I have an account
-                <Link to='/' style={{marginLeft: '175px'}}>Login</Link>
+                <Link to="/login" style={{marginLeft: '175px'}}>Login</Link>
             </p>
         </div>
     </StyledWrapper>);
 }
 
-export default RegistrationForm;
+export default RegistrationPage;

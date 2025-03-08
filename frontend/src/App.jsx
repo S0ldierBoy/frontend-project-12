@@ -1,24 +1,23 @@
 //import './index.css';
-import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
-import LoginForm from "./pages/loginPage.jsx";
-import RegistrationForm from "./pages/registerPage.jsx";
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import LoginPage from "./pages/loginPage.jsx";
+import RegistrationPage from "./pages/registerPage.jsx";
+import AppPage from "./pages/appPage.jsx";
+import NotFoundPage from "./pages/notFoundPage.jsx";
 
 function App() {
-    return (<Router>
-        <Routes>
-            <Route path="/" element={<div className="auth-container">
-                <div className="card">
-                    <LoginForm/>
-                </div>
-            </div>}/>
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<AppPage/>}/> {/* Главная страница */}
+                <Route path="/login" element={<LoginPage/>}/> {/* Вход */}
+                <Route path="/register" element={<RegistrationPage/>}/> {/* Регистрация */}
 
-            <Route path="/login" element={<div className="auth-container">
-                <div className="card">
-                    <RegistrationForm/>
-                </div>
-            </div>}/>
-        </Routes>
-    </Router>);
+                {/* Любой несуществующий маршрут → NotFoundPage */}
+                <Route path="*" element={<NotFoundPage/>}/>
+            </Routes>
+        </Router>
+    );
 }
 
 
