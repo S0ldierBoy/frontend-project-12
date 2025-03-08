@@ -1,5 +1,6 @@
 import React from 'react';
 import StyledWrapper from "../components/AuthStyles.js";
+import {Link} from 'react-router-dom';
 
 const RegistrationForm = () => {
     return (<StyledWrapper>
@@ -27,7 +28,10 @@ const RegistrationForm = () => {
                     Submit
                 </a>
             </form>
-            <p>Don't have an account? <a href className="a2">Sign up!</a></p>
+            <p>
+                I have an account
+                <Link to='/' style={{marginLeft: '175px'}}>Login</Link>
+            </p>
         </div>
     </StyledWrapper>);
 }

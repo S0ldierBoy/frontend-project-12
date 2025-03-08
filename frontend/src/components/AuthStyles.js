@@ -18,7 +18,7 @@ const StyledWrapper = styled.div`
     .login-box p:first-child {
         margin: 0 0 30px;
         padding: 0;
-        color: #fff;
+        color: -webkit-link;
         text-align: center;
         font-size: 1.5rem;
         font-weight: bold;

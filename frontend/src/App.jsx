@@ -5,12 +5,6 @@ import RegistrationForm from "./pages/registerPage.jsx";
 
 function App() {
     return (<Router>
-        <nav>
-            <Link to="/">LoginForm</Link>
-            <span></span>
-            <Link to="/login">RegistrationForm</Link>
-        </nav>
-
         <Routes>
             <Route path="/" element={<div className="auth-container">
                 <div className="card">
