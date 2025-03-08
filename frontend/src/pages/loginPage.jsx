@@ -23,7 +23,7 @@ const LoginForm = () => {
                     Submit
                 </a>
             </form>
-            <p>
+            <p className="no-wrap">
                 Don't have an account?
                 <Link to="/login" style={{marginLeft: '122px'}}>Sign up!</Link>
             </p>

@@ -28,7 +28,7 @@ const RegistrationForm = () => {
                     Submit
                 </a>
             </form>
-            <p>
+            <p className="no-wrap">
                 I have an account
                 <Link to='/' style={{marginLeft: '175px'}}>Login</Link>
             </p>
