@@ -11,7 +11,7 @@ const StyledWrapper = styled.div`
         transform: translate(-50%, -55%);
         background: rgba(0, 0, 0, .9);
         box-sizing: border-box;
-        box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+        box-shadow: 0 15px 25px rgba(255, 255, 255, 0.6);
         border-radius: 10px;
     }
 
