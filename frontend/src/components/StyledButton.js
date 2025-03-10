@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import {Link} from 'react-router-dom';
 
-export const StyledButton = styled(Link)`
+const StyledButton = styled(Link)`
     display: inline-block;
     position: relative;
     width: 10em;
     height: 3.5em;
-    border: 3px ridge white;
+    border: 2px solid white;
     outline: none;
     background-color: transparent;
-    color: white;
+    color: -webkit-link;
     transition: 1s;
     border-radius: 0.3em;
     font-size: 16px;
@@ -53,5 +53,4 @@ export const StyledButton = styled(Link)`
     }
 `;
 
-
-export default StyledButton
+export default StyledButton;

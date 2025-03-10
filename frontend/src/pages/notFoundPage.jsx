@@ -1,18 +1,24 @@
 import React from 'react';
-import StyledButton from "../components/styledButton.jsx";
+import styled from "styled-components";
+import StyledButton from "../components/StyledButton.js";
+
+const Wrapper = styled.div`
+    text-align: center;
+    font-size: 50px;
+    color: white;
+
+`;
 
 const NotFoundPage = () => {
     return (
-        <div style={{textAlign: 'center', fontSize: '50px'}}>
+        <Wrapper>
             <h1>404</h1>
             <p>Oops! Looks like you got lost</p>
-            <StyledButton to="/register">
+            <StyledButton to="/login">
                 Take me back
             </StyledButton>
-        </div>
-    );
+        </Wrapper>);
 }
-
 
 export default NotFoundPage;
 

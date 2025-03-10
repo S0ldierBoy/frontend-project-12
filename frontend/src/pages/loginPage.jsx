@@ -1,7 +1,6 @@
 import React from 'react';
 import StyledWrapper from "../components/AuthStyles.js";
 import {Link} from 'react-router-dom';
-//import {StyledButton} from "../components/styledButton.jsx"
 
 const LoginPage = () => {
     return (<StyledWrapper>
