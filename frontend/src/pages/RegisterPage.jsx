@@ -1,5 +1,5 @@
 import React from 'react';
-import StyledWrapper from "../components/AuthFormWrapper.js";
+import StyledWrapper from "../components/auth/AuthFormWrapper.js";
 import {Link} from 'react-router-dom';
 import {Field, Form, Formik} from "formik";
 
