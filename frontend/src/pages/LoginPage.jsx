@@ -1,6 +1,6 @@
 import React from 'react';
 import AuthForm from '../components/auth/AuthForm.jsx';
-import loginUser from '../components/auth/AuthForm.jsx';
+import { loginUser } from '../api/authApi.js';
 
 const LoginPage = () => (
   <div>
