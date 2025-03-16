@@ -1,10 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-const token = localStorage.getItem('token');
+import { loginUser } from '../../api/authApi.js';
 
 const initialState = {
   user: null,
-  token: token || null,
+  token: localStorage.getItem('token') || null,
   error: null,
   loading: false,
 };
@@ -19,7 +18,22 @@ const authSlice = createSlice({
       localStorage.removeItem('token');
     },
   },
-  extraReducers: (builder) => {},
+  extraReducers: {
+    [loginUser.pending]: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    [loginUser.fulfilled]: (state, action) => {
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.loading = false;
+      state.error = null;
+    },
+    [loginUser.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload || action.error.message;
+    },
+  },
 });
 
 export const { logout } = authSlice.actions;
