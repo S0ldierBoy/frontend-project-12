@@ -13,8 +13,7 @@ function App() {
                 <Route path="/login" element={<LoginPage/>}/> {/* Вход */}
                 <Route path="/register" element={<RegistrationPage/>}/> {/* Регистрация */}
 
-                {/* Любой несуществующий маршрут → NotFoundPage */}
-                <Route path="*" element={<NotFoundPage/>}/>
+                <Route path="*" element={<NotFoundPage/>}/> {/* Любой несуществующий маршрут  */}
             </Routes>
         </Router>
     );
