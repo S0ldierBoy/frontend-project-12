@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { loginUser } from '../../api/authApi.js';
+import { loginUser, registerUser } from '../../api/authApi.js';
 
 const initialState = {
   user: null,
@@ -24,15 +24,29 @@ const authSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
+      .addCase(registerUser.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload.user; // зависит от структуры, возвращаемой API
+        state.user = action.payload.username;
+        state.token = action.payload.token;
+        state.error = null;
+      })
+      .addCase(registerUser.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload.username;
         state.token = action.payload.token;
         state.error = null;
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload || action.error?.message;
+        state.error = action.payload || action?.error?.message;
+      })
+      .addCase(registerUser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || action?.error?.message;
       });
   },
 });

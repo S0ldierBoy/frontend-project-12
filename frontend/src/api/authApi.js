@@ -28,7 +28,7 @@ export const loginUser = createAsyncThunk(
       });
       const { token } = response.data;
       localStorage.setItem('token', token);
-      return response.data; // response.data, допустим, содержит { user, token }
+      return response.data;
     } catch (err) {
       return thunkAPI.rejectWithValue(err.response?.data || 'network error');
     }
