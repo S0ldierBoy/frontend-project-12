@@ -35,7 +35,7 @@ const LoginPage = () => {
         ]}
         initialValues={{ name: '', password: '' }}
         onSubmit={handleLogin}
-        validationSchema={SignupSchema}
+        schema={SignupSchema}
         redirectPrompt="Don't have an account?"
         redirectName="Sign up!"
         switchLink="/register"
