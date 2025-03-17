@@ -22,6 +22,8 @@ const AuthForm = ({
         <Formik
           initialValues={initialValues}
           validationSchema={schema}
+          validateOnBlur={false}
+          validateOnChange={false} // последние настройки дают валидацию только при отправке
           onSubmit={async (values, { setSubmitting, setErrors }) => {
             try {
               await onSubmit(values);
@@ -33,23 +35,31 @@ const AuthForm = ({
             }
           }}
         >
-          <Form>
-            {fields.map(({ name, label, type = 'text' }) => (
-              <div className="user-box" key={name}>
-                <Field id={name} name={name} type={type} required />
-                <ErrorMessage name={name} component="div" className="form-error" />
-                <label htmlFor={name}>{label}</label>
-              </div>
-            ))}
+          {({ errors }) => (
+            <Form>
+              {fields.map(({ name, label, type = 'text' }) => (
+                <div className="user-box" key={name}>
+                  <Field
+                    id={name}
+                    name={name}
+                    type={type}
+                    required
+                    className={errors[name] ? 'input-error' : ''}
+                  />
+                  <ErrorMessage name={name} component="div" className="form-error" />
+                  <label htmlFor={name}>{label}</label>
+                </div>
+              ))}
 
-            <button type="submit" className="btn">
-              <span />
-              <span />
-              <span />
-              <span />
-              Submit
-            </button>
-          </Form>
+              <button type="submit" className="btn">
+                <span />
+                <span />
+                <span />
+                <span />
+                Submit
+              </button>
+            </Form>
+          )}
         </Formik>
         <p className="auth-redirect">
           {redirectPrompt}
