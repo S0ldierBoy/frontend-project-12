@@ -23,7 +23,7 @@ const AuthForm = ({
           onSubmit={async (values, { setSubmitting, setErrors }) => {
             try {
               await onSubmit(values);
-              navigate('/');
+              //navigate('/');
             } catch (error) {
               setErrors({ name: 'Invalid username or password' });
             } finally {
