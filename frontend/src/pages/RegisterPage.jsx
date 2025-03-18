@@ -40,7 +40,7 @@ const RegistrationPage = () => {
           {
             name: 'confirmPassword',
             label: 'Confirm Password',
-            type: 'confirmPassword',
+            type: 'password',
           },
         ]}
         initialValues={{ name: '', password: '', confirmPassword: '' }}

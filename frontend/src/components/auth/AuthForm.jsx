@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import StyledWrapper from './AuthFormWrapper.js';
@@ -14,6 +15,12 @@ const AuthForm = ({
   schema,
 }) => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      navigate('/');
+    }
+  }, [navigate]);
 
   return (
     <StyledWrapper>
