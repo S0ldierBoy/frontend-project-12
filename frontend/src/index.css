@@ -13,10 +13,3 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-    margin: 100px;
-    display: block;
-    place-items: center;
-    min-width: 250px;
-    min-height: 50vh;
-}

@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { registerUser } from '../api/authApi.js';
-import AuthForm from '../components/auth/AuthForm.jsx';
+import AuthForm from '../features/auth/AuthForm.jsx';
 
 const RegistrationPage = () => {
   const dispatch = useDispatch();

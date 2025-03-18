@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { loginUser } from '../api/authApi.js';
-import AuthForm from '../components/auth/AuthForm.jsx';
+import AuthForm from '../features/auth/AuthForm.jsx';
 
 const LoginPage = () => {
   const dispatch = useDispatch();

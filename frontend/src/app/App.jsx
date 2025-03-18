@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LoginPage from './pages/LoginPage.jsx';
-import RegistrationPage from './pages/RegisterPage.jsx';
-import MainChatPage from './pages/MainChatPage.jsx';
-import NotFoundPage from './pages/NotFoundPage.jsx';
+import LoginPage from '../pages/LoginPage.jsx';
+import RegistrationPage from '../pages/RegisterPage.jsx';
+import MainChatPage from '../pages/MainChatPage.jsx';
+import NotFoundPage from '../pages/NotFoundPage.jsx';
 
 function App() {
   return (
