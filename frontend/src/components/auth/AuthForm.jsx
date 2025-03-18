@@ -1,5 +1,4 @@
 import React from 'react';
-import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import StyledWrapper from './AuthFormWrapper.js';
@@ -16,12 +15,6 @@ const AuthForm = ({
 }) => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (localStorage.getItem('token')) {
-      navigate('/');
-    }
-  }, [navigate]);
-
   return (
     <StyledWrapper>
       <div className={`login-box`}>
@@ -36,27 +29,27 @@ const AuthForm = ({
               await onSubmit(values);
               navigate('/');
             } catch (error) {
-              let userFriendlyMessage;
+              let userMessage;
 
               switch (error?.statusCode) {
                 case 401:
-                  userFriendlyMessage = 'Login failed';
+                  userMessage = 'Login failed';
                   break;
                 case 409:
-                  userFriendlyMessage = 'User already exists';
+                  userMessage = 'User already exists';
                   break;
                 default:
-                  userFriendlyMessage = 'Network error. Try again.';
+                  userMessage = 'Network error. Try again.';
                   break;
               }
-              setErrors({ name: userFriendlyMessage });
+              setErrors({ name: userMessage });
             } finally {
               setSubmitting(false);
             }
           }}
         >
-          {({ errors }) => (
-            <Form>
+          {({ errors, isSubmitting }) => (
+            <Form noValidate>
               {fields.map(({ name, label, type = 'text' }) => (
                 <div className="user-box" key={name}>
                   <Field
@@ -75,7 +68,7 @@ const AuthForm = ({
                 </div>
               ))}
 
-              <button type="submit" className="btn">
+              <button type="submit" className="btn" disabled={isSubmitting}>
                 <span />
                 <span />
                 <span />
