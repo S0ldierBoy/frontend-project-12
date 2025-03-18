@@ -35,6 +35,9 @@ const AuthForm = ({
                 case 401:
                   userFriendlyMessage = 'Login failed';
                   break;
+                case 409:
+                  userFriendlyMessage = 'User already exists';
+                  break;
                 default:
                   userFriendlyMessage = 'Network error. Try again.';
                   break;
@@ -56,7 +59,11 @@ const AuthForm = ({
                     required
                     className={errors[name] ? 'input-error' : ''}
                   />
-                  <ErrorMessage name={name} component="div" className="form-error" />
+                  <ErrorMessage
+                    name={name}
+                    component="div"
+                    className="form-error"
+                  />
                   <label htmlFor={name}>{label}</label>
                 </div>
               ))}

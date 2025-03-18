@@ -1,55 +1,57 @@
 import React from 'react';
-import StyledWrapper from "../components/auth/AuthFormWrapper.js";
-import {Link} from 'react-router-dom';
-import {Field, Form, Formik} from "formik";
+import { useDispatch } from 'react-redux';
+import * as Yup from 'yup';
+import { registerUser } from '../api/authApi.js';
+import AuthForm from '../components/auth/AuthForm.jsx';
 
 const RegistrationPage = () => {
-    return (<StyledWrapper>
-        <div className="login-box">
-            <p>Sign Up</p>
+  const dispatch = useDispatch();
 
-            <Formik
-                initialValues={{name: '', password: '', confirmPassword: ''}}
+  const handleRegister = async (values) => {
+    await dispatch(registerUser(values)).unwrap();
+  };
 
-                onSubmit={async (values) => {
-                    await new Promise((r) => setTimeout(r, 500));
-                    alert(JSON.stringify(values, null, 2));
-                    navigate('/');
-                }}>
+  const registerSchema = Yup.object({
+    name: Yup.string()
+      .min(3, 'Too Short!')
+      .max(10, 'Too Long!')
+      .required('Required')
+      .label('Name'),
 
-                <Form>
-                    <div className="user-box">
-                        <Field id="name" name="name" required/>
-                        <label htmlFor="name">Name</label>
-                    </div>
+    password: Yup.string()
+      .min(3, 'Too Short!')
+      .max(10, 'Too Long!')
+      .required('Required')
+      .label('Password'),
 
-                    <div className="user-box">
-                        <Field id="password" name="password" type="password" required/>
-                        <label htmlFor="password">Password</label>
-                    </div>
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref('password')], 'Passwords must match')
+      .required('Required')
+      .label('Confirm password'),
+  });
 
-                    <div className="user-box">
-                        <Field id="password" name="confirmPassword" type="password" required/>
-                        <label htmlFor="confirmPassword">Confirm Password</label>
-                    </div>
-
-                    <button type="submit" className="btn">
-                        <span/>
-                        <span/>
-                        <span/>
-                        <span/>
-                        Submit
-                    </button>
-
-
-                </Form>
-            </Formik>
-            <p>
-                I have an account
-                <Link to="/login" style={{marginLeft: '175px'}}>Login</Link>
-            </p>
-        </div>
-    </StyledWrapper>);
-}
+  return (
+    <div>
+      <AuthForm
+        title="Sign Up"
+        fields={[
+          { name: 'name', label: 'Name' },
+          { name: 'password', label: 'Password', type: 'password' },
+          {
+            name: 'confirmPassword',
+            label: 'Confirm Password',
+            type: 'confirmPassword',
+          },
+        ]}
+        initialValues={{ name: '', password: '', confirmPassword: '' }}
+        onSubmit={handleRegister}
+        schema={registerSchema}
+        redirectPrompt="I have an account"
+        redirectName="Login"
+        switchLink="/login"
+      />
+    </div>
+  );
+};
 
 export default RegistrationPage;
