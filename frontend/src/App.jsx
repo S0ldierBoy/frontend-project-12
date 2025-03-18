@@ -8,11 +8,11 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<MainChatPage />} /> {/* Главная страница */}
-        <Route path="/login" element={<LoginPage />} /> {/* Вход */}
-        <Route path="/register" element={<RegistrationPage />} />{' '}
-        {/* Регистрация */}
-        <Route path="*" element={<NotFoundPage />} />{' '}
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegistrationPage />} />
+        <Route path="/" element={<MainChatPage />} />
+
+        <Route path="*" element={<NotFoundPage />} />
         {/* Любой несуществующий маршрут  */}
       </Routes>
     </Router>
