@@ -29,7 +29,17 @@ const AuthForm = ({
               await onSubmit(values);
               navigate('/');
             } catch (error) {
-              setErrors({ name: 'Invalid username or password' });
+              let userFriendlyMessage;
+
+              switch (error?.statusCode) {
+                case 401:
+                  userFriendlyMessage = 'Login failed';
+                  break;
+                default:
+                  userFriendlyMessage = 'Network error. Try again.';
+                  break;
+              }
+              setErrors({ name: userFriendlyMessage });
             } finally {
               setSubmitting(false);
             }

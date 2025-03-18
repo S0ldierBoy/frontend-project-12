@@ -8,15 +8,11 @@ const LoginPage = () => {
   const dispatch = useDispatch();
 
   const handleLogin = async (values) => {
-    await dispatch(loginUser(values));
+    await dispatch(loginUser(values)).unwrap();
   };
 
   const SignupSchema = Yup.object({
-    name: Yup.string()
-      .min(3, 'Too Short!')
-      .max(10, 'Too Long!')
-      .required('Required')
-      .label('Name'),
+    name: Yup.string().min(3, 'Too Short!').max(10, 'Too Long!').required('Required').label('Name'),
 
     password: Yup.string()
       .min(3, 'Too Short!')

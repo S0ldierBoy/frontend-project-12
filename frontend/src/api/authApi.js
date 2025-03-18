@@ -18,19 +18,16 @@ export const registerUser = createAsyncThunk(
   }
 );
 
-export const loginUser = createAsyncThunk(
-  'auth/login',
-  async ({ name, password }, thunkAPI) => {
-    try {
-      const response = await axios.post('/api/v1/login', {
-        username: name,
-        password: password,
-      });
-      const { token } = response.data;
-      localStorage.setItem('token', token);
-      return response.data;
-    } catch (err) {
-      return thunkAPI.rejectWithValue(err.response?.data || 'network error');
-    }
+export const loginUser = createAsyncThunk('auth/login', async ({ name, password }, thunkAPI) => {
+  try {
+    const response = await axios.post('/api/v1/login', {
+      username: name,
+      password: password,
+    });
+    const { token } = response.data;
+    localStorage.setItem('token', token);
+    return response.data;
+  } catch (err) {
+    return thunkAPI.rejectWithValue(err.response?.data || 'network error');
   }
-);
+});
