@@ -1,10 +1,11 @@
 import React from 'react';
-import StyledChat from '../features/chat/chatWrapper.js';
-import { useSelector } from 'react-redux';
+
 import ChatSidebar from '../components/chat/ChatSidebar.jsx';
 import ChatContent from '../components/chat/ChatContent.jsx';
-import useAuth from '../hooks/useAuth';
+import StyledChat from '../features/chat/chatWrapper.js';
 import useFetchChannels from '../hooks/useFetchChannels';
+import { useSelector } from 'react-redux';
+import useAuth from '../hooks/useAuth';
 
 const MainChatPage = () => {
   const channels = useSelector((state) => state.channels.channels);
