@@ -1,5 +1,6 @@
 import React from 'react';
 import StyledChat from '../features/chat/chatWrapper.js';
+import { getChannels } from '../api/channelsApi.js.js';
 
 const MainChatPage = () => {
   return (
@@ -7,7 +8,9 @@ const MainChatPage = () => {
       <div className="chat-wrapper">
         <div className="chat-header">
           <h1>CodeChat</h1>
-          <button className="logout-button">Выйти</button>
+          <button className="logout-button" onClick={getChannels}>
+            Выйти
+          </button>
         </div>
 
         <div className="chat-main">
