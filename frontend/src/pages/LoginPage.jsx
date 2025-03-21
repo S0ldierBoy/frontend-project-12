@@ -21,7 +21,7 @@ const LoginPage = () => {
     await dispatch(loginUser(values)).unwrap();
   };
 
-  const signupSchema = Yup.object({
+  const loginSchema = Yup.object({
     name: Yup.string()
       .min(3, 'Too Short!')
       .max(10, 'Too Long!')
@@ -45,10 +45,10 @@ const LoginPage = () => {
         ]}
         initialValues={{ name: '', password: '' }}
         onSubmit={handleLogin}
-        schema={signupSchema}
+        schema={loginSchema}
         redirectPrompt="Don't have an account?"
         redirectName="Sign up!"
-        switchLink="/register"
+        switchLink="/signup"
       />
     </div>
   );

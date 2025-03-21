@@ -1,17 +1,17 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
-import { registerUser } from '../api/authApi.js';
+import { signupUser } from '../api/authApi.js';
 import AuthForm from '../features/auth/AuthForm.jsx';
 
-const RegistrationPage = () => {
+const SignupPage = () => {
   const dispatch = useDispatch();
 
   const handleRegister = async (values) => {
-    await dispatch(registerUser(values)).unwrap();
+    await dispatch(signupUser(values)).unwrap();
   };
 
-  const registerSchema = Yup.object({
+  const signupSchema = Yup.object({
     name: Yup.string()
       .min(3, 'Too Short!')
       .max(10, 'Too Long!')
@@ -45,7 +45,7 @@ const RegistrationPage = () => {
         ]}
         initialValues={{ name: '', password: '', confirmPassword: '' }}
         onSubmit={handleRegister}
-        schema={registerSchema}
+        schema={signupSchema}
         redirectPrompt="I have an account"
         redirectName="Login"
         switchLink="/login"
@@ -54,4 +54,4 @@ const RegistrationPage = () => {
   );
 };
 
-export default RegistrationPage;
+export default SignupPage;
