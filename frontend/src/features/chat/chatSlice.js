@@ -4,12 +4,22 @@ import { getChannels } from '../../api/channelsApi.js';
 const initialState = {
   channels: [],
   loading: false,
+  activeChannelId: null,
+  activeChannelName: null,
   error: null,
 };
 
 const channelsSlice = createSlice({
   name: 'channels',
   initialState,
+  reducers: {
+    setActiveChannelId: (state, action) => {
+      state.activeChannelId = action.payload;
+    },
+    setActiveChannelName: (state, action) => {
+      state.activeChannelName = action.payload;
+    },
+  },
 
   extraReducers: (builder) => {
     builder.addCase(getChannels.pending, (state) => {
@@ -20,6 +30,8 @@ const channelsSlice = createSlice({
       state.error = null;
       state.loading = false;
       state.channels = action.payload;
+      state.activeChannelId = action.payload[0]?.id ?? null;
+      state.activeChannelName = action.payload[0]?.name ?? null;
     });
     builder.addCase(getChannels.rejected, (state, action) => {
       state.loading = false;
@@ -27,5 +39,5 @@ const channelsSlice = createSlice({
     });
   },
 });
-
+export const { setActiveChannelId, setActiveChannelName } = channelsSlice.actions;
 export default channelsSlice.reducer;

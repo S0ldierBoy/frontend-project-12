@@ -1,5 +1,4 @@
 import React from 'react';
-
 import ChatSidebar from '../components/chat/ChatSidebar.jsx';
 import ChatContent from '../components/chat/ChatContent.jsx';
 import StyledChat from '../features/chat/chatWrapper.js';

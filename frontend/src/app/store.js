@@ -8,5 +8,5 @@ const store = configureStore({
     channels: channelsReducer,
   },
 });
-console.log(store.getState());
+
 export default store;
