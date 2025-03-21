@@ -5,7 +5,6 @@ const initialState = {
   user: null,
   token: localStorage.getItem('token') || null,
   error: null,
-  loading: false,
 };
 
 const authSlice = createSlice({
@@ -19,35 +18,20 @@ const authSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder
-      .addCase(loginUser.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(signupUser.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(loginUser.fulfilled, (state, action) => {
-        state.loading = false;
-        state.user = action.payload.username;
-        state.token = action.payload.token;
-        state.error = null;
-      })
-      .addCase(signupUser.fulfilled, (state, action) => {
-        state.loading = false;
-        state.user = action.payload.username;
-        state.token = action.payload.token;
-        state.error = null;
-      })
-      .addCase(loginUser.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload || action?.error?.message;
-      })
-      .addCase(signupUser.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload || action?.error?.message;
-      });
+    [loginUser, signupUser].forEach((thunk) => {
+      builder
+        .addCase(thunk.pending, (state) => {
+          state.error = null;
+        })
+        .addCase(thunk.fulfilled, (state, action) => {
+          state.user = action.payload.username;
+          state.token = action.payload.token;
+          state.error = null;
+        })
+        .addCase(thunk.rejected, (state, action) => {
+          state.error = action.payload || action?.error?.message;
+        });
+    });
   },
 });
 

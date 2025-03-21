@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { handleError } from './apiHelpers.js';
 import axios from 'axios';
 
 export const signupUser = createAsyncThunk(
@@ -13,7 +14,7 @@ export const signupUser = createAsyncThunk(
       localStorage.setItem('token', token);
       return response.data;
     } catch (err) {
-      return thunkAPI.rejectWithValue(err.response?.data || 'network error');
+      return handleError(err, thunkAPI);
     }
   }
 );
@@ -30,7 +31,7 @@ export const loginUser = createAsyncThunk(
       localStorage.setItem('token', token);
       return response.data;
     } catch (err) {
-      return thunkAPI.rejectWithValue(err.response?.data || 'network error');
+      return handleError(err, thunkAPI);
     }
   }
 );
