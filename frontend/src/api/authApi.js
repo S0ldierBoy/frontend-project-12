@@ -10,8 +10,9 @@ export const signupUser = createAsyncThunk(
         username: name,
         password: password,
       });
-      const { token } = response.data;
+      const { token, username } = response.data;
       localStorage.setItem('token', token);
+      localStorage.setItem('username', username);
       return response.data;
     } catch (err) {
       return handleError(err, thunkAPI);
@@ -27,8 +28,9 @@ export const loginUser = createAsyncThunk(
         username: name,
         password: password,
       });
-      const { token } = response.data;
+      const { token, username } = response.data;
       localStorage.setItem('token', token);
+      localStorage.setItem('username', username);
       return response.data;
     } catch (err) {
       return handleError(err, thunkAPI);

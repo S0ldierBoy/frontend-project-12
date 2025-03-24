@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { loginUser, signupUser } from '../../api/authApi.js';
 
 const initialState = {
-  user: null,
+  user: localStorage.getItem('username') || null,
   token: localStorage.getItem('token') || null,
   error: null,
 };
@@ -15,6 +15,7 @@ const authSlice = createSlice({
       state.user = null;
       state.token = null;
       localStorage.removeItem('token');
+      localStorage.removeItem('username');
     },
   },
   extraReducers: (builder) => {
