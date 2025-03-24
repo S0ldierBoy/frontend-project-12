@@ -13,7 +13,6 @@ const messageSlice = createSlice({
   reducers: {
     messageReceived: (state, action) => {
       state.messages.push(action.payload);
-      console.log(state);
     },
   },
 

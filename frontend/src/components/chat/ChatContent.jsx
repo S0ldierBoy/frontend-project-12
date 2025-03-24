@@ -7,6 +7,7 @@ const ChatContent = () => {
   const channelId = useSelector((state) => state.channels.activeChannelId);
   const username = useSelector((state) => state.auth.user);
   const messages = useSelector((state) => state.messages.messages);
+  const channelMessages = messages.filter((msg) => msg.channelId === channelId);
   const [messageText, setMessageText] = useState('');
 
   const handleChange = (e) => {
@@ -30,7 +31,7 @@ const ChatContent = () => {
       </div>
 
       <div className="messages-area">
-        {messages.map(({ id, body, username }) => (
+        {channelMessages.map(({ id, body, username }) => (
           <p key={id}>
             {username}: {body}
           </p>
