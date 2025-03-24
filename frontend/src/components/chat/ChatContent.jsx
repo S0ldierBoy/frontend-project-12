@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { addMessage } from '../../api/messagesApi.js';
+import { useSelector } from 'react-redux';
+import { emitMessage } from '../../socket/emitters.js';
 
 const ChatContent = () => {
   const channelName = useSelector((state) => state.channels.activeChannelName);
   const channelId = useSelector((state) => state.channels.activeChannelId);
-  const userName = useSelector((state) => state.auth.user);
-  const dispatch = useDispatch();
+  const username = useSelector((state) => state.auth.user);
+  const messages = useSelector((state) => state.messages.messages);
   const [messageText, setMessageText] = useState('');
 
   const handleChange = (e) => {
@@ -17,8 +17,8 @@ const ChatContent = () => {
     e.preventDefault();
     if (!messageText.trim()) return;
 
-    const userData = { body: messageText, channelId, username: userName };
-    dispatch(addMessage(userData));
+    const userData = { body: messageText, channelId, username };
+    emitMessage(userData);
     setMessageText('');
   };
 
@@ -30,7 +30,11 @@ const ChatContent = () => {
       </div>
 
       <div className="messages-area">
-        {userName}: {messageText}
+        {messages.map(({ id, body, username }) => (
+          <p key={id}>
+            {username}: {body}
+          </p>
+        ))}
       </div>
 
       <form className="message-form" onSubmit={handleSubmit}>
