@@ -35,8 +35,6 @@ const ChatContent = () => {
       <div className="chat-title">
         <h2># {channelName}</h2>
         <span>{channelMsg.length} messages</span>
-        {loading && <p>Sending...</p>}
-        {error && <p style={{ color: 'red' }}>Error: {error}</p>}
       </div>
 
       <div className="messages-area">

@@ -12,6 +12,7 @@ const ChatSidebar = ({ channels }) => {
         <span>Channel</span>
         <button className="add-channel">+</button>
       </div>
+
       <ul className="channels-list">
         {channels.map(({ id, name, removable }) => (
           <li
