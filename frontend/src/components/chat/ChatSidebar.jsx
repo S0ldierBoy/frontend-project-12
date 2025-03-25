@@ -1,16 +1,26 @@
-import React from 'react';
-import { setActiveChannelId, setActiveChannelName } from '../../features/chat/chatSlice.js';
+import React, { useState } from 'react';
+import {
+  setActiveChannelId,
+  setActiveChannelName,
+} from '../../features/chat/chatSlice.js';
 import { useDispatch, useSelector } from 'react-redux';
+import AddChannelModal from '../modal/AddChannelModal.jsx';
 
 const ChatSidebar = ({ channels }) => {
   const activeId = useSelector((state) => state.channels.activeChannelId);
   const dispatch = useDispatch();
 
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <div className="chat-sidebar">
       <div className="channels-header">
         <span>Channel</span>
-        <button className="add-channel">+</button>
+        <button className="add-channel" onClick={handleShow}>
+          +
+        </button>
       </div>
 
       <ul className="channels-list">
@@ -27,6 +37,7 @@ const ChatSidebar = ({ channels }) => {
           </li>
         ))}
       </ul>
+      <AddChannelModal show={show} onClose={handleClose} />
     </div>
   );
 };
