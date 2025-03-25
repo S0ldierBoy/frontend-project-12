@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux'; // Добавьте useDispatch
-import { addMessage } from '../../api/messagesApi.js'; // Импортируйте addMessage
+import { useSelector, useDispatch } from 'react-redux';
+import { addMessage } from '../../api/messagesApi.js';
 
 const ChatContent = () => {
   const dispatch = useDispatch(); // Добавьте dispatch
