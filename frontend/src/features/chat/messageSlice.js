@@ -23,7 +23,7 @@ const messageSlice = createSlice({
       state.loading = true;
       state.error = null;
     });
-    builder.addCase(addMessage.fulfilled, (state, action) => {
+    builder.addCase(addMessage.fulfilled, (state) => {
       state.loading = false;
       state.error = null;
     });

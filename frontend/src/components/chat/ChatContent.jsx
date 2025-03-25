@@ -1,36 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addMessage } from '../../api/messagesApi.js';
 
 const ChatContent = () => {
-  const dispatch = useDispatch(); // Добавьте dispatch
-  const channelName = useSelector((state) => state.channels.activeChannelName);
-  const channelId = useSelector((state) => state.channels.activeChannelId);
-  const username = useSelector((state) => state.auth.user);
-  const messages = useSelector((state) => state.messages.messages);
-  const [messageText, setMessageText] = useState('');
+  const dispatch = useDispatch();
+  const { activeChannelName: channelName, activeChannelId: channelId } = useSelector(
+    (state) => state.channels
+  );
+  const {
+    messages: messages,
+    loading: loading,
+    error: error,
+  } = useSelector((state) => state.messages);
 
-  const handleChange = (e) => {
-    setMessageText(e.target.value);
-  };
+  const channelMsg = useMemo(
+    () => messages.filter((msg) => msg.channelId === channelId),
+    [channelId, messages]
+  );
+
+  const username = useSelector((state) => state.auth.user);
+  const [messageText, setMessageText] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!messageText.trim()) return;
-
-    const userData = { body: messageText, channelId, username };
-    dispatch(addMessage(userData)); // Используем POST через addMessage
+    dispatch(addMessage({ body: messageText, channelId, username }));
     setMessageText('');
   };
 
   return (
     <div className="chat-content">
       <div className="chat-title">
-        <h2>{channelName}</h2>
-        <span>{messages.length} сообщений</span>{' '}
+        <h2># {channelName}</h2>
+        <span>{channelMsg.length} messages</span>
       </div>
+      {loading && <p>Sending...</p>}
+      {error && <p style={{ color: 'red' }}>Error: {error}</p>}
       <div className="messages-area">
-        {messages.map(({ id, body, username }) => (
+        {channelMsg.map(({ id, body, username }) => (
           <p key={id}>
             {username}: {body}
           </p>
@@ -40,11 +47,11 @@ const ChatContent = () => {
         <input
           type="text"
           className="message-input"
-          onChange={handleChange}
+          onChange={(e) => setMessageText(e.target.value)}
           value={messageText}
           placeholder="Enter your message..."
         />
-        <button type="submit" className="send-button">
+        <button type="submit" className="send-button" disabled={loading}>
           ➤
         </button>
       </form>
