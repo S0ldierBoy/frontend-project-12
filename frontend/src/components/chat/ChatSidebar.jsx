@@ -5,6 +5,7 @@ import {
 } from '../../features/chat/chatSlice.js';
 import { useDispatch, useSelector } from 'react-redux';
 import AddChannelModal from '../modal/AddChannelModal.jsx';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ChatSidebar = ({ channels }) => {
   const activeId = useSelector((state) => state.channels.activeChannelId);

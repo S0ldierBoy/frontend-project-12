@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
@@ -6,7 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 function AddChannelModal({ show, onClose }) {
   return (
     <>
-      <Modal show={show} onHide={onClose}>
+      <Modal show={show} onHide={onClose} data-bs-theme="dark">
         <Modal.Header closeButton>
           <Modal.Title>Add channel</Modal.Title>
         </Modal.Header>

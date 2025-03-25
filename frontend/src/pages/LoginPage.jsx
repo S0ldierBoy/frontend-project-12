@@ -2,9 +2,9 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import * as Yup from 'yup';
 import { loginUser } from '../api/authApi.js';
 import AuthForm from '../features/auth/AuthForm.jsx';
+import { loginSchema } from '../validation/authShema.js';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -20,20 +20,6 @@ const LoginPage = () => {
   const handleLogin = async (values) => {
     await dispatch(loginUser(values)).unwrap();
   };
-
-  const loginSchema = Yup.object({
-    name: Yup.string()
-      .min(3, 'Too Short!')
-      .max(10, 'Too Long!')
-      .required('Required field')
-      .label('Name'),
-
-    password: Yup.string()
-      .min(3, 'Too Short!')
-      .max(10, 'Too Long!')
-      .required('Required field')
-      .label('Password'),
-  });
 
   return (
     <div>
