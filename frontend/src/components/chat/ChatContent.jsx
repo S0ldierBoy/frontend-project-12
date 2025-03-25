@@ -1,9 +1,12 @@
 import React, { useState, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addMessage } from '../../api/messagesApi.js';
+import { useAutoScroll } from '../../hooks/useAutoScroll.js';
 
 const ChatContent = () => {
+  const [messageText, setMessageText] = useState('');
   const dispatch = useDispatch();
+
   const { activeChannelName: channelName, activeChannelId: channelId } = useSelector(
     (state) => state.channels
   );
@@ -12,14 +15,13 @@ const ChatContent = () => {
     loading: loading,
     error: error,
   } = useSelector((state) => state.messages);
-
   const channelMsg = useMemo(
     () => messages.filter((msg) => msg.channelId === channelId),
     [channelId, messages]
   );
 
   const username = useSelector((state) => state.auth.user);
-  const [messageText, setMessageText] = useState('');
+  const elementRef = useAutoScroll([channelMsg]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,15 +35,17 @@ const ChatContent = () => {
       <div className="chat-title">
         <h2># {channelName}</h2>
         <span>{channelMsg.length} messages</span>
+        {loading && <p>Sending...</p>}
+        {error && <p style={{ color: 'red' }}>Error: {error}</p>}
       </div>
-      {loading && <p>Sending...</p>}
-      {error && <p style={{ color: 'red' }}>Error: {error}</p>}
+
       <div className="messages-area">
         {channelMsg.map(({ id, body, username }) => (
           <p key={id}>
             {username}: {body}
           </p>
         ))}
+        <div ref={elementRef}></div>
       </div>
       <form className="message-form" onSubmit={handleSubmit}>
         <input
