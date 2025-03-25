@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { emitMessage } from '../../socket/emitters.js';
+import { useSelector, useDispatch } from 'react-redux'; // Добавьте useDispatch
+import { addMessage } from '../../api/messagesApi.js'; // Импортируйте addMessage
 
 const ChatContent = () => {
+  const dispatch = useDispatch(); // Добавьте dispatch
   const channelName = useSelector((state) => state.channels.activeChannelName);
   const channelId = useSelector((state) => state.channels.activeChannelId);
   const username = useSelector((state) => state.auth.user);
   const messages = useSelector((state) => state.messages.messages);
-  const channelMessages = messages.filter((msg) => msg.channelId === channelId);
   const [messageText, setMessageText] = useState('');
 
   const handleChange = (e) => {
@@ -19,7 +19,7 @@ const ChatContent = () => {
     if (!messageText.trim()) return;
 
     const userData = { body: messageText, channelId, username };
-    emitMessage(userData);
+    dispatch(addMessage(userData)); // Используем POST через addMessage
     setMessageText('');
   };
 
@@ -27,17 +27,15 @@ const ChatContent = () => {
     <div className="chat-content">
       <div className="chat-title">
         <h2>{channelName}</h2>
-        <span>0 сообщений</span>
+        <span>{messages.length} сообщений</span>{' '}
       </div>
-
       <div className="messages-area">
-        {channelMessages.map(({ id, body, username }) => (
+        {messages.map(({ id, body, username }) => (
           <p key={id}>
             {username}: {body}
           </p>
         ))}
       </div>
-
       <form className="message-form" onSubmit={handleSubmit}>
         <input
           type="text"

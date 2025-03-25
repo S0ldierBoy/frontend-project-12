@@ -12,10 +12,12 @@ const messageSlice = createSlice({
   initialState,
   reducers: {
     messageReceived: (state, action) => {
-      state.messages.push(action.payload);
+      const newMessage = action.payload;
+      if (!state.messages.some((msg) => msg.id === newMessage.id)) {
+        state.messages.push(newMessage);
+      }
     },
   },
-
   extraReducers: (builder) => {
     builder.addCase(addMessage.pending, (state) => {
       state.loading = true;
@@ -24,7 +26,6 @@ const messageSlice = createSlice({
     builder.addCase(addMessage.fulfilled, (state, action) => {
       state.loading = false;
       state.error = null;
-      state.messages.push(action.payload);
     });
     builder.addCase(addMessage.rejected, (state, action) => {
       state.loading = false;
