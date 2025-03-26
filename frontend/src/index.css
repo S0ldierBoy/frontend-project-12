@@ -13,3 +13,44 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* Фон и текст модалки */
+.modal-content {
+    background-color: #000 !important;
+    color: #fff !important;
+}
+
+/* Цвет заголовка */
+.modal-title {
+    color: #fff !important;
+}
+
+/* Цвет текста в полях и фокус */
+.form-control {
+    background-color: #1a1a1a !important;
+    color: #fff !important;
+    border-color: #333 !important;
+}
+.form-control::placeholder {
+    color: #71767b;
+}
+.form-control:focus {
+    background-color: #1a1a1a;
+    color: #fff;
+    border-color: #1d9bf0;
+    box-shadow: none;
+}
+
+/* Кнопки */
+.btn-primary {
+    background-color: #1d9bf0;
+    border-color: #1d9bf0;
+}
+.btn-primary:hover {
+    background-color: #1a8cd8;
+    border-color: #1a8cd8;
+}
+
+/* Крестик (кнопка закрытия) */
+.btn-close {
+    filter: invert(1); /* делает иконку белой */
+}

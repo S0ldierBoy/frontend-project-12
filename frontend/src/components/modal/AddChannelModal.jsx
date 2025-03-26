@@ -12,7 +12,11 @@ function AddChannelModal({ show, onClose }) {
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Control type="text" placeholder="channel name" autoFocus />
+              <Form.Control
+                type="text"
+                placeholder="Enter new channel name..."
+                autoFocus
+              />
             </Form.Group>
           </Form>
         </Modal.Body>

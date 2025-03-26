@@ -10,7 +10,7 @@ const ChatContent = () => {
   const { activeChannelName: channelName, activeChannelId: channelId } = useSelector(
     (state) => state.channels
   );
-  const { messages: messages } = useSelector((state) => state.messages);
+  const { messages: messages, loading: loading } = useSelector((state) => state.messages);
   const channelMsg = useMemo(
     () => messages.filter((msg) => msg.channelId === channelId),
     [channelId, messages]

@@ -5,7 +5,6 @@ import {
 } from '../../features/chat/chatSlice.js';
 import { useDispatch, useSelector } from 'react-redux';
 import AddChannelModal from '../modal/AddChannelModal.jsx';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ChatSidebar = ({ channels }) => {
   const activeId = useSelector((state) => state.channels.activeChannelId);
@@ -18,7 +17,7 @@ const ChatSidebar = ({ channels }) => {
   return (
     <div className="chat-sidebar">
       <div className="channels-header">
-        <span>Channel</span>
+        <span>Channels :</span>
         <button className="add-channel" onClick={handleShow}>
           +
         </button>
