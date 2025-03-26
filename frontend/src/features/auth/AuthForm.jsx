@@ -17,7 +17,7 @@ const AuthForm = ({
 
   return (
     <StyledWrapper>
-      <div className={`login-box`}>
+      <div className="login-box">
         <p>{title}</p>
         <Formik
           initialValues={initialValues}
@@ -59,11 +59,7 @@ const AuthForm = ({
                     required
                     className={errors[name] ? 'input-error' : ''}
                   />
-                  <ErrorMessage
-                    name={name}
-                    component="div"
-                    className="form-error"
-                  />
+                  <ErrorMessage name={name} component="div" className="form-error" />
                   <label htmlFor={name}>{label}</label>
                 </div>
               ))}

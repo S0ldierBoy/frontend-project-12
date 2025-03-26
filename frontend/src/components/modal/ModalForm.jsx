@@ -1,0 +1,65 @@
+import React from 'react';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { FormControl, Button, Modal } from 'react-bootstrap';
+
+const ModalForm = ({
+  channelNames,
+  show,
+  onClose,
+  schema,
+  title,
+  buttonName,
+  onSubmit,
+  placeholder,
+  initialValues,
+}) => {
+  return (
+    <Formik
+      initialValues={initialValues}
+      validationSchema={schema(channelNames)}
+      validateOnChange={false}
+      onSubmit={async (values, { setSubmitting, setErrors }) => {
+        try {
+          await onSubmit(values);
+          onClose();
+        } catch (error) {
+          setErrors({ name: 'Network error. Try again.' });
+        } finally {
+          setSubmitting(false);
+        }
+      }}
+    >
+      {({ isSubmitting }) => (
+        <Form noValidate>
+          <Modal show={show} onHide={onClose} data-bs-theme="dark">
+            <Modal.Header closeButton>
+              <Modal.Title>{title}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <div className="mb-3">
+                <Field
+                  as={FormControl}
+                  name="name"
+                  type="text"
+                  placeholder={placeholder}
+                  autoFocus
+                />
+                <ErrorMessage name="name" component="div" className="text-danger" />
+              </div>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={onClose}>
+                Close
+              </Button>
+              <Button type="submit" variant="primary" disabled={isSubmitting}>
+                {buttonName}
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        </Form>
+      )}
+    </Formik>
+  );
+};
+
+export default ModalForm;

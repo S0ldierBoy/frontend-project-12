@@ -4,12 +4,12 @@ const modalSchema = (existingNames, currentName = '') =>
   Yup.object().shape({
     name: Yup.string()
       .trim()
-      .required('Обязательное поле')
-      .min(3, 'От 3 символов')
-      .max(20, 'До 20 символов')
+      .required('Required field')
+      .min(3, 'Too Short!')
+      .max(10, 'Too Long!')
       .notOneOf(
         existingNames.filter((name) => name !== currentName),
-        'Канал с таким именем уже существует'
+        'Channel name already exists'
       ),
   });
 

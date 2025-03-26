@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getChannels } from '../../api/channelsApi.js';
+import { getChannels, addChannel } from '../../api/channelsApi.js';
 
 const initialState = {
   channels: [],
@@ -37,7 +37,34 @@ const channelsSlice = createSlice({
       state.loading = false;
       state.error = action.payload || action?.error?.message;
     });
+
+    builder.addCase(addChannel.pending, (state) => {
+      state.loading = true;
+      state.error = null;
+    });
+
+    builder.addCase(addChannel.fulfilled, (state, action) => {
+      state.loading = false;
+      state.error = null;
+      state.channels.push(action.payload);
+      state.activeChannelId = action.payload.id;
+      state.activeChannelName = action.payload.name;
+    });
+
+    builder.addCase(addChannel.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload || action?.error?.message;
+    });
   },
 });
+
+export const setActiveChannel = (id) => (dispatch, getState) => {
+  const channel = getState().channels.channels.find((ch) => ch.id === id);
+  if (channel) {
+    dispatch(setActiveChannelId(id));
+    dispatch(setActiveChannelName(channel.name));
+  }
+};
+
 export const { setActiveChannelId, setActiveChannelName } = channelsSlice.actions;
 export default channelsSlice.reducer;

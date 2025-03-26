@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import {
-  setActiveChannelId,
-  setActiveChannelName,
-} from '../../features/chat/chatSlice.js';
+import { setActiveChannel } from '../../features/chat/chatSlice.js';
 import { useDispatch, useSelector } from 'react-redux';
 import AddChannelModal from '../modal/AddChannelModal.jsx';
 
@@ -29,15 +26,13 @@ const ChatSidebar = ({ channels }) => {
             key={id}
             className={`channel ${id === activeId ? 'active' : ''}`}
             removable={removable.toString()}
-            onClick={() => {
-              dispatch(setActiveChannelId(id)), dispatch(setActiveChannelName(name));
-            }}
+            onClick={() => dispatch(setActiveChannel(id))}
           >
             # {name}
           </li>
         ))}
       </ul>
-      <AddChannelModal show={show} onClose={handleClose} />
+      <AddChannelModal show={show} onClose={handleClose} channels={channels} />
     </div>
   );
 };

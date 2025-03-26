@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../api/authApi.js';
 import AuthForm from '../features/auth/AuthForm.jsx';
-import { loginSchema } from '../validation/authShema.js';
+import { loginSchema } from '../validation/authSchema.js';
 
 const LoginPage = () => {
   const dispatch = useDispatch();

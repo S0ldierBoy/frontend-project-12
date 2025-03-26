@@ -1,36 +1,27 @@
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Modal from 'react-bootstrap/Modal';
+import modalSchema from '../../validation/modalSchema.js';
+import ModalForm from './ModalForm.jsx';
+import { addChannel } from '../../api/channelsApi.js';
+import { useDispatch } from 'react-redux';
 
-function AddChannelModal({ show, onClose }) {
+const AddChannelModal = ({ show, onClose, channels }) => {
+  const dispatch = useDispatch();
+  const channelNames = channels.map((channel) => channel.name);
+
+  const handleSubmit = (values) => dispatch(addChannel(values)).unwrap();
+
   return (
-    <>
-      <Modal show={show} onHide={onClose} data-bs-theme="dark">
-        <Modal.Header closeButton>
-          <Modal.Title>Add channel</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Control
-                type="text"
-                placeholder="Enter new channel name..."
-                autoFocus
-              />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={onClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={onClose}>
-            Create
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </>
+    <ModalForm
+      channelNames={channelNames}
+      show={show}
+      onClose={onClose}
+      schema={modalSchema}
+      title="Add channel"
+      buttonName="Create"
+      onSubmit={handleSubmit}
+      placeholder="Enter new channel name..."
+      initialValues={{ name: '' }}
+    />
   );
-}
+};
 
 export default AddChannelModal;
