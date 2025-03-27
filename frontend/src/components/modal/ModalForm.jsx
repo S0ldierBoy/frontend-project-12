@@ -14,24 +14,25 @@ const ModalForm = ({
   initialValues,
 }) => {
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={schema(channelNames)}
-      validateOnChange={false}
-      onSubmit={async (values, { setSubmitting, setErrors }) => {
-        try {
-          await onSubmit(values);
-          onClose();
-        } catch (error) {
-          setErrors({ name: 'Network error. Try again.' });
-        } finally {
-          setSubmitting(false);
-        }
-      }}
-    >
-      {({ isSubmitting }) => (
-        <Form noValidate>
-          <Modal show={show} onHide={onClose} data-bs-theme="dark">
+    <Modal show={show} onHide={onClose} data-bs-theme="dark">
+      <Formik
+        initialValues={initialValues}
+        validationSchema={schema(channelNames)}
+        validateOnChange={false}
+        validateOnBlur={false}
+        onSubmit={async (values, { setSubmitting, setErrors }) => {
+          try {
+            await onSubmit(values);
+            onClose();
+          } catch (error) {
+            setErrors({ name: 'Network error. Try again.' });
+          } finally {
+            setSubmitting(false);
+          }
+        }}
+      >
+        {({ isSubmitting }) => (
+          <Form noValidate>
             <Modal.Header closeButton>
               <Modal.Title>{title}</Modal.Title>
             </Modal.Header>
@@ -55,10 +56,10 @@ const ModalForm = ({
                 {buttonName}
               </Button>
             </Modal.Footer>
-          </Modal>
-        </Form>
-      )}
-    </Formik>
+          </Form>
+        )}
+      </Formik>
+    </Modal>
   );
 };
 

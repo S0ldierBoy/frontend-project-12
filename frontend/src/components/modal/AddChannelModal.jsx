@@ -7,7 +7,9 @@ const AddChannelModal = ({ show, onClose, channels }) => {
   const dispatch = useDispatch();
   const channelNames = channels.map((channel) => channel.name);
 
-  const handleSubmit = (values) => dispatch(addChannel(values)).unwrap();
+  const handleSubmit = async (values) => {
+    await dispatch(addChannel(values)).unwrap();
+  };
 
   return (
     <ModalForm
