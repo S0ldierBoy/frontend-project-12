@@ -1,7 +1,8 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addMessage } from '../../api/messagesApi.js';
 import { useAutoScroll } from '../../hooks/useAutoScroll.js';
+import { ChatInputFocusContext } from '../../context/ChatInputFocusContext.jsx';
 
 const ChatContent = () => {
   const [messageText, setMessageText] = useState('');
@@ -17,6 +18,7 @@ const ChatContent = () => {
   );
 
   const username = useSelector((state) => state.auth.user);
+  const { inputRef, setFocus } = useContext(ChatInputFocusContext);
   const elementRef = useAutoScroll([channelMsg]);
 
   const handleSubmit = (e) => {
@@ -24,6 +26,7 @@ const ChatContent = () => {
     if (!messageText.trim()) return;
     dispatch(addMessage({ body: messageText, channelId, username }));
     setMessageText('');
+    setFocus();
   };
 
   return (
@@ -43,6 +46,7 @@ const ChatContent = () => {
       </div>
       <form className="message-form" onSubmit={handleSubmit}>
         <input
+          ref={inputRef}
           type="text"
           className="message-input"
           onChange={(e) => setMessageText(e.target.value)}

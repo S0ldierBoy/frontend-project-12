@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { FormControl, Button, Modal } from 'react-bootstrap';
+import { ChatInputFocusContext } from '../../context/ChatInputFocusContext.jsx';
 
 const ModalForm = ({
   channelNames,
@@ -13,6 +14,7 @@ const ModalForm = ({
   placeholder,
   initialValues,
 }) => {
+  const { setFocus } = useContext(ChatInputFocusContext);
   return (
     <Modal show={show} onHide={onClose} data-bs-theme="dark">
       <Formik
@@ -24,6 +26,7 @@ const ModalForm = ({
           try {
             await onSubmit(values);
             onClose();
+            setTimeout(() => setFocus(), 10);
           } catch (error) {
             setErrors({ name: 'Network error. Try again.' });
           } finally {
