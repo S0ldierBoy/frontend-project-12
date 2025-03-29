@@ -2,39 +2,34 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const StyledButton = styled(Link)`
-  button {
-    position: relative;
-    padding: 10px 20px;
-    border-radius: 7px;
-    border: 1px solid rgb(126, 61, 255);
-    font-size: 14px;
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 2px;
-    background: transparent;
-    color: #fff;
-    overflow: hidden;
-    box-shadow: 0 0 0 0 transparent;
-    -webkit-transition: all 0.2s ease-in;
-    -moz-transition: all 0.2s ease-in;
-    transition: all 0.2s ease-in;
-  }
+  display: inline-block;
+  position: relative;
+  padding: 10px 20px;
+  border-radius: 7px;
+  border: 1px solid rgb(126, 61, 255);
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 2px;
+  background: transparent;
+  color: #fff;
+  overflow: hidden;
+  box-shadow: 0 0 0 0 transparent;
+  transition: all 0.2s ease-in;
+  text-decoration: none;
+  cursor: pointer;
 
-  button:hover {
+  &:hover {
     background: rgb(96, 12, 241);
     box-shadow: 0 0 30px 5px rgba(0, 142, 236, 0.815);
-    -webkit-transition: all 0.2s ease-out;
-    -moz-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out;
   }
 
-  button:hover::before {
-    -webkit-animation: sh02 0.5s 0s linear;
-    -moz-animation: sh02 0.5s 0s linear;
+  &:hover::before {
     animation: sh02 0.5s 0s linear;
   }
 
-  button::before {
+  &::before {
     content: '';
     display: block;
     width: 0px;
@@ -45,11 +40,12 @@ const StyledButton = styled(Link)`
     opacity: 0;
     background: #fff;
     box-shadow: 0 0 50px 30px #fff;
-    -webkit-transform: skewX(-20deg);
-    -moz-transform: skewX(-20deg);
-    -ms-transform: skewX(-20deg);
-    -o-transform: skewX(-20deg);
     transform: skewX(-20deg);
+  }
+
+  &:active {
+    box-shadow: 0 0 0 0 transparent;
+    transition: box-shadow 0.2s ease-in;
   }
 
   @keyframes sh02 {
@@ -66,13 +62,6 @@ const StyledButton = styled(Link)`
       opacity: 0;
       left: 100%;
     }
-  }
-
-  button:active {
-    box-shadow: 0 0 0 0 transparent;
-    -webkit-transition: box-shadow 0.2s ease-in;
-    -moz-transition: box-shadow 0.2s ease-in;
-    transition: box-shadow 0.2s ease-in;
   }
 `;
 

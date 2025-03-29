@@ -12,16 +12,12 @@ const Wrapper = styled.div`
   }
 `;
 
-const NotFoundPage = () => {
-  return (
-    <Wrapper>
-      <h1>404</h1>
-      <p>Oops! Looks like you got lost</p>
-      <StyledButton to="/login">
-        <button> Take me back</button>
-      </StyledButton>
-    </Wrapper>
-  );
-};
+const NotFoundPage = () => (
+  <Wrapper>
+    <h1>404</h1>
+    <p>Oops! Looks like you got lost</p>
+    <StyledButton to="/login">Take me back</StyledButton>
+  </Wrapper>
+);
 
 export default NotFoundPage;

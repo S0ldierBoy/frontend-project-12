@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { setActiveChannel } from '../../features/chat/chatSlice.js';
 import { useDispatch, useSelector } from 'react-redux';
 import AddChannelModal from '../modal/AddChannelModal.jsx';
+import ChannelDropdown from './ChannelDropdown.jsx';
 
 const ChatSidebar = ({ channels }) => {
   const activeId = useSelector((state) => state.channels.activeChannelId);
@@ -19,7 +20,6 @@ const ChatSidebar = ({ channels }) => {
           +
         </button>
       </div>
-
       <ul className="channels-list">
         {channels.map(({ id, name, removable }) => (
           <li
@@ -32,7 +32,7 @@ const ChatSidebar = ({ channels }) => {
           </li>
         ))}
       </ul>
-      <AddChannelModal show={show} onClose={handleClose} channels={channels} />
+      <AddChannelModal show={show} onClose={handleClose} channels={channels} />;
     </div>
   );
 };
