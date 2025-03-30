@@ -1,4 +1,5 @@
 import React from 'react';
+import { selectAllChannels } from '../features/chat/chatSlice.js';
 import ChatSidebar from '../components/chat/ChatSidebar.jsx';
 import ChatContent from '../components/chat/ChatContent.jsx';
 import StyledChat from '../features/chat/chatWrapper.js';
@@ -7,7 +8,7 @@ import { useSelector } from 'react-redux';
 import useAuth from '../hooks/useAuth';
 
 const MainChatPage = () => {
-  const channels = useSelector((state) => state.channels.channels);
+  const channels = useSelector(selectAllChannels);
   const { logout } = useAuth();
   useFetchChannels();
 
