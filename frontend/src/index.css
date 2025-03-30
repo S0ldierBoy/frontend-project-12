@@ -30,9 +30,11 @@
     color: #fff !important;
     border-color: #333 !important;
 }
+
 .form-control::placeholder {
     color: #71767b;
 }
+
 .form-control:focus {
     background-color: #1a1a1a;
     color: #fff;
@@ -45,6 +47,7 @@
     background-color: #1d9bf0;
     border-color: #1d9bf0;
 }
+
 .btn-primary:hover {
     background-color: #1a8cd8;
     border-color: #1a8cd8;
@@ -54,3 +57,5 @@
 .btn-close {
     filter: invert(1); /* делает иконку белой */
 }
+
+

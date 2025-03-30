@@ -64,6 +64,42 @@ const StyledChat = styled.div`
     color: #fff;
   }
 
+  .channel-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .dropdown-toggle {
+    background: none !important;
+    color: #fff;
+    border: none;
+    box-shadow: none;
+
+    &:hover {
+      background-color: rgba(13, 19, 23, 0.2);
+      color: #1a8cd8;
+    }
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  .dropdown-menu {
+    background-color: #000;
+    border: 1px solid #333;
+
+    .dropdown-item {
+      color: #fff;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #f0f3f5;
+      }
+    }
+  }
+
   .add-channel {
     background: transparent;
     color: #1d9bf0;

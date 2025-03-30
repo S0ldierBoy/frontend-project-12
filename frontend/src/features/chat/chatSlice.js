@@ -1,13 +1,14 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { getChannels, addChannel } from '../../api/channelsApi.js';
+import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
+import { getChannels, addChannel, removeChannel } from '../../api/channelsApi.js';
 
-const initialState = {
+const channelsAdapter = createEntityAdapter();
+const initialState = channelsAdapter.getInitialState({
   channels: [],
   loading: false,
   activeChannelId: null,
   activeChannelName: null,
   error: null,
-};
+});
 
 const channelsSlice = createSlice({
   name: 'channels',
@@ -55,6 +56,7 @@ const channelsSlice = createSlice({
       state.loading = false;
       state.error = action.payload || action?.error?.message;
     });
+    builder.addCase();
   },
 });
 

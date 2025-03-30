@@ -1,18 +1,27 @@
-import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { removeChannel } from '../../api/channelsApi.js';
+import { useDispatch } from 'react-redux';
 
-const ChannelDropdown = ({ name, id }) => {
+const ChannelDropdown = ({ id, name }) => {
+  const dispatch = useDispatch();
   return (
-    <Dropdown as={ButtonGroup}>
-      <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
+    <Dropdown as={ButtonGroup} className="dropdown">
+      <Dropdown.Toggle
+        split
+        variant="success"
+        id="dropdown-split-basic"
+        className="dropdown-toggle"
+      />
 
       <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">Delete</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Сhange name</Dropdown.Item>
+        <Dropdown.Item onClick={() => dispatch(removeChannel(id))}>Delete</Dropdown.Item>
+        <Dropdown.Item onClick={() => console.log('Change', id)}>Change</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );
 };
 
 export default ChannelDropdown;
+
+// для удаления нужен слой

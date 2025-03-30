@@ -22,17 +22,18 @@ const ChatSidebar = ({ channels }) => {
       </div>
       <ul className="channels-list">
         {channels.map(({ id, name, removable }) => (
-          <li
-            key={id}
-            className={`channel ${id === activeId ? 'active' : ''}`}
-            removable={removable.toString()}
-            onClick={() => dispatch(setActiveChannel(id))}
-          >
-            # {name}
+          <li key={id}>
+            <div
+              className={`channel-row channel ${id === activeId ? 'active' : ''}`}
+              onClick={() => dispatch(setActiveChannel(id))}
+            >
+              <span># {name}</span>
+              {removable && <ChannelDropdown id={id} name={name} />}
+            </div>
           </li>
         ))}
       </ul>
-      <AddChannelModal show={show} onClose={handleClose} channels={channels} />;
+      <AddChannelModal show={show} onClose={handleClose} channels={channels} />
     </div>
   );
 };
