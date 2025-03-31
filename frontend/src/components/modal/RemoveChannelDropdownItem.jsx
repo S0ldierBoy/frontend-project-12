@@ -3,8 +3,9 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Dropdown from 'react-bootstrap/Dropdown';
 
-const RemoveChannelModal = ({ id }) => {
+const RemoveChannelDropdownItem = ({ id }) => {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
 
@@ -15,12 +16,9 @@ const RemoveChannelModal = ({ id }) => {
     dispatch(removeChannel(id));
     handleClose();
   };
-
   return (
     <>
-      <Button className="dropdown-item" onClick={handleShow}>
-        Delete
-      </Button>
+      <Dropdown.Item onClick={handleShow}>Delete</Dropdown.Item>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -40,4 +38,4 @@ const RemoveChannelModal = ({ id }) => {
   );
 };
 
-export default RemoveChannelModal;
+export default RemoveChannelDropdownItem;

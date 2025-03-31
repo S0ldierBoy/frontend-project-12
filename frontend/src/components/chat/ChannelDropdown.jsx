@@ -1,6 +1,6 @@
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
-import RemoveChannelModal from '../modal/RemoveChannelModal.jsx';
+import RemoveChannelDropdownItem from '../modal/RemoveChannelDropdownItem.jsx';
 
 const ChannelDropdown = ({ id, name }) => {
   return (
@@ -13,7 +13,7 @@ const ChannelDropdown = ({ id, name }) => {
       />
 
       <Dropdown.Menu>
-        <RemoveChannelModal id={id}>Delete</RemoveChannelModal>
+        <RemoveChannelDropdownItem id={id}>Delete </RemoveChannelDropdownItem>
         <Dropdown.Item onClick={() => console.log('Change', id)}>Change</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
