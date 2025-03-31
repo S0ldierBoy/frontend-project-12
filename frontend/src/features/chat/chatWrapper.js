@@ -92,6 +92,7 @@ const StyledChat = styled.div`
 
     .dropdown-item {
       color: #fff;
+      background-color: #000;
 
       &:hover {
         background-color: rgba(255, 255, 255, 0.1);

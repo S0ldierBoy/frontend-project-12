@@ -1,10 +1,8 @@
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { removeChannel } from '../../api/channelsApi.js';
-import { useDispatch } from 'react-redux';
+import RemoveChannelModal from '../modal/RemoveChannelModal.jsx';
 
 const ChannelDropdown = ({ id, name }) => {
-  const dispatch = useDispatch();
   return (
     <Dropdown as={ButtonGroup} className="dropdown">
       <Dropdown.Toggle
@@ -15,7 +13,7 @@ const ChannelDropdown = ({ id, name }) => {
       />
 
       <Dropdown.Menu>
-        <Dropdown.Item onClick={() => dispatch(removeChannel(id))}>Delete</Dropdown.Item>
+        <RemoveChannelModal id={id}>Delete</RemoveChannelModal>
         <Dropdown.Item onClick={() => console.log('Change', id)}>Change</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
@@ -23,5 +21,3 @@ const ChannelDropdown = ({ id, name }) => {
 };
 
 export default ChannelDropdown;
-
-// для удаления нужен слой
