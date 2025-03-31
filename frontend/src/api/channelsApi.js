@@ -23,7 +23,7 @@ export const addChannel = createAsyncThunk(
   }
 );
 
-export const editChannel = createAsyncThunk(
+export const renameChannel = createAsyncThunk(
   'chat/editChannel',
   async ({ name, id }, thunkAPI) => {
     try {

@@ -3,7 +3,7 @@ import {
   getChannels,
   addChannel,
   removeChannel,
-  editChannel,
+  renameChannel,
 } from '../../api/channelsApi.js';
 
 const channelsAdapter = createEntityAdapter();
@@ -32,7 +32,11 @@ const channelsSlice = createSlice({
       channelsAdapter.removeOne(state, action.payload.id);
     },
     channelRenamed: (state, action) => {
-      channelsAdapter.updateOne(state, action.payload);
+      const { id, name } = action.payload;
+      channelsAdapter.updateOne(state, {
+        id,
+        changes: { name },
+      });
     },
   },
   extraReducers: (builder) => {
@@ -86,14 +90,14 @@ const channelsSlice = createSlice({
       });
     // editChannel
     builder
-      .addCase(editChannel.pending, (state) => {
+      .addCase(renameChannel.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(editChannel.fulfilled, (state, action) => {
+      .addCase(renameChannel.fulfilled, (state, action) => {
         state.loading = false;
       })
-      .addCase(editChannel.rejected, (state, action) => {
+      .addCase(renameChannel.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload || action?.error?.message;
       });

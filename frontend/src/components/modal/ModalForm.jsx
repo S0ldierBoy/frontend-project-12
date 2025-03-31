@@ -15,8 +15,9 @@ const ModalForm = ({
   initialValues,
 }) => {
   const { setFocus } = useContext(ChatInputFocusContext);
+
   return (
-    <Modal show={show} onHide={onClose} data-bs-theme="dark">
+    <Modal show={show} onHide={onClose} onExited={() => setFocus()} data-bs-theme="dark">
       <Formik
         initialValues={initialValues}
         validationSchema={schema(channelNames)}
@@ -26,9 +27,8 @@ const ModalForm = ({
           try {
             await onSubmit(values);
             onClose();
-            setTimeout(() => setFocus(), 10);
           } catch (error) {
-            setErrors({ name: 'Network error. Try again.' });
+            setErrors({ name: error.message || 'Network error. Try again.' });
           } finally {
             setSubmitting(false);
           }
@@ -52,10 +52,15 @@ const ModalForm = ({
               </div>
             </Modal.Body>
             <Modal.Footer>
-              <Button variant="secondary" onClick={onClose}>
+              <Button variant="secondary" onClick={onClose} aria-label="Close modal">
                 Close
               </Button>
-              <Button type="submit" variant="primary" disabled={isSubmitting}>
+              <Button
+                type="submit"
+                variant="primary"
+                disabled={isSubmitting}
+                aria-label={buttonName}
+              >
                 {buttonName}
               </Button>
             </Modal.Footer>

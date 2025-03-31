@@ -20,7 +20,7 @@ const AddChannelModal = ({ show, onClose, channels }) => {
       title="Add channel"
       buttonName="Create"
       onSubmit={handleSubmit}
-      placeholder="Enter new channel name..."
+      placeholder="Enter channel name..."
       initialValues={{ name: '' }}
     />
   );

@@ -29,7 +29,7 @@ const ChatSidebar = () => {
               onClick={() => dispatch(setActiveChannel(id))}
             >
               <span># {name}</span>
-              {removable && <ChannelDropdown id={id} name={name} />}
+              {removable && <ChannelDropdown id={id} name={name} channels={channels} />}
             </div>
           </li>
         ))}
