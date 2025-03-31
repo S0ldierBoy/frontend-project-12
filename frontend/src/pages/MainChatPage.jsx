@@ -1,16 +1,14 @@
 import React from 'react';
-import { selectAllChannels } from '../features/chat/chatSlice.js';
+import { selectAllChannels } from '../features/chat/channelSlice.js';
 import ChatSidebar from '../components/chat/ChatSidebar.jsx';
 import ChatContent from '../components/chat/ChatContent.jsx';
 import StyledChat from '../features/chat/chatWrapper.js';
-import useFetchChannels from '../hooks/useFetchChannels';
-import { useSelector } from 'react-redux';
+import useInitialChatData from '../hooks/useInitialChatData';
 import useAuth from '../hooks/useAuth';
 
 const MainChatPage = () => {
-  const channels = useSelector(selectAllChannels);
   const { logout } = useAuth();
-  useFetchChannels();
+  useInitialChatData();
 
   return (
     <StyledChat>
@@ -22,8 +20,8 @@ const MainChatPage = () => {
           </button>
         </div>
         <div className="chat-main">
-          <ChatSidebar channels={channels} />
-          <ChatContent channels={channels} />
+          <ChatSidebar />
+          <ChatContent />
         </div>
       </div>
     </StyledChat>

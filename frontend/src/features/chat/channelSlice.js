@@ -1,5 +1,10 @@
 import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
-import { getChannels, addChannel, removeChannel } from '../../api/channelsApi.js';
+import {
+  getChannels,
+  addChannel,
+  removeChannel,
+  editChannel,
+} from '../../api/channelsApi.js';
 
 const channelsAdapter = createEntityAdapter();
 
@@ -20,8 +25,18 @@ const channelsSlice = createSlice({
     setActiveChannelName: (state, action) => {
       state.activeChannelName = action.payload;
     },
+    channelReceived: (state, action) => {
+      channelsAdapter.setOne(state, action.payload);
+    },
+    channelRemoved: (state, action) => {
+      channelsAdapter.removeOne(state, action.payload.id);
+    },
+    channelRenamed: (state, action) => {
+      channelsAdapter.updateOne(state, action.payload);
+    },
   },
   extraReducers: (builder) => {
+    // getChannels
     builder
       .addCase(getChannels.pending, (state) => {
         state.loading = true;
@@ -29,9 +44,6 @@ const channelsSlice = createSlice({
       })
       .addCase(getChannels.fulfilled, (state, action) => {
         state.loading = false;
-        state.error = null;
-
-        // Заменяем весь список каналов
         channelsAdapter.setAll(state, action.payload);
 
         const firstChannel = action.payload[0];
@@ -41,19 +53,17 @@ const channelsSlice = createSlice({
       .addCase(getChannels.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload || action?.error?.message;
-      })
-
+      });
+    // addChannel
+    builder
       .addCase(addChannel.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
       .addCase(addChannel.fulfilled, (state, action) => {
         state.loading = false;
-        state.error = null;
 
-        // Добавляем один новый канал
         channelsAdapter.addOne(state, action.payload);
-
         state.activeChannelId = action.payload.id;
         state.activeChannelName = action.payload.name;
       })
@@ -61,17 +71,41 @@ const channelsSlice = createSlice({
         state.loading = false;
         state.error = action.payload || action?.error?.message;
       });
+    // removeChannel
+    builder
+      .addCase(removeChannel.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(removeChannel.fulfilled, (state) => {
+        state.loading = false;
+      })
+      .addCase(removeChannel.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || action?.error?.message;
+      });
+    // editChannel
+    builder
+      .addCase(editChannel.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(editChannel.fulfilled, (state, action) => {
+        state.loading = false;
+      })
+      .addCase(editChannel.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || action?.error?.message;
+      });
   },
 });
 
-// 👉 селекторы
 export const {
   selectById: selectChannelById,
   selectAll: selectAllChannels,
   selectEntities: selectChannelEntities,
 } = channelsAdapter.getSelectors((state) => state.channels);
 
-// 👉 thunk
 export const setActiveChannel = (id) => (dispatch, getState) => {
   const channel = selectChannelById(getState(), id);
   if (channel) {
@@ -80,5 +114,11 @@ export const setActiveChannel = (id) => (dispatch, getState) => {
   }
 };
 
-export const { setActiveChannelId, setActiveChannelName } = channelsSlice.actions;
+export const {
+  setActiveChannelId,
+  setActiveChannelName,
+  channelReceived,
+  channelRemoved,
+  channelRenamed,
+} = channelsSlice.actions;
 export default channelsSlice.reducer;

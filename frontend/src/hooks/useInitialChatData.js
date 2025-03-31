@@ -1,16 +1,18 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { getChannels } from '../api/channelsApi.js';
+import { getMessages } from '../api/messagesApi.js';
 import { useEffect } from 'react';
 
-const useFetchChannels = () => {
+const useInitialChatData = () => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
 
   useEffect(() => {
     if (token) {
       dispatch(getChannels());
+      dispatch(getMessages());
     }
   }, [token]);
 };
 
-export default useFetchChannels;
+export default useInitialChatData;

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { setActiveChannel } from '../../features/chat/chatSlice.js';
+import { selectAllChannels, setActiveChannel } from '../../features/chat/channelSlice.js';
 import { useDispatch, useSelector } from 'react-redux';
 import AddChannelModal from '../modal/AddChannelModal.jsx';
 import ChannelDropdown from './ChannelDropdown.jsx';
 
-const ChatSidebar = ({ channels }) => {
+const ChatSidebar = () => {
   const activeId = useSelector((state) => state.channels.activeChannelId);
+  const channels = useSelector(selectAllChannels);
   const dispatch = useDispatch();
 
   const [show, setShow] = useState(false);

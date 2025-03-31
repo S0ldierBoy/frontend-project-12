@@ -44,7 +44,6 @@ export const removeChannel = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const response = await axios.delete(`/api/v1/channels/${id}`, getAuthHeader());
-      console.log(response);
       return response.data;
     } catch (err) {
       return handleError(err, thunkAPI);
