@@ -81,8 +81,10 @@ const channelsSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(removeChannel.fulfilled, (state) => {
+      .addCase(removeChannel.fulfilled, (state, action) => {
         state.loading = false;
+        const { id } = action.payload;
+        channelsAdapter.removeOne(state, id);
       })
       .addCase(removeChannel.rejected, (state, action) => {
         state.loading = false;
@@ -94,7 +96,7 @@ const channelsSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(renameChannel.fulfilled, (state, action) => {
+      .addCase(renameChannel.fulfilled, (state) => {
         state.loading = false;
       })
       .addCase(renameChannel.rejected, (state, action) => {

@@ -15,6 +15,9 @@ const messageSlice = createSlice({
     messageReceived: (state, action) => {
       messagesAdapter.setOne(state, action.payload);
     },
+    removeMessages: (state, action) => {
+      messagesAdapter.removeMany(state, action.payload);
+    },
   },
   extraReducers: (builder) => {
     // addMessage
@@ -60,5 +63,5 @@ export const selectMessagesByChannel = (channelId) =>
     messages.filter((msg) => msg.channelId === channelId)
   );
 
-export const { messageReceived } = messageSlice.actions;
+export const { messageReceived, removeMessages } = messageSlice.actions;
 export default messageSlice.reducer;

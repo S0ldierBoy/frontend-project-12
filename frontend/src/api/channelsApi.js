@@ -1,5 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getAuthHeader, handleError } from './apiHelpers.js';
+import {
+  selectMessagesByChannel,
+  removeMessages,
+} from '../features/chat/messageSlice.js';
 import axios from 'axios';
 
 export const getChannels = createAsyncThunk('chat/getChannels', async (_, thunkAPI) => {
@@ -44,6 +48,11 @@ export const removeChannel = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const response = await axios.delete(`/api/v1/channels/${id}`, getAuthHeader());
+      const state = thunkAPI.getState();
+
+      const messageIds = selectMessagesByChannel(id)(state).map((msg) => msg.id);
+      thunkAPI.dispatch(removeMessages(messageIds));
+
       return response.data;
     } catch (err) {
       return handleError(err, thunkAPI);
