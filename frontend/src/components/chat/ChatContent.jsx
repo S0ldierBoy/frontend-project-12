@@ -49,7 +49,7 @@ const ChatContent = () => {
             value={messageText}
             onChange={(e) => setMessageText(e.target.value)}
             placeholder="Enter your message..."
-            data-autofocus
+            data-autofocus="true"
           />
           <button type="submit" className="send-button" disabled={isLoading}>
             ➤
