@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { FormControl, Button, Modal } from 'react-bootstrap';
-import { ChatInputFocusContext } from '../../context/ChatInputFocusContext.jsx';
+
 import FocusLock from 'react-focus-lock';
 
 const ModalForm = ({
@@ -15,15 +15,8 @@ const ModalForm = ({
   placeholder,
   initialValues,
 }) => {
-  const { setFocus } = useContext(ChatInputFocusContext);
-
   return (
-    <Modal
-      show={show}
-      onHide={onClose}
-      onExited={() => setTimeout(() => setFocus(), 10)}
-      data-bs-theme="dark"
-    >
+    <Modal show={show} onHide={onClose} data-bs-theme="dark">
       <FocusLock>
         <Formik
           initialValues={initialValues}

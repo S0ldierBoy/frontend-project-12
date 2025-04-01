@@ -1,7 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
+import FocusLock from 'react-focus-lock';
 import { useSelector, useDispatch } from 'react-redux';
 import { addMessage } from '../../api/messagesApi.js';
-import { ChatInputFocusContext } from '../../context/ChatInputFocusContext.jsx';
 import { useAutoScroll } from '../../hooks/useAutoScroll.js';
 import useChannelMessages from '../../hooks/useChannelMessages.js';
 
@@ -16,7 +16,6 @@ const ChatContent = () => {
   const username = useSelector((state) => state.auth.user);
   const channelMessages = useChannelMessages(channelId);
 
-  const { scrollRef, setFocus } = useContext(ChatInputFocusContext);
   const elementRef = useAutoScroll([channelMessages]);
 
   const handleSubmit = (e) => {
@@ -25,7 +24,6 @@ const ChatContent = () => {
 
     dispatch(addMessage({ body: messageText, channelId, username }));
     setMessageText('');
-    setFocus();
   };
 
   return (
@@ -43,21 +41,21 @@ const ChatContent = () => {
         ))}
         <div ref={elementRef}></div>
       </div>
-
-      <form className="message-form" onSubmit={handleSubmit}>
-        <input
-          ref={scrollRef}
-          type="text"
-          className="message-input"
-          value={messageText}
-          onChange={(e) => setMessageText(e.target.value)}
-          placeholder="Enter your message..."
-          autoFocus
-        />
-        <button type="submit" className="send-button" disabled={isLoading}>
-          ➤
-        </button>
-      </form>
+      <FocusLock>
+        <form className="message-form" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            className="message-input"
+            value={messageText}
+            onChange={(e) => setMessageText(e.target.value)}
+            placeholder="Enter your message..."
+            data-autofocus
+          />
+          <button type="submit" className="send-button" disabled={isLoading}>
+            ➤
+          </button>
+        </form>
+      </FocusLock>
     </div>
   );
 };
