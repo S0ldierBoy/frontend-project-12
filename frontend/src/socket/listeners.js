@@ -9,6 +9,6 @@ import {
 export const initSocketListeners = (dispatch) => {
   socket.on('newMessage', (msg) => dispatch(messageReceived(msg)));
   socket.on('newChannel', (chn) => dispatch(channelReceived(chn)));
-  socket.on('removeChannel', (id) => dispatch(channelRemoved(id)));
+  socket.on('removeChannel', ({ id }) => dispatch(channelRemoved({ id })));
   socket.on('renameChannel', (chn) => dispatch(channelRenamed(chn)));
 };
