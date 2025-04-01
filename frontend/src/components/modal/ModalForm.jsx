@@ -17,7 +17,12 @@ const ModalForm = ({
   const { setFocus } = useContext(ChatInputFocusContext);
 
   return (
-    <Modal show={show} onHide={onClose} onExited={() => setFocus()} data-bs-theme="dark">
+    <Modal
+      show={show}
+      onHide={onClose}
+      onExited={() => setTimeout(() => setFocus(), 10)}
+      data-bs-theme="dark"
+    >
       <Formik
         initialValues={initialValues}
         validationSchema={schema(channelNames)}

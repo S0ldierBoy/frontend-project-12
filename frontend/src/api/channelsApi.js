@@ -4,6 +4,7 @@ import {
   selectMessagesByChannel,
   removeMessages,
 } from '../features/chat/messageSlice.js';
+import { setActiveChannel, DEFAULT_CHANNEL_ID } from '../features/chat/channelSlice.js';
 import axios from 'axios';
 
 export const getChannels = createAsyncThunk('chat/getChannels', async (_, thunkAPI) => {
@@ -49,6 +50,8 @@ export const removeChannel = createAsyncThunk(
     try {
       const response = await axios.delete(`/api/v1/channels/${id}`, getAuthHeader());
       const state = thunkAPI.getState();
+
+      thunkAPI.dispatch(setActiveChannel(DEFAULT_CHANNEL_ID));
 
       const messageIds = selectMessagesByChannel(id)(state).map((msg) => msg.id);
       thunkAPI.dispatch(removeMessages(messageIds));

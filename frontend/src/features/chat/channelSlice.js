@@ -6,6 +6,7 @@ import {
   renameChannel,
 } from '../../api/channelsApi.js';
 
+export const DEFAULT_CHANNEL_ID = '1';
 const channelsAdapter = createEntityAdapter();
 
 const initialState = channelsAdapter.getInitialState({
@@ -82,9 +83,10 @@ const channelsSlice = createSlice({
         state.error = null;
       })
       .addCase(removeChannel.fulfilled, (state, action) => {
-        state.loading = false;
         const { id } = action.payload;
         channelsAdapter.removeOne(state, id);
+
+        state.loading = false;
       })
       .addCase(removeChannel.rejected, (state, action) => {
         state.loading = false;
