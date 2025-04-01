@@ -46,7 +46,7 @@ const ModalForm = ({
                     name="name"
                     type="text"
                     placeholder={placeholder}
-                    data-autofocus
+                    data-autofocus="true"
                   />
                   <ErrorMessage name="name" component="div" className="text-danger" />
                 </div>
