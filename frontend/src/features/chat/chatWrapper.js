@@ -118,7 +118,6 @@ const StyledChat = styled.div`
     width: 24px;
     height: 24px;
     cursor: pointer;
-    font-size: 20px;
 
     &:hover {
       color: #1a8cd8;
