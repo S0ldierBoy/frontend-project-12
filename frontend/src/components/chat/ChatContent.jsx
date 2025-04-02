@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import FocusLock from 'react-focus-lock';
 import { useSelector, useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { addMessage } from '../../api/messagesApi.js';
 import { useAutoScroll } from '../../hooks/useAutoScroll.js';
 import useChannelMessages from '../../hooks/useChannelMessages.js';
 
 const ChatContent = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const [messageText, setMessageText] = useState('');
 
@@ -30,7 +32,7 @@ const ChatContent = () => {
     <div className="chat-content">
       <div className="chat-title">
         <h2># {channelName}</h2>
-        <span>{channelMessages.length} messages</span>
+        <span>{t('chat.messageCount', { count: channelMessages.length })}</span>
       </div>
 
       <div className="messages-area">
@@ -48,7 +50,7 @@ const ChatContent = () => {
             className="message-input"
             value={messageText}
             onChange={(e) => setMessageText(e.target.value)}
-            placeholder="Enter your message..."
+            placeholder={t('chat.placeholder')}
             data-autofocus="true"
           />
           <button type="submit" className="send-button" disabled={isLoading}>

@@ -3,8 +3,10 @@ import { useDispatch } from 'react-redux';
 import { signupSchema } from '../validation/authSchema.js';
 import { signupUser } from '../api/authApi.js';
 import AuthForm from '../features/auth/AuthForm.jsx';
+import { useTranslation } from 'react-i18next';
 
 const SignupPage = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const handleRegister = async (values) => {
@@ -14,22 +16,28 @@ const SignupPage = () => {
   return (
     <div>
       <AuthForm
-        title="Sign Up"
+        t={t}
+        title={t('auth.signUp.title')}
         fields={[
-          { name: 'name', label: 'Name' },
-          { name: 'password', label: 'Password', type: 'password' },
+          { name: 'name', label: t('auth.formField.name') },
+          {
+            name: 'password',
+            label: t('auth.formField.password'),
+            type: 'password',
+          },
           {
             name: 'confirmPassword',
-            label: 'Confirm Password',
+            label: t('auth.formField.confirmPassword'),
             type: 'password',
           },
         ]}
         initialValues={{ name: '', password: '', confirmPassword: '' }}
         onSubmit={handleRegister}
         schema={signupSchema}
-        redirectPrompt="I have an account"
-        redirectName="Login"
+        redirectPrompt={t('auth.signUp.redirectPrompt')}
+        redirectName={t('auth.signUp.redirectName')}
         switchLink="/login"
+        buttonName={t('auth.signUp.button')}
       />
     </div>
   );

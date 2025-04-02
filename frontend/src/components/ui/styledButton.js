@@ -18,6 +18,7 @@ const StyledButton = styled(Link)`
   transition: all 0.2s ease-in;
   text-decoration: none;
   cursor: pointer;
+  margin-top: 100px;
 
   &:hover {
     background: rgb(96, 12, 241);

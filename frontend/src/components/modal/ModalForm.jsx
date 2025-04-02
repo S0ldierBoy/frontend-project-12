@@ -5,12 +5,14 @@ import { FormControl, Button, Modal } from 'react-bootstrap';
 import FocusLock from 'react-focus-lock';
 
 const ModalForm = ({
+  t,
   channelNames,
   show,
   onClose,
   schema,
   title,
-  buttonName,
+  buttonConfirm,
+  buttonCancel,
   onSubmit,
   placeholder,
   initialValues,
@@ -28,7 +30,7 @@ const ModalForm = ({
               await onSubmit(values);
               onClose();
             } catch (error) {
-              setErrors({ name: error.message || 'Network error. Try again.' });
+              setErrors({ name: error.message || t('modal.form.netError') });
             } finally {
               setSubmitting(false);
             }
@@ -53,15 +55,15 @@ const ModalForm = ({
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={onClose} aria-label="Close modal">
-                  Close
+                  {buttonCancel}
                 </Button>
                 <Button
                   type="submit"
                   variant="primary"
                   disabled={isSubmitting}
-                  aria-label={buttonName}
+                  aria-label={buttonConfirm}
                 >
-                  {buttonName}
+                  {buttonConfirm}
                 </Button>
               </Modal.Footer>
             </Form>

@@ -3,8 +3,10 @@ import { selectAllChannels, setActiveChannel } from '../../features/chat/channel
 import { useDispatch, useSelector } from 'react-redux';
 import AddChannelModal from '../modal/AddChannelModal.jsx';
 import ChannelDropdown from './ChannelDropdown.jsx';
+import { useTranslation } from 'react-i18next';
 
 const ChatSidebar = () => {
+  const { t } = useTranslation();
   const activeId = useSelector((state) => state.channels.activeChannelId);
   const channels = useSelector(selectAllChannels);
   const dispatch = useDispatch();
@@ -16,7 +18,7 @@ const ChatSidebar = () => {
   return (
     <div className="chat-sidebar">
       <div className="channels-header">
-        <span>Channels :</span>
+        <span>{t('sidebar.channels')}</span>
         <button className="add-channel" onClick={handleShow}>
           +
         </button>

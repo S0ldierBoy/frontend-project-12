@@ -4,6 +4,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import StyledWrapper from './authFormWrapper.js';
 
 const AuthForm = ({
+  t,
   title,
   fields,
   initialValues,
@@ -12,9 +13,9 @@ const AuthForm = ({
   switchLink,
   redirectName,
   schema,
+  buttonName,
 }) => {
   const navigate = useNavigate();
-
   return (
     <StyledWrapper>
       <div className="login-box">
@@ -33,13 +34,13 @@ const AuthForm = ({
 
               switch (error?.statusCode) {
                 case 401:
-                  userMessage = 'Login failed';
+                  userMessage = t('auth.errors.loginFailed');
                   break;
                 case 409:
-                  userMessage = 'User already exists';
+                  userMessage = t('auth.errors.userExists');
                   break;
                 default:
-                  userMessage = 'Network error. Try again.';
+                  userMessage = t('auth.errors.network');
                   break;
               }
               setErrors({ name: userMessage });
@@ -69,7 +70,7 @@ const AuthForm = ({
                 <span />
                 <span />
                 <span />
-                Submit
+                {buttonName}
               </button>
             </Form>
           )}

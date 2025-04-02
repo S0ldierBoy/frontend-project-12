@@ -1,34 +1,37 @@
 import * as Yup from 'yup';
+import i18n from '../i18n';
+
+const t = i18n.t;
 
 export const loginSchema = Yup.object({
   name: Yup.string()
-    .min(3, 'Too Short!')
-    .max(10, 'Too Long!')
-    .required('Required field')
-    .label('Name'),
+    .min(3, t('validation.auth.tooShort'))
+    .max(10, t('validation.auth.tooLong'))
+    .required(t('validation.auth.required'))
+    .label(t('auth.formField.name')),
 
   password: Yup.string()
-    .min(3, 'Too Short!')
-    .max(10, 'Too Long!')
-    .required('Required field')
-    .label('Password'),
+    .min(3, t('validation.auth.tooShort'))
+    .max(10, t('validation.auth.tooLong'))
+    .required(t('validation.auth.required'))
+    .label(t('auth.formField.password')),
 });
 
 export const signupSchema = Yup.object({
   name: Yup.string()
-    .min(3, 'Too Short!')
-    .max(10, 'Too Long!')
-    .required('Required field')
-    .label('Name'),
+    .min(3, t('validation.auth.tooShort'))
+    .max(10, t('validation.auth.tooLong'))
+    .required(t('validation.auth.required'))
+    .label(t('auth.formField.name')),
 
   password: Yup.string()
-    .min(3, 'Too Short!')
-    .max(10, 'Too Long!')
-    .required('Required field')
-    .label('Password'),
+    .min(3, t('validation.auth.tooShort'))
+    .max(10, t('validation.auth.tooLong'))
+    .required(t('validation.auth.required'))
+    .label(t('auth.formField.password')),
 
   confirmPassword: Yup.string()
-    .oneOf([Yup.ref('password')], 'Passwords must match')
-    .required('Required field')
-    .label('Confirm password'),
+    .oneOf([Yup.ref('password')], t('validation.auth.passwordsMustMatch'))
+    .required(t('validation.auth.required'))
+    .label(t('auth.formField.confirmPassword')),
 });

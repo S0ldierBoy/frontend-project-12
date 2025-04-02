@@ -4,8 +4,10 @@ import { useDispatch } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { useTranslation } from 'react-i18next';
 
 const RemoveChannelDropdownItem = ({ id }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
 
@@ -19,19 +21,19 @@ const RemoveChannelDropdownItem = ({ id }) => {
 
   return (
     <>
-      <Dropdown.Item onClick={handleShow}>Delete</Dropdown.Item>
+      <Dropdown.Item onClick={handleShow}>{t('modal.remove.menuItem')}</Dropdown.Item>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Delete</Modal.Title>
+          <Modal.Title>{t('modal.remove.title')}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Do you want to delete the channel ?</Modal.Body>
+        <Modal.Body>{t('modal.remove.body')}</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            {t('modal.remove.buttonCancel')}
           </Button>
           <Button variant="primary" onClick={handleRemoveChannel}>
-            Delete
+            {t('modal.remove.buttonConfirm')}
           </Button>
         </Modal.Footer>
       </Modal>

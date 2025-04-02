@@ -5,8 +5,10 @@ import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../api/authApi.js';
 import AuthForm from '../features/auth/AuthForm.jsx';
 import { loginSchema } from '../validation/authSchema.js';
+import { useTranslation } from 'react-i18next';
 
 const LoginPage = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const token = useSelector((state) => state.auth.token);
@@ -24,17 +26,19 @@ const LoginPage = () => {
   return (
     <div>
       <AuthForm
-        title="Login"
+        t={t}
+        title={t('auth.login.title')}
         fields={[
-          { name: 'name', label: 'Name' },
-          { name: 'password', label: 'Password', type: 'password' },
+          { name: 'name', label: t('auth.formField.name') },
+          { name: 'password', label: t('auth.formField.password'), type: 'password' },
         ]}
         initialValues={{ name: '', password: '' }}
         onSubmit={handleLogin}
         schema={loginSchema}
-        redirectPrompt="Don't have an account?"
-        redirectName="Sign up!"
+        redirectPrompt={t('auth.login.redirectPrompt')}
+        redirectName={t('auth.login.redirectName')}
         switchLink="/signup"
+        buttonName={t('auth.login.button')}
       />
     </div>
   );

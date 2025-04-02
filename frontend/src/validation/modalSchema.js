@@ -1,15 +1,18 @@
 import * as Yup from 'yup';
+import i18n from '../i18n';
+
+const t = i18n.t;
 
 const modalSchema = (existingNames, currentName = '') =>
   Yup.object().shape({
     name: Yup.string()
       .trim()
-      .required('Required field')
-      .min(3, 'Too Short!')
-      .max(10, 'Too Long!')
+      .required(t('validation.modal.required'))
+      .min(3, t('validation.modal.tooShort'))
+      .max(10, t('validation.modal.tooLong'))
       .notOneOf(
         existingNames.filter((name) => name !== currentName),
-        'Channel name already exists'
+        t('validation.modal.channelExists')
       ),
   });
 

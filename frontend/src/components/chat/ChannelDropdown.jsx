@@ -9,10 +9,12 @@ const ChannelDropdown = ({ id, name, channels }) => {
       <Dropdown.Toggle split variant="success" />
 
       <Dropdown.Menu>
-        <RemoveChannelDropdownItem id={id}>Delete</RemoveChannelDropdownItem>
-        <RenameChannelDropdownItem id={id} name={name} channels={channels}>
-          Change
-        </RenameChannelDropdownItem>
+        <RemoveChannelDropdownItem id={id}></RemoveChannelDropdownItem>
+        <RenameChannelDropdownItem
+          id={id}
+          name={name}
+          channels={channels}
+        ></RenameChannelDropdownItem>
       </Dropdown.Menu>
     </Dropdown>
   );
