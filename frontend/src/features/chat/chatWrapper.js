@@ -80,14 +80,14 @@ const StyledChat = styled.div`
   }
 
   .dropdown-toggle {
-    background: none !important;
-    color: #fff;
+    background: none;
+    color: #7a7777;
     border: none;
     box-shadow: none;
 
     &:hover {
       background-color: rgba(13, 19, 23, 0.2);
-      color: #1a8cd8;
+      color: #fff;
     }
 
     &:focus {
@@ -105,14 +105,14 @@ const StyledChat = styled.div`
 
       &:hover {
         background-color: rgba(255, 255, 255, 0.1);
-        color: #f0f3f5;
+        color: #fff;
       }
     }
   }
 
   .add-channel {
     background: transparent;
-    color: #1d9bf0;
+    color: #7a7777;
     border: none;
     border-radius: 50%;
     width: 24px;
@@ -120,7 +120,7 @@ const StyledChat = styled.div`
     cursor: pointer;
 
     &:hover {
-      color: #1a8cd8;
+      color: #fff;
     }
   }
 

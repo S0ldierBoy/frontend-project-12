@@ -5,7 +5,7 @@ import RenameChannelDropdownItem from '../modal/RenameChannelDropdownItem.jsx';
 
 const ChannelDropdown = ({ id, name, channels }) => {
   return (
-    <Dropdown as={ButtonGroup} className="dropdown">
+    <Dropdown as={ButtonGroup} className="dropdown" onClick={(e) => e.stopPropagation()}>
       <Dropdown.Toggle split variant="success" />
 
       <Dropdown.Menu>
