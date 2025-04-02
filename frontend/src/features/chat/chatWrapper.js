@@ -28,6 +28,10 @@ const StyledChat = styled.div`
     }
   }
 
+  .lang-switcher {
+    margin-left: auto;
+  }
+
   .logout-button {
     background: #1d9bf0;
     color: #fff;

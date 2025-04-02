@@ -1,4 +1,5 @@
 import React from 'react';
+import LanguageSwitcher from '../ui/LanguageSwitcher.jsx';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth.js';
 import { useTranslation } from 'react-i18next';
@@ -12,6 +13,10 @@ const Header = () => {
       <h1>
         <Link to="/">CodeChat</Link>
       </h1>
+      <div className="lang-switcher">
+        <LanguageSwitcher />
+      </div>
+
       <button className="logout-button" onClick={logout}>
         {t('header.logoutBtn')}
       </button>
