@@ -5,31 +5,19 @@ export default defineConfig({
   plugins: [react()],
   server: {
     watch: {
-      usePolling: true,
+      usePolling: true, // Следит за изменениями в файлах
     },
     port: 5002,
     proxy: {
+      // Проксируем запросы к API
       '/api': {
         target: 'http://localhost:5001',
       },
+      // Проксируем WebSocket соединения
       '/socket.io': {
         target: 'ws://localhost:5001',
         ws: true,
         rewriteWsOrigin: true,
-      },
-    },
-  },
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            if (id.includes('react')) return 'vendor-react';
-            if (id.includes('formik')) return 'vendor-formik';
-            if (id.includes('i18next')) return 'vendor-i18n';
-            return 'vendor';
-          }
-        },
       },
     },
   },
