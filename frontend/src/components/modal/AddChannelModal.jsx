@@ -27,6 +27,7 @@ const AddChannelModal = ({ show, onClose, channels }) => {
       t={t}
       channelNames={channelNames}
       show={show}
+      onClose={onClose}
       schema={modalSchema}
       title={t('modal.add.title')}
       buttonConfirm={t('modal.add.buttonConfirm')}

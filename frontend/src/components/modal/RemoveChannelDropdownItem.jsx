@@ -16,9 +16,9 @@ const RemoveChannelDropdownItem = ({ id }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleRemoveChannel = () => {
+  const handleRemoveChannel = async () => {
     try {
-      dispatch(removeChannel(id));
+      await dispatch(removeChannel(id)).unwrap();
       showSuccess('modal.remove.toastSuccess');
       handleClose();
     } catch (error) {

@@ -17,15 +17,15 @@ const RenameChannelDropdownItem = ({ name, id, channels }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleSubmit = (values) => {
+  const handleSubmit = async (values) => {
     try {
-      dispatch(renameChannel({ id, name: values.name })).unwrap();
+      await dispatch(renameChannel({ id, name: values.name })).unwrap();
       showSuccess('modal.rename.toastSuccess');
+      handleClose();
     } catch (error) {
       showError(error);
       throw error;
     }
-    handleClose();
   };
 
   return (
