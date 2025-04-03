@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import React, { useEffect } from 'react';
 import { initSocketListeners } from '../socket/listeners.js';
 import ToastNotifications from '../components/ui/ToastNotifications.jsx';
+import { Provider, ErrorBoundary } from '@rollbar/react';
+import rollbarConfig from '../utils/rollbarConfig.js';
 
 function App() {
   const dispatch = useDispatch();
@@ -14,12 +16,16 @@ function App() {
 
   return (
     <Router>
-      <ToastNotifications />
-      <Routes>
-        {routes.map(({ path, element }) => (
-          <Route key={path} path={path} element={element} />
-        ))}
-      </Routes>
+      <Provider config={rollbarConfig}>
+        <ErrorBoundary>
+          <ToastNotifications />
+          <Routes>
+            {routes.map(({ path, element }) => (
+              <Route key={path} path={path} element={element} />
+            ))}
+          </Routes>
+        </ErrorBoundary>
+      </Provider>
     </Router>
   );
 }
