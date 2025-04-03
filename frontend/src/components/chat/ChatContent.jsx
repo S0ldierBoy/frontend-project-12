@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { addMessage } from '../../api/messagesApi.js';
 import { useAutoScroll } from '../../hooks/useAutoScroll.js';
 import useChannelMessages from '../../hooks/useChannelMessages.js';
+import censorFilter from '../../utils/censorFilter.js';
 
 const ChatContent = () => {
   const { t } = useTranslation();
@@ -38,7 +39,7 @@ const ChatContent = () => {
       <div className="messages-area">
         {channelMessages.map(({ id, body, username }) => (
           <p key={id}>
-            {username}: {body}
+            {username}: {censorFilter(body)}
           </p>
         ))}
         <div ref={elementRef}></div>

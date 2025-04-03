@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import AddChannelModal from '../modal/AddChannelModal.jsx';
 import ChannelDropdown from './ChannelDropdown.jsx';
 import { useTranslation } from 'react-i18next';
+import censorFilter from '../../utils/censorFilter.js';
 
 const ChatSidebar = () => {
   const { t } = useTranslation();
@@ -30,7 +31,7 @@ const ChatSidebar = () => {
               className={`channel-row channel ${id === activeId ? 'active' : ''}`}
               onClick={() => dispatch(setActiveChannel(id))}
             >
-              <span># {name}</span>
+              <span># {censorFilter(name)}</span>
               {removable && <ChannelDropdown id={id} name={name} channels={channels} />}
             </div>
           </li>
