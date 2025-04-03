@@ -32,7 +32,7 @@ const ChatContent = () => {
   return (
     <div className="chat-content">
       <div className="chat-title">
-        <h2># {channelName}</h2>
+        <h2># {censorFilter(channelName)}</h2>
         <span>{t('chat.messageCount', { count: channelMessages.length })}</span>
       </div>
 
