@@ -3,8 +3,7 @@ import routes from './routes.jsx';
 import { useDispatch } from 'react-redux';
 import React, { useEffect } from 'react';
 import { initSocketListeners } from '../socket/listeners.js';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import ToastNotifications from '../components/ui/ToastNotifications.jsx';
 
 function App() {
   const dispatch = useDispatch();
@@ -15,7 +14,7 @@ function App() {
 
   return (
     <Router>
-      <ToastContainer />
+      <ToastNotifications />
       <Routes>
         {routes.map(({ path, element }) => (
           <Route key={path} path={path} element={element} />
