@@ -3,6 +3,7 @@ import MainChatPage from '../pages/MainChatPage.jsx';
 import NotFoundPage from '../pages/NotFoundPage.jsx';
 import SignupPage from '../pages/SignupPage.jsx';
 import AuthLayout from '../components/authLoyaut.jsx';
+import ProtectedRoute from '../app/ProtectedRoute.jsx';
 
 const routes = [
   {
@@ -30,7 +31,14 @@ const routes = [
     ),
   },
 
-  { path: '/', element: <MainChatPage /> },
+  {
+    path: '/',
+    element: (
+      <ProtectedRoute>
+        <MainChatPage />
+      </ProtectedRoute>
+    ),
+  },
 ];
 
 export default routes;
