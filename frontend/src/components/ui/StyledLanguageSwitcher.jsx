@@ -2,16 +2,14 @@ import styled from 'styled-components';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 export const StyledDropdown = styled(Dropdown)`
-  .dropdown {
-    display: flex;
-  }
+  display: flex;
+  justify-content: flex-end;
 
   .dropdown-toggle {
     background: none;
     color: #7a7777;
     border: none;
     box-shadow: none;
-    margin-left: auto;
 
     &:hover {
       background-color: rgba(13, 19, 23, 0.2);
@@ -25,7 +23,7 @@ export const StyledDropdown = styled(Dropdown)`
 
   .dropdown-menu {
     background-color: #000;
-    margin-right: auto;
+    min-width: 50px;
 
     .dropdown-item {
       color: #fff;

@@ -102,6 +102,7 @@ const StyledChat = styled.div`
   .dropdown-menu {
     background-color: #000;
     border: 1px solid #333;
+    min-width: 50px;
 
     .dropdown-item {
       color: #fff;
