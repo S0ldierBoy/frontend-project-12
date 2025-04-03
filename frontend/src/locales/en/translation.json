@@ -52,21 +52,24 @@
       "title": "Add channel",
       "buttonConfirm": "Create",
       "placeholder": "Enter channel name...",
-      "buttonCancel": "Cancel"
+      "buttonCancel": "Cancel",
+      "toastSuccess": "Channel created"
     },
     "remove": {
       "title": "Delete channel",
       "body": "Are you sure you want to delete the channel?",
       "buttonConfirm": "Delete",
       "buttonCancel": "Cancel",
-      "menuItem": "Delete"
+      "menuItem": "Delete",
+      "toastSuccess": "Channel deleted"
     },
     "rename": {
       "title": "Rename channel",
       "buttonConfirm": "Confirm",
       "placeholder": "Enter new name...",
       "menuItem": "Rename",
-      "buttonCancel": "Cancel"
+      "buttonCancel": "Cancel",
+      "toastSuccess": "Channel renamed"
     }
   },
   "chat": {

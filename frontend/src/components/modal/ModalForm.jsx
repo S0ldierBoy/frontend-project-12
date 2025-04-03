@@ -28,7 +28,6 @@ const ModalForm = ({
           onSubmit={async (values, { setSubmitting, setErrors }) => {
             try {
               await onSubmit(values);
-              onClose();
             } catch (error) {
               setErrors({ name: error.message || t('modal.form.netError') });
             } finally {

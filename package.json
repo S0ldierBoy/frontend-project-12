@@ -27,6 +27,7 @@
     "i18next": "^24.2.3",
     "react-focus-lock": "^2.13.6",
     "react-i18next": "^15.4.1",
-    "react-redux": "^9.2.0"
+    "react-redux": "^9.2.0",
+    "react-toastify": "^11.0.5"
   }
 }

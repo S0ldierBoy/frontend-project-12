@@ -5,8 +5,10 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useTranslation } from 'react-i18next';
+import useToast from '../../hooks/useToast.js';
 
 const RemoveChannelDropdownItem = ({ id }) => {
+  const { showSuccess, showError } = useToast();
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
@@ -15,8 +17,14 @@ const RemoveChannelDropdownItem = ({ id }) => {
   const handleShow = () => setShow(true);
 
   const handleRemoveChannel = () => {
-    dispatch(removeChannel(id));
-    handleClose();
+    try {
+      dispatch(removeChannel(id));
+      showSuccess('modal.remove.toastSuccess');
+      handleClose();
+    } catch (error) {
+      showError(error);
+      throw error;
+    }
   };
 
   return (

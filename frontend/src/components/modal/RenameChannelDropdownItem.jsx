@@ -5,8 +5,10 @@ import { renameChannel } from '../../api/channelsApi.js';
 import { useDispatch } from 'react-redux';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useTranslation } from 'react-i18next';
+import useToast from '../../hooks/useToast.js';
 
 const RenameChannelDropdownItem = ({ name, id, channels }) => {
+  const { showSuccess, showError } = useToast();
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const channelNames = channels.map((channel) => channel.name);
@@ -16,7 +18,13 @@ const RenameChannelDropdownItem = ({ name, id, channels }) => {
   const handleShow = () => setShow(true);
 
   const handleSubmit = (values) => {
-    dispatch(renameChannel({ id, name: values.name }));
+    try {
+      dispatch(renameChannel({ id, name: values.name })).unwrap();
+      showSuccess('modal.rename.toastSuccess');
+    } catch (error) {
+      showError(error);
+      throw error;
+    }
     handleClose();
   };
 
