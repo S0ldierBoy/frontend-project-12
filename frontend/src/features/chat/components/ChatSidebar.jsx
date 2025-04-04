@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { selectAllChannels, setActiveChannel } from '../../features/chat/channelSlice.js';
+import { selectAllChannels, setActiveChannel } from '../channelSlice.js';
 import { useDispatch, useSelector } from 'react-redux';
-import AddChannelModal from '../modal/AddChannelModal.jsx';
+import AddChannelModal from './AddChannelModal.jsx';
 import ChannelDropdown from './ChannelDropdown.jsx';
 import { useTranslation } from 'react-i18next';
-import censorFilter from '../../utils/censorFilter.js';
+import censorFilter from '../../../utils/censorFilter.js';
 
 const ChatSidebar = () => {
   const { t } = useTranslation();

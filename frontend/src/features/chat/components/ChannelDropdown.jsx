@@ -1,7 +1,7 @@
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
-import RemoveChannelDropdownItem from '../modal/RemoveChannelDropdownItem.jsx';
-import RenameChannelDropdownItem from '../modal/RenameChannelDropdownItem.jsx';
+import RemoveChannelDropdownItem from './RemoveChannelDropdownItem.jsx';
+import RenameChannelDropdownItem from './RenameChannelDropdownItem.jsx';
 
 const ChannelDropdown = ({ id, name, channels }) => {
   return (
