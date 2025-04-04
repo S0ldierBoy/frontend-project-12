@@ -6,7 +6,7 @@ import { StrictMode } from 'react';
 import store from './app/store.js';
 import App from './app/App.jsx';
 import './index.css';
-import i18n from './i18n.js';
+import i18n from './app/i18n.js';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
