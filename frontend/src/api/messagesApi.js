@@ -2,17 +2,14 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getAuthHeader, handleError } from './apiHelpers.js';
 import axios from 'axios';
 
-export const getMessages = createAsyncThunk(
-  'chat/getMessages',
-  async (_, thunkAPI) => {
-    try {
-      const response = await axios.get('/api/v1/messages', getAuthHeader());
-      return response.data;
-    } catch (err) {
-      return handleError(err, thunkAPI);
-    }
+export const getMessages = createAsyncThunk('chat/getMessages', async (_, thunkAPI) => {
+  try {
+    const response = await axios.get('/api/v1/messages', getAuthHeader());
+    return response.data;
+  } catch (err) {
+    return handleError(err, thunkAPI);
   }
-);
+});
 
 export const addMessage = createAsyncThunk(
   'chat/addMessage',
@@ -54,10 +51,7 @@ export const removeMessage = createAsyncThunk(
   'chat/removeMessage',
   async (id, thunkAPI) => {
     try {
-      const response = await axios.delete(
-        `/api/v1/messages/${id}`,
-        getAuthHeader()
-      );
+      const response = await axios.delete(`/api/v1/messages/${id}`, getAuthHeader());
       return response.data;
     } catch (err) {
       return handleError(err, thunkAPI);
