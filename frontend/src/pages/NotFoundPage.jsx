@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import StyledButton from '../components/ui/styledButton.js';
 import { useTranslation } from 'react-i18next';

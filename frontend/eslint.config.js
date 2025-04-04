@@ -27,11 +27,14 @@ export default [
       ...pluginJs.configs.recommended.rules, // Базовые правила JavaScript
       ...pluginReact.configs.recommended.rules, // Рекомендованные правила React
       ...configPrettier.rules, // Отключаем конфликты с Prettier
-      'prettier/prettier': 'error', // Форматирование через Prettier
+      'prettier/prettier': 'error',
+      'react/react-in-jsx-scope': 'off',
+      'react/prop-types': 'off',
     },
     settings: {
       react: {
         version: 'detect', // Автоматически определяет версию React
+        runtime: 'automatic',
       },
     },
   },

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { selectAllChannels, setActiveChannel } from '../../features/chat/channelSlice.js';
 import { useDispatch, useSelector } from 'react-redux';
 import AddChannelModal from '../modal/AddChannelModal.jsx';

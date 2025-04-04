@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { signupSchema } from '../validation/authSchema.js';
 import { signupUser } from '../api/authApi.js';

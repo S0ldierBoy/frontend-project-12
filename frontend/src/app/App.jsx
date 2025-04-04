@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import routes from './routes.jsx';
 import { useDispatch } from 'react-redux';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { initSocketListeners } from '../socket/listeners.js';
 import ToastNotifications from '../components/ui/ToastNotifications.jsx';
 import { Provider, ErrorBoundary } from '@rollbar/react';
