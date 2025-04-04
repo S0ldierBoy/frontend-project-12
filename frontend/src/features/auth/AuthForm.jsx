@@ -76,7 +76,9 @@ const AuthForm = ({
         </Formik>
         <p className="auth-redirect">
           {redirectPrompt}
-          <Link to={switchLink}>{redirectName}</Link>
+          <Link to={switchLink} className="my-link">
+            {redirectName}
+          </Link>
         </p>
       </div>
     </StyledWrapper>

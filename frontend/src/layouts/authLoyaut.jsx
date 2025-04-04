@@ -1,4 +1,3 @@
-import React from 'react';
 import LanguageSwitcher from '../components/ui/LanguageSwitcher.jsx';
 
 const AuthLayout = ({ children }) => (

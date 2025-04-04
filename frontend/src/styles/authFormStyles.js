@@ -189,6 +189,10 @@ const StyledWrapper = styled.div`
     align-items: center;
     font-size: 14px;
     margin-top: 20px;
+
+    .my-link {
+      color: -webkit-link;
+    }
   }
 
   .no-wrap {
