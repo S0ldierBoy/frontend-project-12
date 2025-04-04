@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { loginUser, signupUser } from '../../api/authApi.js';
+import { loginUser, signupUser } from '../../services/api/authApi.js';
 
 const initialState = {
   user: localStorage.getItem('username') || null,

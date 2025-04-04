@@ -1,10 +1,10 @@
 import socket from './index.js';
-import { messageReceived } from '../features/chat/messageSlice.js';
+import { messageReceived } from '../../features/chat/messageSlice.js';
 import {
   channelReceived,
   channelRemoved,
   channelRenamed,
-} from '../features/chat/channelSlice.js';
+} from '../../features/chat/channelSlice.js';
 
 export const initSocketListeners = (dispatch) => {
   socket.on('newMessage', (msg) => dispatch(messageReceived(msg)));

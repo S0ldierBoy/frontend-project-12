@@ -1,6 +1,6 @@
-import modalSchema from '../../validation/modalSchema.js';
+import modalSchema from '../../utils/validation/modalSchema.js';
 import ModalForm from '../ui/ModalForm.jsx';
-import { addChannel } from '../../api/channelsApi.js';
+import { addChannel } from '../../services/api/channelsApi.js';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import useToast from '../../hooks/useToast.js';

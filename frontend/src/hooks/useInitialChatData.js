@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { getChannels } from '../api/channelsApi.js';
-import { getMessages } from '../api/messagesApi.js';
+import { getChannels } from '../services/api/channelsApi.js';
+import { getMessages } from '../services/api/messagesApi.js';
 import { useEffect } from 'react';
 
 const useInitialChatData = () => {

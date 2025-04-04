@@ -1,4 +1,4 @@
-import { removeChannel } from '../../api/channelsApi.js';
+import { removeChannel } from '../../services/api/channelsApi.js';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Button from 'react-bootstrap/Button';

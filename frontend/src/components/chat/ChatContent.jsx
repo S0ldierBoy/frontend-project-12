@@ -2,7 +2,7 @@ import { useState } from 'react';
 import FocusLock from 'react-focus-lock';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { addMessage } from '../../api/messagesApi.js';
+import { addMessage } from '../../services/api/messagesApi.js';
 import { useAutoScroll } from '../../hooks/useAutoScroll.js';
 import useChannelMessages from '../../hooks/useChannelMessages.js';
 import censorFilter from '../../utils/censorFilter.js';

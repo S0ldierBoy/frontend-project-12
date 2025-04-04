@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
-import { signupSchema } from '../validation/authSchema.js';
-import { signupUser } from '../api/authApi.js';
+import { signupSchema } from '../utils/validation/authSchema.js';
+import { signupUser } from '../services/api/authApi.js';
 import AuthForm from '../features/auth/AuthForm.jsx';
 import { useTranslation } from 'react-i18next';
 

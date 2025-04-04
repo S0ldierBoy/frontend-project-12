@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import i18n from '../i18n';
+import i18n from '../../i18n.js';
 
 const t = i18n.t;
 

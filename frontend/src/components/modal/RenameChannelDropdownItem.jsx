@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import modalSchema from '../../validation/modalSchema.js';
+import modalSchema from '../../utils/validation/modalSchema.js';
 import ModalForm from '../ui/ModalForm.jsx';
-import { renameChannel } from '../../api/channelsApi.js';
+import { renameChannel } from '../../services/api/channelsApi.js';
 import { useDispatch } from 'react-redux';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useTranslation } from 'react-i18next';
