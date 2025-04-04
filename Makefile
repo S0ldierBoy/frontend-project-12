@@ -1,16 +1,21 @@
+# Установка зависимостей для сервера и фронтенда
 install:
 	npm install
 	npm install --prefix frontend
 
-start-backend:
+# Сборка фронтенд-приложения
+build:
+	rm -rf frontend/dist
+	npm run build --prefix frontend
+
+# Запуск бэкенд-сервера
+start:
 	npx start-server -s ./frontend/dist
 
+# Запуск фронтенда в режиме разработки
 start-frontend:
 	npm run dev --prefix frontend
 
-start:
-	make start-backend & make start-frontend
-
-build:
-	rm -rf frontend/dist
-	npm run build
+# Запуск бэкенда и фронтенда параллельно
+start-all:
+	make start & make start-frontendnd
