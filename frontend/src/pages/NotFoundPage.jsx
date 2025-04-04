@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import StyledButton from '../components/ui/styledButton.js';
+import StyledButton from '../styles/styledButton.js';
 import { useTranslation } from 'react-i18next';
 
 const Wrapper = styled.div`

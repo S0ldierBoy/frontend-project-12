@@ -2,7 +2,7 @@ import LoginPage from '../pages/LoginPage.jsx';
 import MainChatPage from '../pages/MainChatPage.jsx';
 import NotFoundPage from '../pages/NotFoundPage.jsx';
 import SignupPage from '../pages/SignupPage.jsx';
-import AuthLayout from '../components/authLoyaut.jsx';
+import AuthLayout from '../features/auth/authLoyaut.jsx';
 import ProtectedRoute from '../app/ProtectedRoute.jsx';
 
 const routes = [

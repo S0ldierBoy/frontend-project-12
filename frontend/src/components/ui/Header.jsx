@@ -1,4 +1,4 @@
-import LanguageSwitcher from '../ui/LanguageSwitcher.jsx';
+import LanguageSwitcher from './LanguageSwitcher.jsx';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth.js';
 import { useTranslation } from 'react-i18next';
