@@ -125,5 +125,3 @@ Feel free to **clone**, **contribute**, or use it as a learning project! 🚀
 ---
 
 👨‍💻 Made with ❤️ by [@S0ldierBoy](https://github.com/S0ldierBoy)
-
-```
