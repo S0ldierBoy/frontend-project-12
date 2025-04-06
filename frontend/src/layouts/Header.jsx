@@ -8,9 +8,9 @@ const Header = () => {
   const { logout } = useAuth();
 
   return (
-    <div className="chat-header">
+    <header className="chat-header">
       <h1>
-        <Link to="/">CodeChat</Link>
+        <Link to="/">Hexlet Chat</Link>
       </h1>
       <div className="lang-switcher">
         <LanguageSwitcher />
@@ -19,7 +19,7 @@ const Header = () => {
       <button className="logout-button" onClick={logout}>
         {t('header.logoutBtn')}
       </button>
-    </div>
+    </header>
   );
 };
 

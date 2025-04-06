@@ -10,7 +10,6 @@ const MainChatPage = () => {
   return (
     <StyledChat>
       <div className="chat-wrapper">
-        <Header />
         <div className="chat-main">
           <ChatSidebar />
           <ChatContent />

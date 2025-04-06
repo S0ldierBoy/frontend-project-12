@@ -4,46 +4,10 @@ const StyledChat = styled.div`
   .chat-wrapper {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 90vh;
     background: #000;
     color: #fff;
     font-family: 'Segoe UI', sans-serif;
-  }
-
-  .chat-header {
-    background: #1a1a1a;
-    border-bottom: 1px solid #333;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    a {
-      text-decoration: none;
-      color: #fff;
-
-      &:hover {
-        color: rgba(255, 255, 255, 0.6);
-      }
-    }
-  }
-
-  .lang-switcher {
-    margin-left: auto;
-  }
-
-  .logout-button {
-    background: #1d9bf0;
-    color: #fff;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 9999px;
-    cursor: pointer;
-    font-size: 14px;
-
-    &:hover {
-      background: #1a8cd8;
-    }
   }
 
   .chat-main {

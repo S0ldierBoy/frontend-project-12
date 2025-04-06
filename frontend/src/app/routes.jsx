@@ -35,7 +35,9 @@ const routes = [
     path: '/',
     element: (
       <ProtectedRoute>
-        <MainChatPage />
+        <AuthLayout>
+          <MainChatPage />
+        </AuthLayout>
       </ProtectedRoute>
     ),
   },

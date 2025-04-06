@@ -1,12 +1,10 @@
-import LanguageSwitcher from '../components/ui/LanguageSwitcher.jsx';
+import Header from '../layouts/Header.jsx';
 
 const AuthLayout = ({ children }) => (
-  <div className="auth-layout">
-    <div className="auth-header">
-      <LanguageSwitcher />
-    </div>
+  <>
+    <Header />
     <div className="auth-content">{children}</div>
-  </div>
+  </>
 );
 
 export default AuthLayout;
