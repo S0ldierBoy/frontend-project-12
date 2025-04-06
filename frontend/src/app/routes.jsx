@@ -15,7 +15,7 @@ const routes = [
     ),
   },
   {
-    path: '/signup',
+    path: '/registration',
     element: (
       <AppLayout>
         <SignupPage />

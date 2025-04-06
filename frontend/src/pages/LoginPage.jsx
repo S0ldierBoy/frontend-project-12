@@ -36,7 +36,7 @@ const LoginPage = () => {
         schema={loginSchema}
         redirectPrompt={t('auth.login.redirectPrompt')}
         redirectName={t('auth.login.redirectName')}
-        switchLink="/signup"
+        switchLink="/registration"
         buttonName={t('auth.login.button')}
       />
     </div>
