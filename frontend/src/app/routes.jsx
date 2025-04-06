@@ -2,32 +2,32 @@ import LoginPage from '../pages/LoginPage.jsx';
 import MainChatPage from '../pages/MainChatPage.jsx';
 import NotFoundPage from '../pages/NotFoundPage.jsx';
 import SignupPage from '../pages/SignupPage.jsx';
-import AuthLayout from '../layouts/authLoyaut.jsx';
+import AppLayout from '../layouts/AppLayout.jsx';
 import ProtectedRoute from '../features/auth/ProtectedRoute.jsx';
 
 const routes = [
   {
     path: '/login',
     element: (
-      <AuthLayout>
+      <AppLayout>
         <LoginPage />
-      </AuthLayout>
+      </AppLayout>
     ),
   },
   {
     path: '/signup',
     element: (
-      <AuthLayout>
+      <AppLayout>
         <SignupPage />
-      </AuthLayout>
+      </AppLayout>
     ),
   },
   {
     path: '*',
     element: (
-      <AuthLayout>
+      <AppLayout>
         <NotFoundPage />
-      </AuthLayout>
+      </AppLayout>
     ),
   },
 
@@ -35,9 +35,9 @@ const routes = [
     path: '/',
     element: (
       <ProtectedRoute>
-        <AuthLayout>
+        <AppLayout>
           <MainChatPage />
-        </AuthLayout>
+        </AppLayout>
       </ProtectedRoute>
     ),
   },

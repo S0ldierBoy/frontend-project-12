@@ -2,7 +2,6 @@ import ChatSidebar from '../features/chat/components/ChatSidebar.jsx';
 import ChatContent from '../features/chat/components/ChatContent.jsx';
 import StyledChat from '../styles/chatStyleWrapper.js';
 import useInitialChatData from '../hooks/useInitialChatData';
-import Header from '../layouts/Header.jsx';
 
 const MainChatPage = () => {
   useInitialChatData();
