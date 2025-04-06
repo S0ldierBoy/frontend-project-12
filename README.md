@@ -26,6 +26,19 @@ dependencies, building the frontend, and running the backend and frontend in dev
 
 ---
 
+## System Requirements
+
+### To run this project you will need:
+
+- **Operating System: Windows, macOS, or Linux**
+
+- **Node.js: Version 14 or higher (LTS recommended)**
+
+- **npm: Version 6 or higher (or use yarn, if preferred)**
+
+Internet Connection: For installing dependencies and deploying (optional for local development if dependencies are already installed)
+---
+
 ## Commands
 
 ### Install Dependencies
@@ -36,23 +49,30 @@ install:
 	npm install --prefix frontend
 ```
 
-### Build Frontend 
+### Build Frontend
+
 ```bash
 build:
 	rm -rf frontend/dist
 	npm run build --prefix frontend
 ```
+
 ### Run Backend Server
+
 ```bash
 start:
 	npx start-server -s ./frontend/dist
 ```
+
 ### Run Frontend (Development Mode)
+
 ```bash
 start-frontend:
 	npm run dev --prefix frontend
 ```
+
 ### Run Both (Backend and Frontend)
+
 ```bash
 start-all:
 	make start & make start-frontend
