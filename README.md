@@ -2,6 +2,7 @@
 
 [![Actions Status](https://github.com/S0ldierBoy/frontend-project-12/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/S0ldierBoy/frontend-project-12/actions)
 ![Build](https://github.com/S0ldierBoy/frontend-project-12/actions/workflows/ci.yml/badge.svg)
+[![Code Coverage](https://api.qlty.dev/v1/badge/github/S0ldierBoy/frontend-project-12/coverage?branch=main)](https://app.qlty.dev/github/S0ldierBoy/frontend-project-46)
 
 ### Deploy link
 
