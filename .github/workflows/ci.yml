@@ -29,9 +29,3 @@ jobs:
 
       - name: Run make build
         run: make build
-
-        name: test
-      - uses: qltysh/qlty-action/coverage@main
-        with:
-          coverage-token: {{secrets.qltcp_20nruZdbzSzLu0eN}}
-          files: target/lcov.info
