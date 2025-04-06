@@ -60,7 +60,7 @@
 
 /* Header */
 .chat-header {
-    background: #1a1a1a;
+    background: rgba(21, 21, 21, 0.83);
     border-bottom: 1px solid #333;
     padding: 10px 20px;
     display: flex;
