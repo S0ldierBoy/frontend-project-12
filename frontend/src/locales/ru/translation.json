@@ -15,7 +15,7 @@
       "title": "Создать аккаунт",
       "redirectPrompt": "Уже есть аккаунт?",
       "redirectName": "Войти",
-      "button": "Готово"
+      "button": "Регистрация"
     },
     "formField": {
       "name": "Имя",
