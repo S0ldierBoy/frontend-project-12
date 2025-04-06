@@ -89,13 +89,13 @@ make start-frontend # frontend (dev mode)
 ### ✅ Check for issues:
 
 ```bash
-npm run lint --prefix frontend
+make lint 
 ```
 
 ### 🛠️ Auto-fix issues:
 
 ```bash
-npm run lint:fix --prefix frontend
+make fix
 ```
 
 ---
