@@ -36,7 +36,9 @@ dependencies, building the frontend, and running the backend and frontend in dev
 
 - **npm: Version 6 or higher (or use yarn, if preferred)**
 
-Internet Connection: For installing dependencies and deploying (optional for local development if dependencies are already installed)
+- **Internet Connection: For installing dependencies and deploying (optional for local development if dependencies are
+  already installed)**
+
 ---
 
 ## Commands
