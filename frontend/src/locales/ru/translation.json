@@ -3,7 +3,7 @@
     "login": {
       "title": "Вход",
       "redirectPrompt": "Нет аккаунта?",
-      "redirectName": "Зарегистрируйтесь!",
+      "redirectName": "Регистрация",
       "button": "Войти"
     },
     "errors": {
