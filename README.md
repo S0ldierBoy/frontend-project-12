@@ -4,79 +4,126 @@
 ![Build](https://github.com/S0ldierBoy/frontend-project-12/actions/workflows/ci.yml/badge.svg)
 [![Maintainability](https://qlty.sh/badges/ee7bdf73-558d-4199-a83f-44218cb83477/maintainability.svg)](https://qlty.sh/gh/S0ldierBoy/projects/frontend-project-12)
 
-### Deploy link
+# 💬 Chat Application
 
-https://frontend-project-12-epbz.onrender.com/login
-
-# Chat Application
-
-A real-time chat application with a backend server and a user-friendly frontend interface, built using Node.js and npm.
+**Chat Application** is a real-time messaging web app that lets users chat in public channels with instant message
+delivery. With features like multilingual support, message censorship, and channel management, it offers a modern chat
+experience — all in your browser!
 
 ---
 
-## Project Overview
+## 🚀 Features
 
-This project consists of two main parts:
+- 🔐 **User Authentication**  
+  Sign up and log in using JWT-based authentication.
 
-- **Backend**: Manages server-side logic and real-time messaging.
-- **Frontend**: Offers an intuitive interface for users to send and receive messages.
+- 🗨️ **Public Channels**  
+  Create, rename, and delete channels. Messages are grouped for easy communication.
 
-Developed with Node.js, the project uses npm for dependency management. It includes commands for installing
-dependencies, building the frontend, and running the backend and frontend in development or production modes.
+- ⚡ **Real-Time Messaging**  
+  Instant delivery powered by WebSocket via **Socket.IO**.
 
----
+- ✏️ **Modal Windows**  
+  Smooth in-app renaming and deletion of channels — no page reloads.
 
-## System Requirements
+- 🌍 **Localization**  
+  Supports **English** and **Russian** with instant language switching using **i18next**.
 
-### To run this project you will need:
+- ✅ **Form Validation**  
+  Secure and user-friendly forms using **Formik** + **Yup**.
 
-- **Operating System: Windows, macOS, or Linux**
-
-- **Node.js: Version 14 or higher (LTS recommended)**
-
-- **npm: Version 6 or higher (or use yarn, if preferred)**
-
-- **Internet Connection: For installing dependencies and deploying (optional for local development if dependencies are
-  already installed)**
+- 🚫 **Message Censorship**  
+  Inappropriate language is filtered via the **leo-profanity** library.
 
 ---
 
-## Commands
+## 🔗 Live Demo
 
-### Install Dependencies
+👉 [Live Chat Demo on Render](https://frontend-project-12.onrender.com)
+> (Note: May take a few moments to spin up on free hosting plans.)
 
-```bash
-install:
-	npm install
-	npm install --prefix frontend
-```
+---
 
-### Build Frontend
+## ⚙️ Installation & Setup
 
-```bash
-build:
-	rm -rf frontend/dist
-	npm run build --prefix frontend
-```
+### 🧰 System Requirements
 
-### Run Backend Server
+To run this project, you will need:
 
-```bash
-start:
-	npx start-server -s ./frontend/dist
-```
+- 💻 **OS:** Windows, macOS, or Linux
+- 🟢 **Node.js:** Version 14 or higher (LTS recommended)
+- 📦 **npm:** Version 6 or higher *(or yarn)*
+- 🌐 **Internet:** Required for initial setup and deploying
 
-### Run Frontend (Development Mode)
+---
+
+### 📦 Installation
 
 ```bash
-start-frontend:
-	npm run dev --prefix frontend
+git clone https://github.com/S0ldierBoy/frontend-project-12.git
+cd frontend-project-12
+make install
 ```
 
-### Run Both (Backend and Frontend)
+---
+
+## 📊 Run Application
+
+### 🔄 Run both backend and frontend:
 
 ```bash
-start-all:
-	make start & make start-frontend
+make start-all
 ```
 
+### 🧩 Run separately:
+
+```bash
+make start          # backend
+make start-frontend # frontend (dev mode)
+```
+
+---
+
+## 🧹 Linting
+
+### ✅ Check for issues:
+
+```bash
+npm run lint --prefix frontend
+```
+
+### 🛠️ Auto-fix issues:
+
+```bash
+npm run lint:fix --prefix frontend
+```
+
+---
+
+## 🛠️ Technologies Used
+
+- ⚛️ **React** — UI rendering
+- 📦 **Redux Toolkit** — State management
+- 🔁 **React Router** — SPA routing
+- 🧾 **Formik + Yup** — Form handling and validation
+- 🎨 **Bootstrap / React Bootstrap** — Styling and components
+- 🌐 **i18next** — Internationalization
+- 🔌 **Socket.IO** — WebSocket communication
+- 🌍 **Axios** — HTTP requests
+- 🚫 **leo-profanity** — Message filtering
+- 🐞 **Rollbar** — Error tracking and reporting
+- 📏 **ESLint + Prettier** — Code style and formatting
+- 🟨 **JavaScript (ES6+)**
+
+---
+
+## 🎉 Get Involved
+
+The app is ready for demo and testing.  
+Feel free to **clone**, **contribute**, or use it as a learning project! 🚀
+
+---
+
+👨‍💻 Made with ❤️ by [@S0ldierBoy](https://github.com/S0ldierBoy)
+
+```
