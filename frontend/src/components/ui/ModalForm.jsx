@@ -42,7 +42,7 @@ const ModalForm = ({
               </Modal.Header>
               <Modal.Body>
                 <div className="mb-3">
-                  <label htmlFor="channel-name" className="sr-only">
+                  <label htmlFor="name" className="sr-only">
                     {labelText}
                   </label>
                   <Field
