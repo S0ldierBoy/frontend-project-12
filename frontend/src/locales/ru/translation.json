@@ -26,8 +26,8 @@
   "validation": {
     "auth": {
       "required": "Обязательное поле",
-      "tooShort": "От 3 до 20 символов",
-      "tooLong": "Не менее 6 символов",
+      "tooShort": "Не менее 6 символов",
+      "tooLong": "От 3 до 20 символов",
       "passwordsMustMatch": "Пароли должны совпадать"
     },
     "modal": {
