@@ -1,6 +1,5 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { FormControl, Button, Modal } from 'react-bootstrap';
-
 import FocusLock from 'react-focus-lock';
 
 const ModalForm = ({

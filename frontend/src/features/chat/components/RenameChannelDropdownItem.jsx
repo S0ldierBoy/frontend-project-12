@@ -43,7 +43,7 @@ const RenameChannelDropdownItem = ({ name, id, channels }) => {
         placeholder={t('modal.rename.placeholder')}
         onSubmit={handleSubmit}
         initialValues={{ name: name || '' }}
-        labelText={t('modal.add.labelText')}
+        labelText={t('modal.rename.labelText') || t('modal.add.labelText')}
       />
     </>
   );
