@@ -47,6 +47,14 @@ const StyledChat = styled.div`
     align-items: center;
   }
 
+  .channel-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px; /* или 100%, если в флекс-контейнере */
+    display: inline-block;
+  }
+
   .dropdown-toggle {
     background: none;
     color: #7a7777;
