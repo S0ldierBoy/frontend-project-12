@@ -29,16 +29,22 @@ const StyledWrapper = styled.div`
     letter-spacing: 1px;
   }
 
+  /* Контейнер для каждого поля с фиксированной (минимальной) высотой */
+
   .login-box .user-box {
     position: relative;
+    min-height: 50px; /* Фиксируем высоту, чтобы ошибка не влияла на размеры */
+    margin-bottom: 20px;
   }
+
+  /* Исходные стили для input без Bootstrap */
 
   .login-box .user-box input {
     width: 100%;
     padding: 10px 0;
     font-size: 16px;
     color: #fff;
-    margin-bottom: 30px;
+    margin-bottom: 0; /* убираем отступ */
     border: none;
     border-bottom: 1px solid #fff;
     outline: none;
@@ -69,7 +75,51 @@ const StyledWrapper = styled.div`
     font-size: 12px;
   }
 
-  /* Кнопка, которая заменяет <a> с анимацией */
+  /* Переопределяем Bootstrap-классы для полей ввода */
+
+  .login-box .user-box .form-control {
+    background: transparent !important;
+    color: #fff !important;
+    border: none !important;
+    border-bottom: 1px solid #fff !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    outline: none !important;
+    padding: 10px 0;
+    font-size: 16px;
+    margin-bottom: 0;
+    width: 100%;
+  }
+
+  .login-box .user-box .form-control:focus {
+    box-shadow: none !important;
+    outline: none !important;
+    border-bottom: 1px solid #fff !important;
+  }
+
+  .login-box .user-box .form-control:focus ~ label,
+  .login-box .user-box .form-control:valid ~ label {
+    top: -20px;
+    left: 0;
+    color: #fff;
+    font-size: 12px;
+  }
+
+  /* Абсолютное позиционирование для сообщения об ошибке, чтобы оно не влияло на размеры контейнера */
+
+  .form-error,
+  .invalid-feedback {
+    position: absolute;
+    top: 100%; /* непосредственно под полем */
+    right: 0; /* прижато к правому краю контейнера */
+    color: #ff4d4d;
+    font-size: 12px;
+    text-align: right;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  /* Стили для кнопки с анимацией */
 
   .login-box form .btn {
     position: relative;
@@ -197,14 +247,6 @@ const StyledWrapper = styled.div`
 
   .no-wrap {
     white-space: nowrap;
-  }
-
-  .form-error {
-    color: #ff4d4d;
-    font-size: 12px;
-    margin-top: -20px;
-    margin-bottom: 10px;
-    text-align: right;
   }
 `;
 
