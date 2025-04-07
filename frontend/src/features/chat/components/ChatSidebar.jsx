@@ -28,6 +28,7 @@ const ChatSidebar = () => {
         {channels.map(({ id, name, removable }) => (
           <li key={id}>
             <div
+              role="button"
               className={`channel-row channel ${id === activeId ? 'active' : ''}`}
               onClick={() => dispatch(setActiveChannel(id))}
             >
