@@ -30,7 +30,6 @@ const StyledWrapper = styled.div`
   }
 
   /* Контейнер для каждого поля с фиксированной (минимальной) высотой */
-
   .login-box .user-box {
     position: relative;
     min-height: 50px; /* Фиксируем высоту, чтобы ошибка не влияла на размеры */
@@ -38,7 +37,6 @@ const StyledWrapper = styled.div`
   }
 
   /* Исходные стили для input без Bootstrap */
-
   .login-box .user-box input {
     width: 100%;
     padding: 10px 0;
@@ -76,7 +74,6 @@ const StyledWrapper = styled.div`
   }
 
   /* Переопределяем Bootstrap-классы для полей ввода */
-
   .login-box .user-box .form-control {
     background: transparent !important;
     color: #fff !important;
@@ -91,6 +88,7 @@ const StyledWrapper = styled.div`
     width: 100%;
   }
 
+  /* При фокусе */
   .login-box .user-box .form-control:focus {
     box-shadow: none !important;
     outline: none !important;
@@ -105,8 +103,12 @@ const StyledWrapper = styled.div`
     font-size: 12px;
   }
 
-  /* Абсолютное позиционирование для сообщения об ошибке, чтобы оно не влияло на размеры контейнера */
+  /* Стили для ошибки: если поле с ошибкой, нижняя граница становится красной */
+  .login-box .user-box .form-control.is-invalid {
+    border-bottom: 1px solid #ff0000 !important;
+  }
 
+  /* Абсолютное позиционирование для сообщения об ошибке, чтобы оно не влияло на размеры контейнера */
   .form-error,
   .invalid-feedback {
     position: absolute;
@@ -120,7 +122,6 @@ const StyledWrapper = styled.div`
   }
 
   /* Стили для кнопки с анимацией */
-
   .login-box form .btn {
     position: relative;
     display: inline-block;

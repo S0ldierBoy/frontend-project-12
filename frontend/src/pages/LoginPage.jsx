@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../services/api/authApi.js';
 import AuthForm from '../features/auth/AuthForm.jsx';
-import { loginSchema } from '../utils/validation/authSchema.js';
+//import { loginSchema } from '../utils/validation/authSchema.js';
 import { useTranslation } from 'react-i18next';
 
 const LoginPage = () => {
@@ -33,7 +33,7 @@ const LoginPage = () => {
         ]}
         initialValues={{ name: '', password: '' }}
         onSubmit={handleLogin}
-        schema={loginSchema}
+        //schema={loginSchema}
         redirectPrompt={t('auth.login.redirectPrompt')}
         redirectName={t('auth.login.redirectName')}
         switchLink="/signup"
