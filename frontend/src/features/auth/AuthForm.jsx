@@ -23,13 +23,12 @@ const AuthForm = ({
           initialValues={initialValues}
           validationSchema={schema}
           validateOnBlur={false}
-          onSubmit={async (values, { setSubmitting, setErrors, setStatus }) => {
+          onSubmit={async (values, { setSubmitting, setStatus }) => {
             try {
               await onSubmit(values);
               navigate('/');
             } catch (error) {
               let userMessage;
-
               switch (error?.statusCode) {
                 case 401:
                   userMessage = t('auth.errors.loginFailed');
@@ -41,6 +40,7 @@ const AuthForm = ({
                   userMessage = t('auth.errors.network');
                   break;
               }
+              console.log('Ошибка авторизации:', userMessage);
               setStatus({ loginError: userMessage });
             } finally {
               setSubmitting(false);
@@ -65,7 +65,6 @@ const AuthForm = ({
                   <label htmlFor={name}>{label}</label>
                 </div>
               ))}
-
               <button type="submit" className="btn" disabled={isSubmitting}>
                 <span />
                 <span />
