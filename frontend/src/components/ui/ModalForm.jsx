@@ -41,9 +41,10 @@ const ModalForm = ({
                 <Modal.Title>{title}</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <div className="mb-3" aria-label={labelText}>
+                <div className="mb-3">
                   <Field
                     as={FormControl}
+                    aria-label={labelText}
                     name="name"
                     type="text"
                     placeholder={placeholder}
