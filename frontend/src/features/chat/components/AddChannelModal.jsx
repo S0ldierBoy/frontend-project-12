@@ -35,6 +35,7 @@ const AddChannelModal = ({ show, onClose, channels }) => {
       placeholder={t('modal.add.placeholder')}
       initialValues={{ name: '' }}
       onSubmit={handleSubmit}
+      labelText={t('modal.add.labelText')}
     />
   );
 };

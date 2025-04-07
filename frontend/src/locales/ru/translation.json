@@ -54,7 +54,8 @@
       "buttonConfirm": "Создать",
       "placeholder": "Введите имя канала...",
       "buttonCancel": "Отмена",
-      "toastSuccess": "Канал добавлен"
+      "toastSuccess": "Канал добавлен",
+      "labelText": "Имя канала"
     },
     "remove": {
       "title": "Удалить канал",
@@ -75,7 +76,8 @@
   },
   "chat": {
     "messageCount": "{{count}} сообщений",
-    "placeholder": "Введите сообщение..."
+    "placeholder": "Введите сообщение...",
+    "labelText": "Новое сообщение"
   },
   "sidebar": {
     "channels": "Каналы :"

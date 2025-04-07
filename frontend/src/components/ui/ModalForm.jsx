@@ -15,6 +15,7 @@ const ModalForm = ({
   onSubmit,
   placeholder,
   initialValues,
+  labelText,
 }) => {
   return (
     <Modal show={show} onHide={onClose} data-bs-theme="dark">
@@ -41,7 +42,7 @@ const ModalForm = ({
               </Modal.Header>
               <Modal.Body>
                 <div className="mb-3">
-                  <label htmlFor="name">Имя канала</label>
+                  <label htmlFor="name">{labelText}</label>
                   <Field
                     as={FormControl}
                     name="name"

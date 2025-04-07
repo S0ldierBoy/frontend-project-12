@@ -48,7 +48,7 @@ const ChatContent = () => {
         <form className="message-form" onSubmit={handleSubmit}>
           <input
             type="text"
-            aria-label="Новое сообщение"
+            aria-label={t('chat.labelText')}
             className="message-input"
             value={messageText}
             onChange={(e) => setMessageText(e.target.value)}
