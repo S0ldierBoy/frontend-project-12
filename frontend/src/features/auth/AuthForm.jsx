@@ -40,7 +40,6 @@ const AuthForm = ({
                   userMessage = t('auth.errors.network');
                   break;
               }
-              console.log('Ошибка авторизации:', userMessage);
               setStatus({ loginError: userMessage });
             } finally {
               setSubmitting(false);
@@ -48,7 +47,7 @@ const AuthForm = ({
           }}
         >
           {({ errors, isSubmitting, status }) => (
-            <Form noValidate>
+            <Form>
               {status && status.loginError && (
                 <div className="form-error form-error-global">{status.loginError}</div>
               )}
