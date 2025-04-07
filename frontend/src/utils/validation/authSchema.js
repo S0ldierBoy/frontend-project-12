@@ -5,14 +5,14 @@ const t = i18n.t;
 
 export const loginSchema = Yup.object({
   name: Yup.string()
-    .min(3, t('validation.auth.tooLong'))
-    .max(20, t('validation.auth.tooLong'))
-    .required(t('validation.auth.required'))
+    // .min(3, t('validation.auth.tooLong'))
+    // .max(20, t('validation.auth.tooLong'))
+    // .required(t('validation.auth.required'))
     .label(t('auth.NickName.name')),
 
   password: Yup.string()
-    .min(6, t('validation.auth.tooShort'))
-    .required(t('validation.auth.required'))
+    // .min(6, t('validation.auth.tooShort'))
+    // .required(t('validation.auth.required'))
     .label(t('auth.formField.password')),
 });
 
