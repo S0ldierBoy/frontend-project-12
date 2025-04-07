@@ -31,7 +31,7 @@ const AuthForm = ({
               let userMessage;
               switch (error?.statusCode) {
                 case 401:
-                  userMessage = t('auth.errors.loginFailed');
+                  userMessage = 'Неверные имя пользователя или пароль';
                   break;
                 case 409:
                   userMessage = t('auth.errors.userExists');
@@ -41,6 +41,7 @@ const AuthForm = ({
                   break;
               }
               setStatus({ loginError: userMessage });
+              console.log(userMessage);
             } finally {
               setSubmitting(false);
             }
