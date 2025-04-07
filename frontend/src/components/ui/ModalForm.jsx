@@ -42,9 +42,11 @@ const ModalForm = ({
               </Modal.Header>
               <Modal.Body>
                 <div className="mb-3">
+                  <label htmlFor="channel-name" className="sr-only">
+                    {labelText}
+                  </label>
                   <Field
                     as={FormControl}
-                    aria-label={labelText}
                     name="name"
                     type="text"
                     placeholder={placeholder}
