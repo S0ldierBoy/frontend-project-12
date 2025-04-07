@@ -24,7 +24,7 @@ const AuthForm = ({
           validationSchema={schema}
           validateOnBlur={false}
           //validateOnChange={false} // последние настройки дают валидацию только при отправке
-          onSubmit={async (values, { setSubmitting, setErrors }) => {
+          onSubmit={async (values, { setSubmitting, setErrors, setStatus }) => {
             try {
               await onSubmit(values);
               navigate('/');
@@ -43,6 +43,7 @@ const AuthForm = ({
                   break;
               }
               setErrors({ name: userMessage });
+              setStatus({ loginError: userMessage });
             } finally {
               setSubmitting(false);
             }
