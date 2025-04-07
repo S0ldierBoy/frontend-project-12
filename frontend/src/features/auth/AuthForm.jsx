@@ -23,7 +23,6 @@ const AuthForm = ({
           initialValues={initialValues}
           validationSchema={schema}
           validateOnBlur={false}
-          //validateOnChange={false} // последние настройки дают валидацию только при отправке
           onSubmit={async (values, { setSubmitting, setErrors, setStatus }) => {
             try {
               await onSubmit(values);
@@ -42,15 +41,17 @@ const AuthForm = ({
                   userMessage = t('auth.errors.network');
                   break;
               }
-              setErrors({ name: userMessage });
               setStatus({ loginError: userMessage });
             } finally {
               setSubmitting(false);
             }
           }}
         >
-          {({ errors, isSubmitting }) => (
+          {({ errors, isSubmitting, status }) => (
             <Form noValidate>
+              {status && status.loginError && (
+                <div className="form-error form-error-global">{status.loginError}</div>
+              )}
               {fields.map(({ name, label, type = 'text' }) => (
                 <div className="user-box" key={name}>
                   <Field
@@ -85,4 +86,5 @@ const AuthForm = ({
     </StyledWrapper>
   );
 };
+
 export default AuthForm;
