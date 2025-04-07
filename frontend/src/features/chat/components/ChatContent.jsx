@@ -46,11 +46,9 @@ const ChatContent = () => {
       </div>
       <FocusLock>
         <form className="message-form" onSubmit={handleSubmit}>
-          <label htmlFor="channel-name" className="sr-only">
-            {t('chat.labelText')}
-          </label>
           <input
             type="text"
+            aria-label={t('chat.labelText')}
             className="message-input"
             value={messageText}
             onChange={(e) => setMessageText(e.target.value)}
