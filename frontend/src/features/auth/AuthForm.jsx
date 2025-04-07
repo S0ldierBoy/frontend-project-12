@@ -15,6 +15,7 @@ const AuthForm = ({
   buttonName,
 }) => {
   const navigate = useNavigate();
+
   return (
     <StyledWrapper>
       <div className="login-box">
@@ -29,7 +30,6 @@ const AuthForm = ({
               navigate('/');
             } catch (error) {
               let userMessage;
-
               switch (error?.statusCode) {
                 case 401:
                   userMessage = t('auth.errors.loginFailed');
