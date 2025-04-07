@@ -54,7 +54,7 @@
       "buttonConfirm": "Создать",
       "placeholder": "Введите имя канала...",
       "buttonCancel": "Отмена",
-      "toastSuccess": "Канал добавлен",
+      "toastSuccess": "Канал создан",
       "labelText": "Имя канала"
     },
     "remove": {
