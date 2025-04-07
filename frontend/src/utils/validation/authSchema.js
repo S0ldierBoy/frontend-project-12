@@ -8,7 +8,7 @@ export const loginSchema = Yup.object({
     .min(3, t('validation.auth.tooLong'))
     .max(20, t('validation.auth.tooLong'))
     .required(t('validation.auth.required'))
-    .label(t('auth.formField.name')),
+    .label(t('auth.NickName.name')),
 
   password: Yup.string()
     .min(6, t('validation.auth.tooShort'))

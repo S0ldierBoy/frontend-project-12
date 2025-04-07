@@ -28,7 +28,7 @@ const LoginPage = () => {
         t={t}
         title={t('auth.login.title')}
         fields={[
-          { name: 'name', label: t('auth.formField.name') },
+          { name: 'name', label: t('auth.formField.NickName') },
           { name: 'password', label: t('auth.formField.password'), type: 'password' },
         ]}
         initialValues={{ name: '', password: '' }}

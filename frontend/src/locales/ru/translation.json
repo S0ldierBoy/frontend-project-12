@@ -18,9 +18,10 @@
       "button": "Регистрация"
     },
     "formField": {
-      "name": "Ваш ник",
+      "NickName": "Ваш ник",
       "password": "Пароль",
-      "confirmPassword": "Подтвердите пароль"
+      "confirmPassword": "Подтвердите пароль",
+      "name": "Имя пользователя"
     }
   },
   "validation": {
