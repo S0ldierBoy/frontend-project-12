@@ -33,7 +33,6 @@ const LoginPage = () => {
         ]}
         initialValues={{ name: '', password: '' }}
         onSubmit={handleLogin}
-        //schema={loginSchema}
         redirectPrompt={t('auth.login.redirectPrompt')}
         redirectName={t('auth.login.redirectName')}
         switchLink="/signup"
