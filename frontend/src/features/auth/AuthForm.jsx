@@ -57,18 +57,9 @@ const AuthForm = ({
                     name={name}
                     type={type}
                     required
-                    aria-describedby={`${name}-error`}
                     className={errors[name] ? 'input-error' : ''}
                   />
-                  <div className="form-error-wrapper" aria-live="polite">
-                    <ErrorMessage name={name}>
-                      {(msg) => (
-                        <div className="form-error" id={`${name}-error`}>
-                          {msg}
-                        </div>
-                      )}
-                    </ErrorMessage>
-                  </div>
+                  <ErrorMessage name={name} component="div" className="form-error" />
                   <label htmlFor={name}>{label}</label>
                 </div>
               ))}
