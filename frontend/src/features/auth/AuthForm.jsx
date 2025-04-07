@@ -23,15 +23,16 @@ const AuthForm = ({
           initialValues={initialValues}
           validationSchema={schema}
           validateOnBlur={false}
-          onSubmit={async (values, { setSubmitting, setStatus }) => {
+          onSubmit={async (values, { setSubmitting, setErrors }) => {
             try {
               await onSubmit(values);
               navigate('/');
             } catch (error) {
               let userMessage;
+
               switch (error?.statusCode) {
                 case 401:
-                  userMessage = 'Неверные имя пользователя или пароль';
+                  userMessage = t('auth.errors.loginFailed');
                   break;
                 case 409:
                   userMessage = t('auth.errors.userExists');
@@ -40,18 +41,15 @@ const AuthForm = ({
                   userMessage = t('auth.errors.network');
                   break;
               }
-              setStatus({ loginError: userMessage });
-              console.log(userMessage);
+              // Привязываем глобальную ошибку к полю "name"
+              setErrors({ name: userMessage });
             } finally {
               setSubmitting(false);
             }
           }}
         >
-          {({ errors, isSubmitting, status }) => (
-            <Form>
-              {status && status.loginError && (
-                <div className="form-error form-error-global">{status.loginError}</div>
-              )}
+          {({ errors, isSubmitting }) => (
+            <Form noValidate>
               {fields.map(({ name, label, type = 'text' }) => (
                 <div className="user-box" key={name}>
                   <Field
@@ -59,12 +57,17 @@ const AuthForm = ({
                     name={name}
                     type={type}
                     required
-                    className={errors[name] ? 'input-error' : ''}
+                    className={`form-control ${errors[name] ? 'is-invalid' : ''}`}
                   />
-                  <ErrorMessage name={name} component="div" className="form-error" />
+                  <ErrorMessage
+                    name={name}
+                    component="div"
+                    className="invalid-feedback"
+                  />
                   <label htmlFor={name}>{label}</label>
                 </div>
               ))}
+
               <button type="submit" className="btn" disabled={isSubmitting}>
                 <span />
                 <span />
