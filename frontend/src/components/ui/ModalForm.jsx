@@ -42,15 +42,21 @@ const ModalForm = ({
               </Modal.Header>
               <Modal.Body>
                 <div className="mb-3">
-                  <label htmlFor="name" className="sr-only">
+                  <label
+                    id="channel-name-label"
+                    htmlFor="channel-name"
+                    className="sr-only"
+                  >
                     {labelText}
                   </label>
                   <Field
                     as={FormControl}
+                    id="channel-name"
                     name="name"
                     type="text"
                     placeholder={placeholder}
                     data-autofocus="true"
+                    aria-labelledby="channel-name-label"
                   />
                   <ErrorMessage name="name" component="div" className="text-danger" />
                 </div>
