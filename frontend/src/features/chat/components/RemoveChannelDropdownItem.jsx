@@ -40,7 +40,7 @@ const RemoveChannelDropdownItem = ({ id }) => {
           <Button variant="secondary" onClick={handleClose}>
             {t('modal.remove.buttonCancel')}
           </Button>
-          <Button variant="primary" onClick={handleRemoveChannel}>
+          <Button variant="danger" onClick={handleRemoveChannel}>
             {t('modal.remove.buttonConfirm')}
           </Button>
         </Modal.Footer>
