@@ -61,7 +61,7 @@
       "title": "Удалить канал",
       "body": "Вы уверены, что хотите удалить канал?",
       "buttonConfirm": "Удалить",
-      "buttonCancel": "Отмена",
+      "buttonCancel": "Отменить",
       "menuItem": "Удалить",
       "toastSuccess": "Канал удалён"
     },
