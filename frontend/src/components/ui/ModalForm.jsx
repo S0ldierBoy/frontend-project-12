@@ -1,3 +1,4 @@
+import { useRef, useEffect } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { FormControl, Button, Modal } from 'react-bootstrap';
 import FocusLock from 'react-focus-lock';
@@ -16,9 +17,23 @@ const ModalForm = ({
   initialValues,
   labelText,
 }) => {
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (show) {
+      // Даем время модалке отрендериться
+      setTimeout(() => {
+        if (inputRef.current) {
+          inputRef.current.focus();
+          inputRef.current.select();
+        }
+      }, 50); // иногда нужен даже 100ms, если рендер медленный
+    }
+  }, [show]);
+
   return (
-    <Modal show={show} onHide={onClose} data-bs-theme="dark">
-      <FocusLock>
+    <Modal show={show} onHide={onClose} autoFocus={false} data-bs-theme="dark">
+      <FocusLock returnFocus>
         <Formik
           initialValues={initialValues}
           validationSchema={schema(channelNames)}
@@ -41,22 +56,21 @@ const ModalForm = ({
               </Modal.Header>
               <Modal.Body>
                 <div className="mb-3">
-                  <label
-                    id="channel-name-label"
-                    htmlFor="channel-name"
-                    className="sr-only"
-                  >
-                    {labelText}
-                  </label>
-                  <Field
-                    as={FormControl}
-                    id="channel-name"
-                    name="name"
-                    type="text"
-                    placeholder={placeholder}
-                    data-autofocus="true"
-                    aria-labelledby="channel-name-label"
-                  />
+                  <label htmlFor="channel-name">{labelText}</label>
+
+                  <Field name="name">
+                    {({ field }) => (
+                      <FormControl
+                        {...field}
+                        id="channel-name"
+                        type="text"
+                        placeholder={placeholder}
+                        ref={inputRef}
+                        aria-label={labelText}
+                      />
+                    )}
+                  </Field>
+
                   <ErrorMessage name="name" component="div" className="text-danger" />
                 </div>
               </Modal.Body>
