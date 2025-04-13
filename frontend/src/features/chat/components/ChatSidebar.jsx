@@ -33,7 +33,11 @@ const ChatSidebar = () => {
               onClick={() => dispatch(setActiveChannel(id))}
             >
               <span className="channel-name"># {censorFilter(name)}</span>
-              {removable && <ChannelDropdown id={id} name={name} channels={channels} />}
+              {removable && (
+                <ChannelDropdown id={id} name={name} channels={channels}>
+                  Управление каналом
+                </ChannelDropdown>
+              )}
             </div>
           </li>
         ))}
