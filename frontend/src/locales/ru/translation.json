@@ -69,7 +69,7 @@
       "title": "Переименовать канал",
       "buttonConfirm": "Подтвердить",
       "placeholder": "Введите новое имя...",
-      "menuItem": "Переименовать",
+      "menuItem": "Управление каналом",
       "buttonCancel": "Отмена",
       "toastSuccess": "Канал переименован"
     }
