@@ -67,7 +67,7 @@
     },
     "rename": {
       "title": "Переименовать канал",
-      "buttonConfirm": "Подтвердить",
+      "buttonConfirm": "Отправить",
       "placeholder": "Введите новое имя...",
       "menuItem": "Переименовать",
       "buttonCancel": "Отмена",
