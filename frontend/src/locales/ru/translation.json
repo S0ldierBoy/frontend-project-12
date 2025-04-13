@@ -72,7 +72,7 @@
       "menuItem": "Переименовать",
       "buttonCancel": "Отмена",
       "toastSuccess": "Канал переименован",
-      "labelText": "Управление каналом"
+      "labelText": "Переименовать"
     }
   },
   "chat": {
