@@ -71,7 +71,8 @@
       "placeholder": "Введите новое имя...",
       "menuItem": "Переименовать",
       "buttonCancel": "Отмена",
-      "toastSuccess": "Канал переименован"
+      "toastSuccess": "Канал переименован",
+      "labelText": "Управление каналом"
     }
   },
   "chat": {
