@@ -21,13 +21,12 @@ const ModalForm = ({
 
   useEffect(() => {
     if (show) {
-      // Даем время модалке отрендериться
       setTimeout(() => {
         if (inputRef.current) {
           inputRef.current.focus();
           inputRef.current.select();
         }
-      }, 50); // иногда нужен даже 100ms, если рендер медленный
+      }, 50);
     }
   }, [show]);
 
@@ -56,7 +55,9 @@ const ModalForm = ({
               </Modal.Header>
               <Modal.Body>
                 <div className="mb-3">
-                  <label htmlFor="channel-name">{labelText}</label>
+                  <label className="sr-only" htmlFor="channel-name">
+                    {labelText}
+                  </label>
 
                   <Field name="name">
                     {({ field }) => (
