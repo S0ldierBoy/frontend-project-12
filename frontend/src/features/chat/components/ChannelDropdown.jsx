@@ -6,7 +6,7 @@ import RenameChannelDropdownItem from './RenameChannelDropdownItem.jsx';
 const ChannelDropdown = ({ id, name, channels }) => {
   return (
     <Dropdown as={ButtonGroup} className="dropdown" onClick={(e) => e.stopPropagation()}>
-      <Dropdown.Toggle split variant="success" />
+      <Dropdown.Toggle split variant="success" aria-label={'Управление каналом'} />
 
       <Dropdown.Menu>
         <RemoveChannelDropdownItem id={id}></RemoveChannelDropdownItem>
