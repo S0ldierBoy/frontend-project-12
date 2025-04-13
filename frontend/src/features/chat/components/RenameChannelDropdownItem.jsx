@@ -31,7 +31,6 @@ const RenameChannelDropdownItem = ({ name, id, channels }) => {
   return (
     <>
       <Dropdown.Item onClick={handleShow}>{t('modal.rename.menuItem')}</Dropdown.Item>
-      <Dropdown.Toggle variant="primary">Управление каналом</Dropdown.Toggle>
       <ModalForm
         t={t}
         channelNames={channelNames}
