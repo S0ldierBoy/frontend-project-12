@@ -29,7 +29,11 @@ const LoginPage = () => {
         title={t('auth.login.title')}
         fields={[
           { name: 'name', label: t('auth.formField.NickName') },
-          { name: 'password', label: t('auth.formField.password'), type: 'password' },
+          {
+            name: 'password',
+            label: t('auth.formField.password'),
+            type: 'password',
+          },
         ]}
         initialValues={{ name: '', password: '' }}
         onSubmit={handleLogin}

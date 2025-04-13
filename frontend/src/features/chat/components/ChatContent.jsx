@@ -25,7 +25,13 @@ const ChatContent = () => {
     e.preventDefault();
     if (!messageText.trim()) return;
 
-    dispatch(addMessage({ body: messageText, channelId, username }));
+    dispatch(
+      addMessage({
+        body: messageText,
+        channelId,
+        username,
+      })
+    );
     setMessageText('');
   };
 

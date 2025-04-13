@@ -1,7 +1,5 @@
 export const getAuthHeader = () => {
-  return {
-    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-  };
+  return { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } };
 };
 
 export const handleError = (err, thunkAPI) => {

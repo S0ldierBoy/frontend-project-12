@@ -30,7 +30,11 @@ const SignupPage = () => {
             type: 'password',
           },
         ]}
-        initialValues={{ name: '', password: '', confirmPassword: '' }}
+        initialValues={{
+          name: '',
+          password: '',
+          confirmPassword: '',
+        }}
         onSubmit={handleRegister}
         schema={signupSchema}
         redirectPrompt={t('auth.signUp.redirectPrompt')}

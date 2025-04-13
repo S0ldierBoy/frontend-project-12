@@ -16,7 +16,12 @@ const useAuth = () => {
     navigate('/login');
   };
 
-  return { token, user, isAuthenticated, logout: handleLogout };
+  return {
+    token,
+    user,
+    isAuthenticated,
+    logout: handleLogout,
+  };
 };
 
 export default useAuth;
