@@ -48,7 +48,7 @@ const ChatContent = () => {
             {username}: {censorFilter(body)}
           </p>
         ))}
-        <div ref={elementRef}></div>
+        <div ref={elementRef} />
       </div>
       <FocusLock>
         <form className="message-form" onSubmit={handleSubmit}>

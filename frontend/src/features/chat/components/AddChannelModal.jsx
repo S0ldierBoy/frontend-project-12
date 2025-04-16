@@ -1,8 +1,8 @@
+import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import modalSchema from '../../../utils/validation/modalSchema.js';
 import ModalForm from '../../../components/ui/ModalForm.jsx';
 import { addChannel } from '../../../services/api/channelsApi.js';
-import { useDispatch } from 'react-redux';
-import { useTranslation } from 'react-i18next';
 import useToast from '../../../hooks/useToast.js';
 
 const AddChannelModal = ({ show, onClose, channels }) => {

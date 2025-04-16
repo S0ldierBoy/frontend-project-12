@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 import { getAuthHeader, handleError } from './apiHelpers.js';
 import {
   selectMessagesByChannel,
@@ -8,7 +9,6 @@ import {
   setActiveChannel,
   DEFAULT_CHANNEL_ID,
 } from '../../features/chat/channelSlice.js';
-import axios from 'axios';
 
 export const getChannels = createAsyncThunk('chat/getChannels', async (_, thunkAPI) => {
   try {

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { handleError } from './apiHelpers.js';
 import axios from 'axios';
+import { handleError } from './apiHelpers.js';
 
 export const signupUser = createAsyncThunk(
   'auth/signup',
@@ -8,7 +8,7 @@ export const signupUser = createAsyncThunk(
     try {
       const response = await axios.post('/api/v1/signup', {
         username: name,
-        password: password,
+        password,
       });
       const { token, username } = response.data;
       localStorage.setItem('token', token);
@@ -26,7 +26,7 @@ export const loginUser = createAsyncThunk(
     try {
       const response = await axios.post('/api/v1/login', {
         username: name,
-        password: password,
+        password,
       });
       const { token, username } = response.data;
       localStorage.setItem('token', token);

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getAuthHeader, handleError } from './apiHelpers.js';
 import axios from 'axios';
+import { getAuthHeader, handleError } from './apiHelpers.js';
 
 export const getMessages = createAsyncThunk('chat/getMessages', async (_, thunkAPI) => {
   try {

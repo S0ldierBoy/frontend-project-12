@@ -5,9 +5,7 @@ import { StyledDropdown } from '../../styles/StyledLanguageSwitcher.jsx';
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
 
-  const handleChange = (lang) => {
-    return i18n.changeLanguage(lang);
-  };
+  const handleChange = (lang) => i18n.changeLanguage(lang);
   return (
     <StyledDropdown>
       <Dropdown>

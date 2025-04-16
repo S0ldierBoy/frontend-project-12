@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { signupSchema } from '../utils/validation/authSchema.js';
 import { signupUser } from '../services/api/authApi.js';
 import AuthForm from '../features/auth/AuthForm.jsx';
-import { useTranslation } from 'react-i18next';
 
 const SignupPage = () => {
   const { t } = useTranslation();

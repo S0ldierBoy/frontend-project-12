@@ -1,10 +1,10 @@
-import { removeChannel } from '../../../services/api/channelsApi.js';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useTranslation } from 'react-i18next';
+import { removeChannel } from '../../../services/api/channelsApi.js';
 import useToast from '../../../hooks/useToast.js';
 
 const RemoveChannelDropdownItem = ({ id }) => {

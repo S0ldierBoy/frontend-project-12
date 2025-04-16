@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 import i18n from '../../app/i18n.js';
 
-const t = i18n.t;
+const {t} = i18n;
 
 const modalSchema = (existingNames, currentName = '') =>
   Yup.object().shape({

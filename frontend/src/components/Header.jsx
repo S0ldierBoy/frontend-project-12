@@ -1,7 +1,7 @@
-import LanguageSwitcher from './ui/LanguageSwitcher.jsx';
 import { Link, useLocation } from 'react-router-dom';
-import useAuth from '../hooks/useAuth.js';
 import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from './ui/LanguageSwitcher.jsx';
+import useAuth from '../hooks/useAuth.js';
 
 const Header = () => {
   const { t } = useTranslation();

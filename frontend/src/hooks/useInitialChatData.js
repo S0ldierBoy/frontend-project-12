@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import { getChannels } from '../services/api/channelsApi.js';
 import { getMessages } from '../services/api/messagesApi.js';
-import { useEffect } from 'react';
 
 const useInitialChatData = () => {
   const dispatch = useDispatch();
