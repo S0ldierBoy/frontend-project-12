@@ -7,8 +7,8 @@ import configPrettier from 'eslint-config-prettier';
 /** @type {import('eslint').Linter.FlatConfig[]} */
 export default [
   {
-    ignores: ['node_modules/**', 'dist/**'],
     files: ['**/*.{js,jsx,mjs,cjs}'],
+    ignores: ['node_modules/**', 'dist/**', 'build/**'],
     languageOptions: {
       parserOptions: {
         ecmaFeatures: {
@@ -24,16 +24,16 @@ export default [
       prettier: pluginPrettier,
     },
     rules: {
-      ...pluginJs.configs.recommended.rules, // Базовые правила JavaScript
-      ...pluginReact.configs.recommended.rules, // Рекомендованные правила React
-      ...configPrettier.rules, // Отключаем конфликты с Prettier
+      ...pluginJs.configs.recommended.rules,
+      ...pluginReact.configs.recommended.rules,
+      ...configPrettier.rules,
       'prettier/prettier': 'error',
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
     },
     settings: {
       react: {
-        version: 'detect', // Автоматически определяет версию React
+        version: 'detect',
         runtime: 'automatic',
       },
     },
