@@ -4,11 +4,11 @@ import { getAuthHeader, handleError } from './apiHelpers.js';
 import {
   selectMessagesByChannel,
   removeMessages,
-} from '../../features/chat/messageSlice.js';
+} from '../../app/features/chat/messageSlice.js';
 import {
   setActiveChannel,
   DEFAULT_CHANNEL_ID,
-} from '../../features/chat/channelSlice.js';
+} from '../../app/features/chat/channelSlice.js';
 
 export const getChannels = createAsyncThunk('chat/getChannels', async (_, thunkAPI) => {
   try {

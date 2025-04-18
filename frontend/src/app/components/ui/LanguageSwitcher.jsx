@@ -1,6 +1,6 @@
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useTranslation } from 'react-i18next';
-import { StyledDropdown } from '../../styles/StyledLanguageSwitcher.jsx';
+import { StyledDropdown } from '../../../styles/StyledLanguageSwitcher.jsx';
 
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation();

@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { io } from 'socket.io-client';
-import { messageReceived } from '../features/chat/messageSlice.js';
+import { messageReceived } from '../app/features/chat/messageSlice.js';
 import {
   channelReceived,
   channelRemoved,
   channelRenamed,
-} from '../features/chat/channelSlice.js';
+} from '../app/features/chat/channelSlice.js';
 
 function useSocket() {
   const dispatch = useDispatch();

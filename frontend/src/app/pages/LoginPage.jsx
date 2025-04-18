@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { loginUser } from '../services/api/authApi.js';
+import { loginUser } from '../../services/api/authApi.js';
 import AuthForm from '../features/auth/AuthForm.jsx';
 // import { loginSchema } from '../utils/validation/authSchema.js';
 

@@ -1,5 +1,5 @@
 import { createSlice, createEntityAdapter, createSelector } from '@reduxjs/toolkit';
-import { addMessage, getMessages } from '../../services/api/messagesApi.js';
+import { addMessage, getMessages } from '../../../services/api/messagesApi.js';
 
 const messagesAdapter = createEntityAdapter();
 

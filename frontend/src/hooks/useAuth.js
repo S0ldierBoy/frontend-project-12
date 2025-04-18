@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { logout } from '../features/auth/authSlice.js';
+import { logout } from '../app/features/auth/authSlice.js';
 
 const useAuth = () => {
   const dispatch = useDispatch();

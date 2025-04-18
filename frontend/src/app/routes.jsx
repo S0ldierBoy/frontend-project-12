@@ -1,9 +1,9 @@
-import LoginPage from '../pages/LoginPage.jsx';
-import MainChatPage from '../pages/MainChatPage.jsx';
-import NotFoundPage from '../pages/NotFoundPage.jsx';
-import SignupPage from '../pages/SignupPage.jsx';
-import AppLayout from '../layouts/AppLayout.jsx';
-import ProtectedRoute from '../features/auth/ProtectedRoute.jsx';
+import LoginPage from './pages/LoginPage.jsx';
+import MainChatPage from './pages/MainChatPage.jsx';
+import NotFoundPage from './pages/NotFoundPage.jsx';
+import SignupPage from './pages/SignupPage.jsx';
+import AppLayout from './layouts/AppLayout.jsx';
+import ProtectedRoute from './features/auth/ProtectedRoute.jsx';
 
 const routes = [
   {

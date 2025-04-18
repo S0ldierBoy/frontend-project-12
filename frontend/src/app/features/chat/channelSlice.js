@@ -4,7 +4,7 @@ import {
   addChannel,
   removeChannel,
   renameChannel,
-} from '../../services/api/channelsApi.js';
+} from '../../../services/api/channelsApi.js';
 
 export const DEFAULT_CHANNEL_ID = '1';
 const channelsAdapter = createEntityAdapter();

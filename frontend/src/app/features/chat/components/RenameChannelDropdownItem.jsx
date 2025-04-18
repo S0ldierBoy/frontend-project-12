@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useTranslation } from 'react-i18next';
-import modalSchema from '../../../utils/validation/modalSchema.js';
+import modalSchema from '../../../../utils/validation/modalSchema.js';
 import ModalForm from '../../../components/ui/ModalForm.jsx';
-import { renameChannel } from '../../../services/api/channelsApi.js';
-import useToast from '../../../hooks/useToast.js';
+import { renameChannel } from '../../../../services/api/channelsApi.js';
+import useToast from '../../../../hooks/useToast.js';
 
 const RenameChannelDropdownItem = ({ name, id, channels }) => {
   const { showSuccess, showError } = useToast();
