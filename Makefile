@@ -18,4 +18,10 @@ start-frontend:
 
 # Запуск бэкенда и фронтенда параллельно
 start-all:
-	make start & make start-frontendnd
+	make start & make start-frontend
+
+lint:
+	npm run lint --prefix frontend
+
+fix:
+	npm run lint:fix --prefix frontend
