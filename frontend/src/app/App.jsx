@@ -1,22 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
 import routes from './routes.jsx';
-import { initSocketListeners } from '../services/socket/listeners.js';
 import ToastNotifications from '../components/ui/ToastNotifications.jsx';
-import initSocket from '../services/socket/index.js';
+import useSocket from '../hooks/useSocket.js';
 
 const App = () => {
-  const dispatch = useDispatch();
-  const socket = initSocket();
-
-  useEffect(() => {
-    initSocketListeners(dispatch);
-
-    return () => {
-      socket.off();
-    };
-  }, [dispatch]);
+  useSocket();
 
   return (
     <Router>
