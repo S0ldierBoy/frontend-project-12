@@ -1,9 +1,8 @@
-/* global process */
 import Rollbar from 'rollbar';
 
 const rollbarConfig = new Rollbar({
-  accessToken: '49b102dcb6414a4bb07079882f443d7b',
-  environment: process.env.NODE_ENV || 'development',
+  accessToken: import.meta.env.VITE_ROLLBAR_TOKEN,
+  environment: import.meta.env.NODE_ENV || 'development',
   captureUncaught: true,
   captureUnhandledRejections: true,
 });
