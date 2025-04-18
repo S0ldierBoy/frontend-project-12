@@ -7,6 +7,9 @@ import store from './app/store.js';
 import App from './app/App.jsx';
 import './index.css';
 import i18n from './app/i18n.js';
+import leoProfanity from 'leo-profanity';
+
+leoProfanity.loadDictionary(['ru', 'en']);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
