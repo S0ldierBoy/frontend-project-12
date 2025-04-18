@@ -1,10 +1,9 @@
 import * as Yup from 'yup';
 import i18n from '../../app/i18n.js';
 
-const { t } = i18n;
-
-const modalSchema = (existingNames, currentName = '') =>
-  Yup.object().shape({
+const modalSchema = (existingNames, currentName = '') => {
+  const { t } = i18n;
+  return Yup.object().shape({
     name: Yup.string()
       .trim()
       .required(t('validation.modal.required'))
@@ -15,5 +14,6 @@ const modalSchema = (existingNames, currentName = '') =>
         t('validation.modal.channelExists')
       ),
   });
+};
 
 export default modalSchema;
