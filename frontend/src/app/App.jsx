@@ -4,13 +4,19 @@ import { useEffect } from 'react';
 import routes from './routes.jsx';
 import { initSocketListeners } from '../services/socket/listeners.js';
 import ToastNotifications from '../components/ui/ToastNotifications.jsx';
+import initSocket from '../services/socket/index.js';
 
 const App = () => {
   const dispatch = useDispatch();
+  const socket = initSocket();
 
   useEffect(() => {
     initSocketListeners(dispatch);
-  }, []);
+
+    return () => {
+      socket.off();
+    };
+  }, [dispatch]);
 
   return (
     <Router>
