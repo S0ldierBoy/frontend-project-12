@@ -18,6 +18,7 @@
       "button": "Submit"
     },
     "formField": {
+      "NickName": "Your nickname",
       "name": "Name",
       "password": "Password",
       "confirmPassword": "Confirm password"
@@ -70,7 +71,8 @@
       "placeholder": "Enter new name...",
       "menuItem": "Rename",
       "buttonCancel": "Cancel",
-      "toastSuccess": "Channel renamed"
+      "toastSuccess": "Channel renamed",
+      "labelText": "Rename"
     }
   },
   "chat": {
