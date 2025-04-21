@@ -8,22 +8,21 @@ import censorFilter from '../../../../utils/censorFilter.js';
 
 const ChatSidebar = () => {
   const { t } = useTranslation();
-  const activeId = useSelector((state) => state.channels.activeChannelId);
-  const channels = useSelector(selectAllChannels);
   const dispatch = useDispatch();
+  const channels = useSelector(selectAllChannels);
+  const activeId = useSelector((state) => state.channels.activeChannelId);
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [showAdd, setShowAdd] = useState(false);
 
   return (
     <div className="chat-sidebar">
       <div className="channels-header">
         <span>{t('sidebar.channels')}</span>
-        <button className="add-channel" onClick={handleShow}>
+        <button className="add-channel" onClick={() => setShowAdd(true)}>
           +
         </button>
       </div>
+
       <ul className="channels-list">
         {channels.map(({ id, name, removable }) => (
           <li key={id}>
@@ -33,16 +32,13 @@ const ChatSidebar = () => {
               onClick={() => dispatch(setActiveChannel(id))}
             >
               <span className="channel-name"># {censorFilter(name)}</span>
-              {removable && (
-                <ChannelDropdown id={id} name={name} channels={channels}>
-                  Управление каналом
-                </ChannelDropdown>
-              )}
+              {removable && <ChannelDropdown channelId={id} />}
             </div>
           </li>
         ))}
       </ul>
-      <AddChannelModal show={show} onClose={handleClose} channels={channels} />
+
+      <AddChannelModal show={showAdd} onClose={() => setShowAdd(false)} />
     </div>
   );
 };
