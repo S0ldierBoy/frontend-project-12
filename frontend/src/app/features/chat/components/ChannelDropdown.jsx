@@ -10,8 +10,8 @@ const ChannelDropdown = ({ channelId }) => (
     </Dropdown.Toggle>
 
     <Dropdown.Menu>
-      <RenameChannelDropdownItem channelId={channelId} />
       <RemoveChannelDropdownItem channelId={channelId} />
+      <RenameChannelDropdownItem channelId={channelId} />
     </Dropdown.Menu>
   </Dropdown>
 );
