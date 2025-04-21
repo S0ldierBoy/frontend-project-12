@@ -5,19 +5,22 @@ import { useTranslation } from 'react-i18next';
 import FocusLock from 'react-focus-lock';
 import modalSchema from '../../../../utils/validation/modalSchema.js';
 import { selectAllChannels } from '../channelSlice.js';
-import { addChannel } from '../../../../services/api/channelsApi.js';
+import { renameChannel } from '../../../../services/api/channelsApi.js';
 import useToast from '../../../../hooks/useToast.js';
 
-const AddChannelModal = ({ onClose }) => {
+const RenameChannelModal = ({ channelId, onClose }) => {
   const { t } = useTranslation();
   const { showSuccess, showError } = useToast();
   const dispatch = useDispatch();
-  const channelNames = useSelector(selectAllChannels).map((c) => c.name);
+
+  const channels = useSelector(selectAllChannels);
+  const current = channels.find((c) => c.id === channelId);
+  const channelNames = channels.map((c) => c.name);
 
   const handleSubmit = async ({ name }, helpers) => {
     try {
-      await dispatch(addChannel({ name })).unwrap();
-      showSuccess('modal.add.toastSuccess');
+      await dispatch(renameChannel({ id: channelId, name })).unwrap();
+      showSuccess('modal.rename.toastSuccess');
       onClose();
     } catch (err) {
       showError(err);
@@ -30,7 +33,7 @@ const AddChannelModal = ({ onClose }) => {
     <Modal show onHide={onClose} data-bs-theme="dark">
       <FocusLock returnFocus>
         <Formik
-          initialValues={{ name: '' }}
+          initialValues={{ name: current?.name ?? '' }}
           validationSchema={modalSchema(channelNames)}
           validateOnBlur={false}
           validateOnChange={false}
@@ -39,12 +42,12 @@ const AddChannelModal = ({ onClose }) => {
           {({ isSubmitting }) => (
             <Form noValidate>
               <Modal.Header closeButton>
-                <Modal.Title>{t('modal.add.title')}</Modal.Title>
+                <Modal.Title>{t('modal.rename.title')}</Modal.Title>
               </Modal.Header>
 
               <Modal.Body>
                 <label className="sr-only" htmlFor="channel-name">
-                  {t('modal.add.labelText')}
+                  {t('modal.rename.labelText')}
                 </label>
 
                 <Field name="name">
@@ -53,8 +56,9 @@ const AddChannelModal = ({ onClose }) => {
                       {...field}
                       id="channel-name"
                       type="text"
-                      placeholder={t('modal.add.placeholder')}
+                      placeholder={t('modal.rename.placeholder')}
                       data-autofocus
+                      onFocus={(e) => e.target.select()}
                     />
                   )}
                 </Field>
@@ -64,10 +68,10 @@ const AddChannelModal = ({ onClose }) => {
 
               <Modal.Footer>
                 <Button variant="secondary" onClick={onClose}>
-                  {t('modal.add.buttonCancel')}
+                  {t('modal.rename.buttonCancel')}
                 </Button>
                 <Button type="submit" variant="primary" disabled={isSubmitting}>
-                  {t('modal.add.buttonConfirm')}
+                  {t('modal.rename.buttonConfirm')}
                 </Button>
               </Modal.Footer>
             </Form>
@@ -78,4 +82,4 @@ const AddChannelModal = ({ onClose }) => {
   );
 };
 
-export default AddChannelModal;
+export default RenameChannelModal;

@@ -1,52 +1,45 @@
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import Dropdown from 'react-bootstrap/Dropdown';
+import { Modal, Button } from 'react-bootstrap';
+import FocusLock from 'react-focus-lock';
 import { useTranslation } from 'react-i18next';
 import { removeChannel } from '../../../../services/api/channelsApi.js';
 import useToast from '../../../../hooks/useToast.js';
 
-const RemoveChannelDropdownItem = ({ id }) => {
-  const { showSuccess, showError } = useToast();
+const RemoveChannelModal = ({ channelId, onClose }) => {
   const { t } = useTranslation();
+  const { showSuccess, showError } = useToast();
   const dispatch = useDispatch();
-  const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  const handleRemoveChannel = async () => {
+  const handleRemove = async () => {
     try {
-      await dispatch(removeChannel(id)).unwrap();
+      await dispatch(removeChannel(channelId)).unwrap();
       showSuccess('modal.remove.toastSuccess');
-      handleClose();
-    } catch (error) {
-      showError(error);
-      throw error;
+      onClose();
+    } catch (err) {
+      showError(err);
     }
   };
 
   return (
-    <>
-      <Dropdown.Item onClick={handleShow}>{t('modal.remove.menuItem')}</Dropdown.Item>
-
-      <Modal show={show} onHide={handleClose}>
+    <Modal show onHide={onClose} data-bs-theme="dark">
+      <FocusLock returnFocus>
         <Modal.Header closeButton>
           <Modal.Title>{t('modal.remove.title')}</Modal.Title>
         </Modal.Header>
+
         <Modal.Body>{t('modal.remove.body')}</Modal.Body>
+
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={onClose}>
             {t('modal.remove.buttonCancel')}
           </Button>
-          <Button variant="danger" onClick={handleRemoveChannel}>
+          <Button variant="danger" onClick={handleRemove}>
             {t('modal.remove.buttonConfirm')}
           </Button>
         </Modal.Footer>
-      </Modal>
-    </>
+      </FocusLock>
+    </Modal>
   );
 };
 
-export default RemoveChannelDropdownItem;
+export default RemoveChannelModal;

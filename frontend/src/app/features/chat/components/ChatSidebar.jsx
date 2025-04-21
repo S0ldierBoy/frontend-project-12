@@ -9,16 +9,21 @@ import censorFilter from '../../../../utils/censorFilter.js';
 const ChatSidebar = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const channels = useSelector(selectAllChannels);
-  const activeId = useSelector((state) => state.channels.activeChannelId);
 
-  const [showAdd, setShowAdd] = useState(false);
+  const channels = useSelector(selectAllChannels);
+  const activeId = useSelector((s) => s.channels.activeChannelId);
+
+  const [isAddOpen, setAddOpen] = useState(false);
 
   return (
     <div className="chat-sidebar">
       <div className="channels-header">
         <span>{t('sidebar.channels')}</span>
-        <button className="add-channel" onClick={() => setShowAdd(true)}>
+        <button
+          className="add-channel"
+          onClick={() => setAddOpen(true)}
+          aria-label={t('sidebar.addChannel')}
+        >
           +
         </button>
       </div>
@@ -38,7 +43,7 @@ const ChatSidebar = () => {
         ))}
       </ul>
 
-      <AddChannelModal show={showAdd} onClose={() => setShowAdd(false)} />
+      {isAddOpen && <AddChannelModal onClose={() => setAddOpen(false)} />}
     </div>
   );
 };
