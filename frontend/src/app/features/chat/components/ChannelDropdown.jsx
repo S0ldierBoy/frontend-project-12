@@ -16,7 +16,9 @@ const ChannelDropdown = ({ channelId }) => {
   return (
     <>
       <Dropdown as={ButtonGroup} className="dropdown" onSelect={handleSelect}>
-        <Dropdown.Toggle split variant="success" />
+        <Dropdown.Toggle split variant="success">
+          <span className="sr-only">Управление каналом</span>
+        </Dropdown.Toggle>
 
         <Dropdown.Menu>
           <Dropdown.Item eventKey="rename">Переименовать</Dropdown.Item>
