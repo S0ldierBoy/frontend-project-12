@@ -34,7 +34,10 @@ const ChatSidebar = () => {
             <div
               role="button"
               className={`channel-row channel ${id === activeId ? 'active' : ''}`}
-              onClick={() => dispatch(setActiveChannel(id))}
+              onClick={(e) => {
+                if (e.target.closest('.dropdown')) return;
+                dispatch(setActiveChannel(id));
+              }}
             >
               <span className="channel-name"># {censorFilter(name)}</span>
               {removable && <ChannelDropdown channelId={id} />}
