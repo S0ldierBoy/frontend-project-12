@@ -8,8 +8,8 @@ const RenameChannelDropdownItem = ({ channelId, closeDropdown }) => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const handleClick = () => {
-    closeDropdown(); // ① мгновенно прячем меню
-    setTimeout(() => setModalOpen(true), 0); // ② открываем модалку в следующий тик
+    closeDropdown(); //
+    setTimeout(() => setModalOpen(true), 0);
   };
 
   return (
