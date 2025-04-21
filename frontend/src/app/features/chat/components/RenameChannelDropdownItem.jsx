@@ -7,16 +7,14 @@ const RenameChannelDropdownItem = ({ channelId }) => {
   const { t } = useTranslation();
   const [isOpen, setOpen] = useState(false);
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    setOpen(true);
+  };
+
   return (
     <>
-      <Dropdown.Item
-        onClick={(e) => {
-          e.stopPropagation();
-          setOpen(true);
-        }}
-      >
-        {t('modal.rename.menuItem')}
-      </Dropdown.Item>
+      <Dropdown.Item onClick={handleClick}>{t('modal.rename.menuItem')}</Dropdown.Item>
 
       {isOpen && (
         <RenameChannelModal channelId={channelId} onClose={() => setOpen(false)} />
