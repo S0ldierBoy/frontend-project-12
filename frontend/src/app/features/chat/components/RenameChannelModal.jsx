@@ -21,6 +21,7 @@ const RenameChannelModal = ({ channelId, onClose }) => {
     try {
       await dispatch(renameChannel({ id: channelId, name })).unwrap();
       showSuccess('modal.rename.toastSuccess');
+      helpers.setSubmitting(false);
       onClose();
     } catch (err) {
       showError(err);
