@@ -9,7 +9,12 @@ const RenameChannelDropdownItem = ({ channelId }) => {
 
   return (
     <>
-      <Dropdown.Item onClick={() => setOpen(true)}>
+      <Dropdown.Item
+        onClick={(e) => {
+          e.stopPropagation();
+          setOpen(true);
+        }}
+      >
         {t('modal.rename.menuItem')}
       </Dropdown.Item>
 

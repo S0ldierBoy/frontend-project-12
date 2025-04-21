@@ -15,17 +15,17 @@ const RenameChannelModal = ({ channelId, onClose }) => {
 
   const channels = useSelector(selectAllChannels);
   const current = channels.find((c) => c.id === channelId);
-  const channelNames = channels.map((c) => c.name);
+  const channelNames = channels.filter((c) => c.id !== channelId).map((c) => c.name);
 
   const handleSubmit = async ({ name }, helpers) => {
     try {
       await dispatch(renameChannel({ id: channelId, name })).unwrap();
       showSuccess('modal.rename.toastSuccess');
-      helpers.setSubmitting(false);
       onClose();
     } catch (err) {
       showError(err);
       helpers.setErrors({ name: err.message || t('modal.form.netError') });
+    } finally {
       helpers.setSubmitting(false);
     }
   };
