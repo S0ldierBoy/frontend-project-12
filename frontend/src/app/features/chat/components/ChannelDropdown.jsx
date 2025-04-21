@@ -4,7 +4,7 @@ import RemoveChannelDropdownItem from './RemoveChannelDropdownItem.jsx';
 import RenameChannelDropdownItem from './RenameChannelDropdownItem.jsx';
 
 const ChannelDropdown = ({ channelId }) => (
-  <Dropdown as={ButtonGroup} className="dropdown" onClick={(e) => e.stopPropagation()}>
+  <Dropdown as={ButtonGroup} className="dropdown">
     <Dropdown.Toggle split variant="success">
       <span className="sr-only">Управление каналом</span>
     </Dropdown.Toggle>
