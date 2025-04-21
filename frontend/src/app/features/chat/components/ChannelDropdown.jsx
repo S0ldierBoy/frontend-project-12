@@ -7,14 +7,15 @@ import RenameChannelDropdownItem from './RenameChannelDropdownItem.jsx';
 const ChannelDropdown = ({ channelId }) => {
   const [show, setShow] = useState(false);
 
-  /* Bootstrap вызывает onToggle при клике и rootClose‑событии */
   const handleToggle = useCallback((nextShow) => setShow(nextShow), []);
 
   const closeDropdown = useCallback(() => setShow(false), []);
 
   return (
     <Dropdown as={ButtonGroup} className="dropdown" show={show} onToggle={handleToggle}>
-      <Dropdown.Toggle split variant="success" />
+      <Dropdown.Toggle split variant="success">
+        <span className="sr-only">Управление каналом</span>
+      </Dropdown.Toggle>
 
       <Dropdown.Menu>
         <RemoveChannelDropdownItem channelId={channelId} closeDropdown={closeDropdown} />
