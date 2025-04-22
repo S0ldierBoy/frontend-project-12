@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import routes from './routes.jsx';
+import { routes } from './routesConfig.jsx';
 import ToastNotifications from './components/ui/ToastNotifications.jsx';
 import useSocket from '../hooks/useSocket.js';
 

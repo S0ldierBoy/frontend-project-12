@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import StyledButton from '../../styles/styledButton.js';
+import { ROUTES } from '../../app/routes.jsx';
 
 const Wrapper = styled.div`
   text-align: center;
@@ -21,7 +22,7 @@ const NotFoundPage = () => {
     <Wrapper>
       <h1>{t('pages.notFound.title')}</h1>
       <p>{t('pages.notFound.message')}</p>
-      <StyledButton to="/login">{t('pages.notFound.button')}</StyledButton>
+      <StyledButton to={ROUTES.LOGIN}>{t('pages.notFound.button')}</StyledButton>
     </Wrapper>
   );
 };

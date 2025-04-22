@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { loginUser } from '../../services/api/authApi.js';
 import AuthForm from '../features/auth/AuthForm.jsx';
-// import { loginSchema } from '../utils/validation/authSchema.js';
+import { ROUTES } from '../../app/routes.jsx';
 
 const LoginPage = () => {
   const { t } = useTranslation();
@@ -14,7 +14,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (token) {
-      navigate('/');
+      navigate(ROUTES.ROOT);
     }
   }, [token, navigate]);
 
@@ -39,7 +39,7 @@ const LoginPage = () => {
         onSubmit={handleLogin}
         redirectPrompt={t('auth.login.redirectPrompt')}
         redirectName={t('auth.login.redirectName')}
-        switchLink="/signup"
+        switchLink={ROUTES.SIGNUP}
         buttonName={t('auth.login.button')}
       />
     </div>

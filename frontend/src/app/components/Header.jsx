@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './ui/LanguageSwitcher.jsx';
 import useAuth from '../../hooks/useAuth.js';
+import { ROUTES } from '../routes.jsx';
 
 const Header = () => {
   const { t } = useTranslation();
@@ -12,7 +13,7 @@ const Header = () => {
   return (
     <header className="chat-header">
       <h1>
-        <Link to="/">Hexlet Chat</Link>
+        <Link to={ROUTES.ROOT}>Hexlet Chat</Link>
       </h1>
       <div className="lang-switcher">
         <LanguageSwitcher />

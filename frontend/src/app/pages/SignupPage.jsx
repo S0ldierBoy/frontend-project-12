@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { signupSchema } from '../../utils/validation/authSchema.js';
 import { signupUser } from '../../services/api/authApi.js';
 import AuthForm from '../features/auth/AuthForm.jsx';
+import { ROUTES } from '../../app/routes.jsx';
 
 const SignupPage = () => {
   const { t } = useTranslation();
@@ -39,7 +40,7 @@ const SignupPage = () => {
         schema={signupSchema}
         redirectPrompt={t('auth.signUp.redirectPrompt')}
         redirectName={t('auth.signUp.redirectName')}
-        switchLink="/login"
+        switchLink={ROUTES.LOGIN}
         buttonName={t('auth.signUp.button')}
       />
     </div>
