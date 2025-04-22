@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import StyledButton from '../../styles/styledButton.js';
-import { ROUTES } from '../../app/routes.jsx';
+import { ROUTES } from '../routes.jsx';
 
 const Wrapper = styled.div`
   text-align: center;

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { signupSchema } from '../../utils/validation/authSchema.js';
 import { signupUser } from '../../services/api/authApi.js';
 import AuthForm from '../features/auth/AuthForm.jsx';
-import { ROUTES } from '../../app/routes.jsx';
+import { ROUTES } from '../routes.jsx';
 
 const SignupPage = () => {
   const { t } = useTranslation();
