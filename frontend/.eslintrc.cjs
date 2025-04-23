@@ -3,6 +3,10 @@ module.exports = {
     browser: true,
     es2021: true,
   },
+  // Разрешаем искать зависимости как в local, так и в корневом package.json
+  settings: {
+    'import/external-module-folders': ['node_modules', '../node_modules'],
+  },
   extends: [
     'airbnb',
     'plugin:react/recommended',
@@ -16,21 +20,48 @@ module.exports = {
   },
   plugins: ['react', 'functional'],
   rules: {
+    // Общие
+    'no-console': 0,
+    'no-param-reassign': 0,
+    'max-len': ['error', { code: 120 }],
+
+    // Импорт
     'import/extensions': 0,
     'import/no-unresolved': 0,
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        // Ищем зависимости в текущей и родительской папках
+        packageDir: ['.', '..'],
+      },
+    ],
+    'import/prefer-default-export': 0,
+
+    // React
     'react/prop-types': 0,
-    'no-console': 0,
     'react/react-in-jsx-scope': 0,
-    'functional/no-conditional-statements': 0,
-    'functional/no-expression-statements': 0,
-    'functional/immutable-data': 0,
-    'functional/functional-parameters': 0,
-    'functional/no-try-statements': 0,
-    'functional/no-throw-statements': 0,
-    'functional/no-return-void': 0,
-    'no-underscore-dangle': [2, { allow: ['__filename', '__dirname'] }],
     'react/function-component-definition': [2, { namedComponents: 'arrow-function' }],
-    'testing-library/no-debug': 0,
+    'react/button-has-type': 0,
+    'react/jsx-props-no-spreading': 0,
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+
+    // Testing
+    'testing-library/no-debug': 0,
   },
+  overrides: [
+    {
+      files: ['src/**/*.{js,jsx,mjs,cjs}'],
+      rules: {
+        // Отключаем жесткие правила функционального плагина для React-кода
+        'functional/no-expression-statement': 'off',
+        'functional/no-conditional-statement': 'off',
+        'functional/no-try-statement': 'off',
+        'functional/no-throw-statement': 'off',
+        'functional/no-return-void': 'off',
+        'functional/no-let': 'off',
+        'functional/functional-parameters': 'off',
+        'functional/immutable-data': 'off',
+      },
+    },
+  ],
 };
