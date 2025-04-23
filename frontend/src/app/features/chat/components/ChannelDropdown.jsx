@@ -26,7 +26,7 @@ const ChannelDropdown = ({ channelId }) => {
   return (
     <Dropdown as={ButtonGroup} className="dropdown" show={show} onToggle={handleToggle}>
       <Dropdown.Toggle split variant="success">
-        <span className="sr-only">{t('sidebar.channelActions')}</span>
+        <span className="sr-only">Управление каналом</span>
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
