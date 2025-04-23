@@ -7,7 +7,7 @@ import { ROUTES } from '../routes.jsx';
 const Header = () => {
   const { t } = useTranslation();
   const location = useLocation();
-  const hideLogoutButton = location.pathname === '/';
+  const hideLogoutButton = location.pathname === ROUTES.ROOT;
   const { logout } = useAuth();
 
   return (

@@ -1,27 +1,18 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { logout } from '../app/features/auth/authSlice.js';
+import { useAuthContext } from '../app/features/auth/AuthContext.jsx';
+import { ROUTES } from '../app/routes.jsx';
 
 const useAuth = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const token = useSelector((state) => state.auth.token);
-  const user = useSelector((state) => state.auth.user);
-
+  const { user, token, error, login, signup, logout } = useAuthContext();
   const isAuthenticated = Boolean(token);
 
   const handleLogout = () => {
-    dispatch(logout());
-    navigate('/login');
+    logout();
+    navigate(ROUTES.LOGIN);
   };
 
-  return {
-    token,
-    user,
-    isAuthenticated,
-    logout: handleLogout,
-  };
+  return { user, token, error, isAuthenticated, login, signup, logout: handleLogout };
 };
 
 export default useAuth;

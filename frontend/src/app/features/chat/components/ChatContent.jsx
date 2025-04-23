@@ -6,6 +6,7 @@ import { addMessage } from '../../../../services/api/messagesApi.js';
 import { useAutoScroll } from '../../../../hooks/useAutoScroll.js';
 import useChannelMessages from '../../../../hooks/useChannelMessages.js';
 import censorFilter from '../../../../utils/censorFilter.js';
+import useAuth from '../../../../hooks/useAuth.js';
 
 const ChatContent = () => {
   const { t } = useTranslation();
@@ -16,9 +17,10 @@ const ChatContent = () => {
     (state) => state.channels
   );
   const isLoading = useSelector((state) => state.messages.loading);
-  const username = useSelector((state) => state.auth.user);
-  const channelMessages = useChannelMessages(channelId);
 
+  const { user: username } = useAuth(); // берем username из AuthContext
+
+  const channelMessages = useChannelMessages(channelId);
   const elementRef = useAutoScroll([channelMessages]);
 
   const handleSubmit = (e) => {
@@ -50,6 +52,7 @@ const ChatContent = () => {
         ))}
         <div ref={elementRef} />
       </div>
+
       <FocusLock>
         <form className="message-form" onSubmit={handleSubmit}>
           <input

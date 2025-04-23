@@ -39,7 +39,7 @@ experience — all in your browser!
 
 ## 🔗 Live Demo
 
-👉 [Live Chat Demo on Render](https://frontend-project-12.onrender.com)
+👉 [Live Chat Demo on Render](https://frontend-project-12-epbz.onrender.com)
 > (Note: May take a few moments to spin up on free hosting plans.)
 
 ---

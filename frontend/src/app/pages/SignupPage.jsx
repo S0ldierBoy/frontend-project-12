@@ -1,16 +1,15 @@
-import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { signupSchema } from '../../utils/validation/authSchema.js';
-import { signupUser } from '../../services/api/authApi.js';
 import AuthForm from '../features/auth/AuthForm.jsx';
 import { ROUTES } from '../routes.jsx';
+import useAuth from '../../hooks/useAuth.js';
 
 const SignupPage = () => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
+  const { signup } = useAuth();
 
   const handleRegister = async (values) => {
-    await dispatch(signupUser(values)).unwrap();
+    await signup(values);
   };
 
   return (

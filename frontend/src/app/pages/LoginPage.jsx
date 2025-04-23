@@ -1,48 +1,44 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { loginUser } from '../../services/api/authApi.js';
+import useAuth from '../../hooks/useAuth.js';
 import AuthForm from '../features/auth/AuthForm.jsx';
 import { ROUTES } from '../routes.jsx';
 
 const LoginPage = () => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const token = useSelector((state) => state.auth.token);
+  const { isAuthenticated, login } = useAuth();
 
   useEffect(() => {
-    if (token) {
+    if (isAuthenticated) {
       navigate(ROUTES.ROOT);
     }
-  }, [token, navigate]);
+  }, [isAuthenticated, navigate]);
 
   const handleLogin = async (values) => {
-    await dispatch(loginUser(values)).unwrap();
+    await login(values);
   };
 
   return (
-    <div>
-      <AuthForm
-        t={t}
-        title={t('auth.login.title')}
-        fields={[
-          { name: 'name', label: t('auth.formField.NickName') },
-          {
-            name: 'password',
-            label: t('auth.formField.password'),
-            type: 'password',
-          },
-        ]}
-        initialValues={{ name: '', password: '' }}
-        onSubmit={handleLogin}
-        redirectPrompt={t('auth.login.redirectPrompt')}
-        redirectName={t('auth.login.redirectName')}
-        switchLink={ROUTES.SIGNUP}
-        buttonName={t('auth.login.button')}
-      />
-    </div>
+    <AuthForm
+      t={t}
+      title={t('auth.login.title')}
+      fields={[
+        { name: 'name', label: t('auth.formField.nickName') },
+        {
+          name: 'password',
+          label: t('auth.formField.password'),
+          type: 'password',
+        },
+      ]}
+      initialValues={{ name: '', password: '' }}
+      onSubmit={handleLogin}
+      redirectPrompt={t('auth.login.redirectPrompt')}
+      redirectName={t('auth.login.redirectName')}
+      switchLink={ROUTES.SIGNUP}
+      buttonName={t('auth.login.button')}
+    />
   );
 };
 

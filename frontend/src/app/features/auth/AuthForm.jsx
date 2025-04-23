@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import StyledWrapper from '../../../styles/authFormStyles.js';
+import { ROUTES } from '../../routes.jsx';
 
 const AuthForm = ({
   t,
@@ -27,10 +28,11 @@ const AuthForm = ({
           onSubmit={async (values, { setSubmitting, setErrors }) => {
             try {
               await onSubmit(values);
-              navigate('/');
+              navigate(ROUTES.ROOT);
             } catch (error) {
+              const status = error?.response?.status;
               let userMessage;
-              switch (error?.statusCode) {
+              switch (status) {
                 case 401:
                   userMessage = t('auth.errors.loginFailed');
                   break;
@@ -41,7 +43,6 @@ const AuthForm = ({
                   userMessage = t('auth.errors.network');
                   break;
               }
-              // Привязываем глобальную ошибку к полю "name"
               setErrors({ name: userMessage });
             } finally {
               setSubmitting(false);

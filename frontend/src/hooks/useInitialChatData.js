@@ -1,18 +1,19 @@
-import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import useAuth from '../hooks/useAuth.js';
 import { getChannels } from '../services/api/channelsApi.js';
 import { getMessages } from '../services/api/messagesApi.js';
 
 const useInitialChatData = () => {
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.auth.token);
+  const { token } = useAuth();
 
   useEffect(() => {
     if (token) {
       dispatch(getChannels());
       dispatch(getMessages());
     }
-  }, [token]);
+  }, [token, dispatch]);
 };
 
 export default useInitialChatData;

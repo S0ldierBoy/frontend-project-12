@@ -10,6 +10,7 @@ import './index.css';
 import i18n from './app/i18n.js';
 import leoProfanity from 'leo-profanity';
 import rollbarConfig from './utils/rollbarConfig.js';
+import { AuthProvider } from './app/features/auth/AuthContext.jsx';
 
 leoProfanity.loadDictionary(['ru', 'en']);
 
@@ -18,9 +19,11 @@ createRoot(document.getElementById('root')).render(
     <RollbarProvider config={rollbarConfig}>
       <ErrorBoundary>
         <ReduxProvider store={store}>
-          <I18nextProvider i18n={i18n}>
-            <App />
-          </I18nextProvider>
+          <AuthProvider>
+            <I18nextProvider i18n={i18n}>
+              <App />
+            </I18nextProvider>
+          </AuthProvider>
         </ReduxProvider>
       </ErrorBoundary>
     </RollbarProvider>
