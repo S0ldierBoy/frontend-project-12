@@ -1,17 +1,15 @@
-# Игнорируем артефакты сборки и node_modules
 ignorePatterns:
   - node_modules/**
   - dist/**
   - build/**
 
-# Применяем конфигурацию ко всем JS(+JSX/MJS/CJS)
 overrides:
   - files:
       - "**/*.{js,jsx,mjs,cjs}"
-    # Указываем, что устанавливаем браузерные глобалы
+
     env:
       browser: true
-    # Настройки парсера
+
     parserOptions:
       ecmaVersion: latest
       sourceType: module
@@ -21,16 +19,15 @@ overrides:
     plugins:
       - react
       - prettier
-    # Наследуем все рекомендации ESLint, React и Prettier
+
     extends:
       - eslint:recommended
       - plugin:react/recommended
       - prettier
     rules:
-      # Ошибки Prettier
+
       prettier/prettier: error
 
-      # Наши отключения React-правил
       react/react-in-jsx-scope: off
       react/prop-types: off
 
