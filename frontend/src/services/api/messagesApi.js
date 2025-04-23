@@ -22,13 +22,13 @@ export const addMessage = createAsyncThunk(
           channelId,
           username,
         },
-        getAuthHeader()
+        getAuthHeader(),
       );
       return response.data;
     } catch (err) {
       return handleError(err, thunkAPI);
     }
-  }
+  },
 );
 
 export const editMessage = createAsyncThunk(
@@ -38,13 +38,13 @@ export const editMessage = createAsyncThunk(
       const response = await axios.patch(
         `/api/v1/messages/${id}`,
         { body },
-        getAuthHeader()
+        getAuthHeader(),
       );
       return response.data;
     } catch (err) {
       return handleError(err, thunkAPI);
     }
-  }
+  },
 );
 
 export const removeMessage = createAsyncThunk(
@@ -56,5 +56,5 @@ export const removeMessage = createAsyncThunk(
     } catch (err) {
       return handleError(err, thunkAPI);
     }
-  }
+  },
 );

@@ -4,7 +4,9 @@ import { ROUTES } from '../app/routes.jsx';
 
 const useAuth = () => {
   const navigate = useNavigate();
-  const { user, token, error, login, signup, logout } = useAuthContext();
+  const {
+    user, token, error, login, signup, logout,
+  } = useAuthContext();
   const isAuthenticated = Boolean(token);
 
   const handleLogout = () => {
@@ -12,7 +14,9 @@ const useAuth = () => {
     navigate(ROUTES.LOGIN);
   };
 
-  return { user, token, error, isAuthenticated, login, signup, logout: handleLogout };
+  return {
+    user, token, error, isAuthenticated, login, signup, logout: handleLogout,
+  };
 };
 
 export default useAuth;

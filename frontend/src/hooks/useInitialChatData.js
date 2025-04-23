@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import useAuth from '../hooks/useAuth.js';
+import useAuth from './useAuth.js';
 import { getChannels } from '../services/api/channelsApi.js';
 import { getMessages } from '../services/api/messagesApi.js';
 

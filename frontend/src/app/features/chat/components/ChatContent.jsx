@@ -14,7 +14,7 @@ const ChatContent = () => {
   const [messageText, setMessageText] = useState('');
 
   const { activeChannelName: channelName, activeChannelId: channelId } = useSelector(
-    (state) => state.channels
+    (state) => state.channels,
   );
   const isLoading = useSelector((state) => state.messages.loading);
 
@@ -32,7 +32,7 @@ const ChatContent = () => {
         body: messageText,
         channelId,
         username,
-      })
+      }),
     );
     setMessageText('');
   };
@@ -40,14 +40,19 @@ const ChatContent = () => {
   return (
     <div className="chat-content">
       <div className="chat-title">
-        <h2># {censorFilter(channelName)}</h2>
+        <h2>
+          #
+          {censorFilter(channelName)}
+        </h2>
         <span>{t('chat.messageCount', { count: channelMessages.length })}</span>
       </div>
 
       <div className="messages-area">
         {channelMessages.map(({ id, body, username }) => (
           <p key={id}>
-            {username}: {censorFilter(body)}
+            {username}
+            :
+            {censorFilter(body)}
           </p>
         ))}
         <div ref={elementRef} />

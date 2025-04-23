@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal, Button, FormControl } from 'react-bootstrap';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import {
+  Formik, Form, Field, ErrorMessage,
+} from 'formik';
 import { useTranslation } from 'react-i18next';
 import FocusLock from 'react-focus-lock';
 import modalSchema from '../../../../utils/validation/modalSchema.js';

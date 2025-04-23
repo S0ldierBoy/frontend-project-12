@@ -1,5 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import {
+  Formik, Field, Form, ErrorMessage,
+} from 'formik';
 import StyledWrapper from '../../../styles/authFormStyles.js';
 import { ROUTES } from '../../routes.jsx';
 

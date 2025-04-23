@@ -38,7 +38,10 @@ const ChatSidebar = () => {
                 dispatch(setActiveChannel(id));
               }}
             >
-              <span className="channel-name"># {censorFilter(name)}</span>
+              <span className="channel-name">
+                #
+                {censorFilter(name)}
+              </span>
               {removable && <ChannelDropdown channelId={id} />}
             </div>
           </li>

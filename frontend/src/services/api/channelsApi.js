@@ -28,7 +28,7 @@ export const addChannel = createAsyncThunk(
     } catch (err) {
       return handleError(err, thunkAPI);
     }
-  }
+  },
 );
 
 export const renameChannel = createAsyncThunk(
@@ -38,13 +38,13 @@ export const renameChannel = createAsyncThunk(
       const response = await axios.patch(
         `/api/v1/channels/${id}`,
         { name },
-        getAuthHeader()
+        getAuthHeader(),
       );
       return response.data;
     } catch (err) {
       return handleError(err, thunkAPI);
     }
-  }
+  },
 );
 
 export const removeChannel = createAsyncThunk(
@@ -63,5 +63,5 @@ export const removeChannel = createAsyncThunk(
     } catch (err) {
       return handleError(err, thunkAPI);
     }
-  }
+  },
 );

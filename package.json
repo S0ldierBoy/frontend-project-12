@@ -15,7 +15,7 @@
   "type": "module",
   "main": "src/index.js",
   "scripts": {
-    "lint": "eslint --ext .js,.jsx . --config ./frontend/.eslintrc.yml",
+    "lint": "eslint --ext .js,.jsx frontend/src --config frontend/.eslintrc.cjs",
     "build": "npm run build --prefix frontend",
     "start": "start-server -s ./frontend/dist",
     "test": "echo \"Error: no test specified\" && exit 1"

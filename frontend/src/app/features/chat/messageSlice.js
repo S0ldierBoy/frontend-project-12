@@ -58,10 +58,7 @@ export const {
   selectEntities: selectMessagesEntities,
 } = messagesAdapter.getSelectors((state) => state.messages);
 
-export const selectMessagesByChannel = (channelId) =>
-  createSelector([selectAllMessages], (messages) =>
-    messages.filter((msg) => msg.channelId === channelId)
-  );
+export const selectMessagesByChannel = (channelId) => createSelector([selectAllMessages], (messages) => messages.filter((msg) => msg.channelId === channelId));
 
 export const { messageReceived, removeMessages } = messageSlice.actions;
 export default messageSlice.reducer;
