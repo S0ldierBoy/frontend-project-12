@@ -81,7 +81,8 @@
     "labelText": "Новое сообщение"
   },
   "sidebar": {
-    "channels": "Каналы :"
+    "channels": "Каналы :",
+    "channelActions": "Управление каналом"
   },
   "header": {
     "logoutBtn": "Выход"
