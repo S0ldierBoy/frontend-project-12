@@ -3,7 +3,7 @@ import { Modal, Button } from 'react-bootstrap';
 import FocusLock from 'react-focus-lock';
 import { useTranslation } from 'react-i18next';
 import { removeChannel } from '../../../../services/api/channelsApi.js';
-import { closeModal } from '../modalSlice.js';
+import { closeModal } from '../../ui/modalSlice.js';
 import useToast from '../../../../hooks/useToast.js';
 
 const RemoveChannelModal = ({ channelId }) => {

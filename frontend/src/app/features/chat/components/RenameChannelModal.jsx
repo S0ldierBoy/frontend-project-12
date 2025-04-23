@@ -6,7 +6,7 @@ import FocusLock from 'react-focus-lock';
 import modalSchema from '../../../../utils/validation/modalSchema.js';
 import { selectAllChannels } from '../channelSlice.js';
 import { renameChannel } from '../../../../services/api/channelsApi.js';
-import { closeModal } from '../modalSlice.js';
+import { closeModal } from '../../ui/modalSlice.js';
 import useToast from '../../../../hooks/useToast.js';
 
 const RenameChannelModal = ({ channelId }) => {

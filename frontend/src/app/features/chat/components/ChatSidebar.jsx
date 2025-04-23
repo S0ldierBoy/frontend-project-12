@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { selectAllChannels, setActiveChannel } from '../channelSlice.js';
 import ChannelDropdown from './ChannelDropdown.jsx';
 import censorFilter from '../../../../utils/censorFilter.js';
-import { openModal } from '../modalSlice.js';
+import { openModal } from '../../ui/modalSlice.js';
 
 const ChatSidebar = () => {
   const { t } = useTranslation();

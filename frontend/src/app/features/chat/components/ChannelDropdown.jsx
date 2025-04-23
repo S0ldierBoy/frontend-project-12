@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { openModal } from '../modalSlice.js';
+import { openModal } from '../../ui/modalSlice.js';
 
 const ChannelDropdown = ({ channelId }) => {
   const dispatch = useDispatch();
