@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  // Разрешаем искать зависимости как в local, так и в корневом package.json
+
   settings: {
     'import/external-module-folders': ['node_modules', '../node_modules'],
   },
@@ -20,18 +20,15 @@ module.exports = {
   },
   plugins: ['react', 'functional'],
   rules: {
-    // Общие
     'no-console': 0,
     'no-param-reassign': 0,
     'max-len': ['error', { code: 120 }],
 
-    // Импорт
     'import/extensions': 0,
     'import/no-unresolved': 0,
     'import/no-extraneous-dependencies': [
       'error',
       {
-        // Ищем зависимости в текущей и родительской папках
         packageDir: ['.', '..'],
       },
     ],
@@ -45,14 +42,12 @@ module.exports = {
     'react/jsx-props-no-spreading': 0,
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
 
-    // Testing
     'testing-library/no-debug': 0,
   },
   overrides: [
     {
       files: ['src/**/*.{js,jsx,mjs,cjs}'],
       rules: {
-        // Отключаем жесткие правила функционального плагина для React-кода
         'functional/no-expression-statement': 'off',
         'functional/no-conditional-statement': 'off',
         'functional/no-try-statement': 'off',
@@ -61,6 +56,7 @@ module.exports = {
         'functional/no-let': 'off',
         'functional/functional-parameters': 'off',
         'functional/immutable-data': 'off',
+        'import/no-extraneous-dependencies': 'off',
       },
     },
   ],

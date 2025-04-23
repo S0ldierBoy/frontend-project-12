@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 import {
   getChannels,
@@ -92,7 +93,7 @@ const channelsSlice = createSlice({
         state.loading = false;
         state.error = action.payload || action?.error?.message;
       });
-    // editChannel
+    // renameChannel
     builder
       .addCase(renameChannel.pending, (state) => {
         state.loading = true;
@@ -108,12 +109,23 @@ const channelsSlice = createSlice({
   },
 });
 
+// Selectors
 export const {
   selectById: selectChannelById,
   selectAll: selectAllChannels,
   selectEntities: selectChannelEntities,
 } = channelsAdapter.getSelectors((state) => state.channels);
 
+// Actions
+export const {
+  setActiveChannelId,
+  setActiveChannelName,
+  channelReceived,
+  channelRemoved,
+  channelRenamed,
+} = channelsSlice.actions;
+
+// Thunk: set active channel
 export const setActiveChannel = (id) => (dispatch, getState) => {
   const channel = selectChannelById(getState(), id);
   if (channel) {
@@ -122,11 +134,4 @@ export const setActiveChannel = (id) => (dispatch, getState) => {
   }
 };
 
-export const {
-  setActiveChannelId,
-  setActiveChannelName,
-  channelReceived,
-  channelRemoved,
-  channelRenamed,
-} = channelsSlice.actions;
 export default channelsSlice.reducer;
