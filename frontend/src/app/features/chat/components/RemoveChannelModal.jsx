@@ -7,9 +7,9 @@ import { closeModal } from '../modalSlice.js';
 import useToast from '../../../../hooks/useToast.js';
 
 const RemoveChannelModal = ({ channelId }) => {
+  const dispatch = useDispatch();
   const { t } = useTranslation();
   const { showSuccess, showError } = useToast();
-  const dispatch = useDispatch();
 
   const handleClose = () => dispatch(closeModal());
 

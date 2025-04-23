@@ -1,11 +1,13 @@
 import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { openModal } from '../modalSlice.js';
 
 const ChannelDropdown = ({ channelId }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const [show, setShow] = useState(false);
 
   const handleToggle = useCallback((nextShow) => setShow(nextShow), []);
@@ -24,15 +26,15 @@ const ChannelDropdown = ({ channelId }) => {
   return (
     <Dropdown as={ButtonGroup} className="dropdown" show={show} onToggle={handleToggle}>
       <Dropdown.Toggle split variant="success">
-        <span className="sr-only">Управление каналом</span>
+        <span className="sr-only">{t('sidebar.channelActions')}</span>
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
         <Dropdown.Item as="button" onClick={openRemove}>
-          Удалить
+          {t('modal.remove.menuItem')}
         </Dropdown.Item>
         <Dropdown.Item as="button" onClick={openRename}>
-          Переименовать
+          {t('modal.rename.menuItem')}
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>

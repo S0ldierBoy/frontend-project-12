@@ -34,7 +34,7 @@ const ChatSidebar = () => {
               role="button"
               className={`channel-row channel ${id === activeId ? 'active' : ''}`}
               onClick={(e) => {
-                if (e.target.close('.dropdown')) return;
+                if (e.target.closest('.dropdown')) return;
                 dispatch(setActiveChannel(id));
               }}
             >
