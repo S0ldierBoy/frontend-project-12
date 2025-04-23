@@ -6,9 +6,10 @@ import FocusLock from 'react-focus-lock';
 import modalSchema from '../../../../utils/validation/modalSchema.js';
 import { selectAllChannels } from '../channelSlice.js';
 import { renameChannel } from '../../../../services/api/channelsApi.js';
+import { closeModal } from '../modalSlice.js';
 import useToast from '../../../../hooks/useToast.js';
 
-const RenameChannelModal = ({ channelId, onClose }) => {
+const RenameChannelModal = ({ channelId }) => {
   const { t } = useTranslation();
   const { showSuccess, showError } = useToast();
   const dispatch = useDispatch();
@@ -17,12 +18,14 @@ const RenameChannelModal = ({ channelId, onClose }) => {
   const current = channels.find((c) => c.id === channelId);
   const channelNames = channels.map((c) => c.name);
 
+  const handleClose = () => dispatch(closeModal());
+
   const handleSubmit = async ({ name }, helpers) => {
     try {
       await dispatch(renameChannel({ id: channelId, name })).unwrap();
       showSuccess('modal.rename.toastSuccess');
       helpers.setSubmitting(false);
-      onClose();
+      handleClose();
     } catch (err) {
       showError(err);
       helpers.setErrors({ name: err.message || t('modal.form.netError') });
@@ -31,7 +34,7 @@ const RenameChannelModal = ({ channelId, onClose }) => {
   };
 
   return (
-    <Modal show onHide={onClose} data-bs-theme="dark">
+    <Modal show onHide={handleClose} data-bs-theme="dark">
       <FocusLock returnFocus>
         <Formik
           initialValues={{ name: current?.name ?? '' }}
@@ -68,7 +71,7 @@ const RenameChannelModal = ({ channelId, onClose }) => {
               </Modal.Body>
 
               <Modal.Footer>
-                <Button variant="secondary" onClick={onClose}>
+                <Button variant="secondary" onClick={handleClose}>
                   {t('modal.rename.buttonCancel')}
                 </Button>
                 <Button type="submit" variant="primary" disabled={isSubmitting}>

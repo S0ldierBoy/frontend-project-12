@@ -1,15 +1,25 @@
 import { useState, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
-import RemoveChannelDropdownItem from './RemoveChannelDropdownItem.jsx';
-import RenameChannelDropdownItem from './RenameChannelDropdownItem.jsx';
+import { openModal } from '../modalSlice.js';
 
 const ChannelDropdown = ({ channelId }) => {
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
 
   const handleToggle = useCallback((nextShow) => setShow(nextShow), []);
-
   const closeDropdown = useCallback(() => setShow(false), []);
+
+  const openRemove = () => {
+    closeDropdown();
+    dispatch(openModal({ type: 'removeChannel', props: { channelId } }));
+  };
+
+  const openRename = () => {
+    closeDropdown();
+    dispatch(openModal({ type: 'renameChannel', props: { channelId } }));
+  };
 
   return (
     <Dropdown as={ButtonGroup} className="dropdown" show={show} onToggle={handleToggle}>
@@ -18,8 +28,12 @@ const ChannelDropdown = ({ channelId }) => {
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <RemoveChannelDropdownItem channelId={channelId} closeDropdown={closeDropdown} />
-        <RenameChannelDropdownItem channelId={channelId} closeDropdown={closeDropdown} />
+        <Dropdown.Item as="button" onClick={openRemove}>
+          Удалить
+        </Dropdown.Item>
+        <Dropdown.Item as="button" onClick={openRename}>
+          Переименовать
+        </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );
