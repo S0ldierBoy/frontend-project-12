@@ -3,7 +3,6 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-
   settings: {
     'import/external-module-folders': ['node_modules', '../node_modules'],
   },
@@ -21,20 +20,18 @@ module.exports = {
   plugins: ['react', 'functional'],
   rules: {
     'no-console': 0,
-    'no-param-reassign': 0,
-    'max-len': ['error', { code: 120 }],
-
-    'import/extensions': 0,
-    'import/no-unresolved': 0,
-    'import/no-extraneous-dependencies': [
+    'no-param-reassign': [
       'error',
       {
-        packageDir: ['.', '..'],
+        props: true,
+        ignorePropertyModificationsFor: ['state', 'draft'],
       },
     ],
+    'max-len': ['error', { code: 120 }],
+    'import/extensions': 0,
+    'import/no-unresolved': 0,
+    'import/no-extraneous-dependencies': ['error', { packageDir: ['.', '..'] }],
     'import/prefer-default-export': 0,
-
-    // React
     'react/prop-types': 0,
     'react/react-in-jsx-scope': 0,
     'react/function-component-definition': [
@@ -44,7 +41,6 @@ module.exports = {
     'react/button-has-type': 0,
     'react/jsx-props-no-spreading': 0,
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
-
     'testing-library/no-debug': 0,
   },
   overrides: [
