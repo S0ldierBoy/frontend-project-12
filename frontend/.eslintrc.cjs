@@ -47,6 +47,7 @@ module.exports = {
     {
       files: ['src/**/*.{js,jsx,mjs,cjs}'],
       rules: {
+        'react/react-in-jsx-scope': 'off',
         'functional/no-expression-statement': 'off',
         'functional/no-conditional-statement': 'off',
         'functional/no-try-statement': 'off',
