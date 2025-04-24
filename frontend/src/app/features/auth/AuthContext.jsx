@@ -1,4 +1,4 @@
-import {
+import React, {
   createContext,
   useContext,
   useEffect,
@@ -31,7 +31,10 @@ export const AuthProvider = ({ children }) => {
   const login = useCallback(async ({ name, password }) => {
     try {
       setError(null);
-      const { data } = await axiosInstance.post('/login', { username: name, password });
+      const { data } = await axiosInstance.post('/login', {
+        username: name,
+        password,
+      });
       setUser(data.username);
       setToken(data.token);
     } catch (err) {
@@ -43,7 +46,10 @@ export const AuthProvider = ({ children }) => {
   const signup = useCallback(async ({ name, password }) => {
     try {
       setError(null);
-      const { data } = await axiosInstance.post('/signup', { username: name, password });
+      const { data } = await axiosInstance.post('/signup', {
+        username: name,
+        password,
+      });
       setUser(data.username);
       setToken(data.token);
     } catch (err) {
@@ -68,7 +74,7 @@ export const AuthProvider = ({ children }) => {
       signup,
       logout,
     }),
-    [user, token, error, login, signup, logout],
+    [user, token, error, login, signup, logout]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
@@ -76,6 +82,7 @@ export const AuthProvider = ({ children }) => {
 
 export const useAuthContext = () => {
   const ctx = useContext(AuthContext);
-  if (!ctx) throw new Error('useAuthContext must be used inside <AuthProvider>');
+  if (!ctx)
+    throw new Error('useAuthContext must be used inside <AuthProvider>');
   return ctx;
 };

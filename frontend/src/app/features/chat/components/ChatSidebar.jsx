@@ -1,3 +1,4 @@
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { selectAllChannels, setActiveChannel } from '../channelSlice.js';
@@ -50,10 +51,7 @@ const ChatSidebar = () => {
               }}
               onKeyDown={(e) => onChannelKeyDown(e, id)}
             >
-              <span className="channel-name">
-                #
-                {censorFilter(name)}
-              </span>
+              <span className="channel-name">#{censorFilter(name)}</span>
               {removable && <ChannelDropdown channelId={id} />}
             </div>
           </li>

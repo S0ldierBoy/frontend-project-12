@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import StyledButton from '../../styles/styledButton.js';
@@ -22,7 +23,9 @@ const NotFoundPage = () => {
     <Wrapper>
       <h1>{t('pages.notFound.title')}</h1>
       <p>{t('pages.notFound.message')}</p>
-      <StyledButton to={ROUTES.LOGIN}>{t('pages.notFound.button')}</StyledButton>
+      <StyledButton to={ROUTES.LOGIN}>
+        {t('pages.notFound.button')}
+      </StyledButton>
     </Wrapper>
   );
 };

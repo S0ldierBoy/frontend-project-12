@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
@@ -24,7 +24,12 @@ const ChannelDropdown = ({ channelId }) => {
   };
 
   return (
-    <Dropdown as={ButtonGroup} className="dropdown" show={show} onToggle={handleToggle}>
+    <Dropdown
+      as={ButtonGroup}
+      className="dropdown"
+      show={show}
+      onToggle={handleToggle}
+    >
       <Dropdown.Toggle split variant="success">
         <span className="sr-only">{t('sidebar.channelActions')}</span>
       </Dropdown.Toggle>
