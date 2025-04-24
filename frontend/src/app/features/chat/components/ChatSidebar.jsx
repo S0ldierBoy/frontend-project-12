@@ -13,6 +13,16 @@ const ChatSidebar = () => {
   const activeId = useSelector((s) => s.channels.activeChannelId);
 
   const handleAddChannel = () => dispatch(openModal({ type: 'addChannel' }));
+  const handleSelectChannel = (id) => {
+    dispatch(setActiveChannel(id));
+  };
+
+  const onChannelKeyDown = (e, id) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleSelectChannel(id);
+    }
+  };
 
   return (
     <div className="chat-sidebar">
@@ -32,11 +42,13 @@ const ChatSidebar = () => {
           <li key={id}>
             <div
               role="button"
+              tabIndex={0}
               className={`channel-row channel ${id === activeId ? 'active' : ''}`}
               onClick={(e) => {
                 if (e.target.closest('.dropdown')) return;
-                dispatch(setActiveChannel(id));
+                handleSelectChannel(id);
               }}
+              onKeyDown={(e) => onChannelKeyDown(e, id)}
             >
               <span className="channel-name">
                 #

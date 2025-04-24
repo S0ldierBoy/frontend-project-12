@@ -1,5 +1,10 @@
-import { createSlice, createEntityAdapter, createSelector } from '@reduxjs/toolkit';
+import {
+  createSlice,
+  createEntityAdapter,
+  createSelector,
+} from '@reduxjs/toolkit';
 import { addMessage, getMessages } from '../../../services/api/messagesApi.js';
+import { removeChannel } from '../../../services/api/channelsApi.js';
 
 const messagesAdapter = createEntityAdapter();
 
@@ -33,7 +38,7 @@ const messageSlice = createSlice({
       })
       .addCase(addMessage.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload || action?.error?.message;
+        state.error = action.payload || action.error?.message;
       });
     // getMessages
     builder
@@ -47,8 +52,16 @@ const messageSlice = createSlice({
       })
       .addCase(getMessages.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload || action?.error?.message;
+        state.error = action.payload || action.error?.message;
       });
+    // removeMessages
+    builder.addCase(removeChannel.fulfilled, (state, action) => {
+      const deletedChannelId = action.payload;
+      const idsToRemove = Object.values(state.entities)
+        .filter((m) => m.channelId === deletedChannelId)
+        .map((m) => m.id);
+      messagesAdapter.removeMany(state, idsToRemove);
+    });
   },
 });
 
@@ -58,7 +71,15 @@ export const {
   selectEntities: selectMessagesEntities,
 } = messagesAdapter.getSelectors((state) => state.messages);
 
-export const selectMessagesByChannel = (channelId) => createSelector([selectAllMessages], (messages) => messages.filter((msg) => msg.channelId === channelId));
+// prettier-ignore
+export const selectMessagesByChannel = (channelId) => createSelector(
+  [selectAllMessages],
+  (messages) => (
+    messages.filter(
+      (msg) => msg.channelId === channelId,
+    )
+  ),
+);
 
 export const { messageReceived, removeMessages } = messageSlice.actions;
 export default messageSlice.reducer;

@@ -37,7 +37,10 @@ module.exports = {
     // React
     'react/prop-types': 0,
     'react/react-in-jsx-scope': 0,
-    'react/function-component-definition': [2, { namedComponents: 'arrow-function' }],
+    'react/function-component-definition': [
+      2,
+      { namedComponents: 'arrow-function' },
+    ],
     'react/button-has-type': 0,
     'react/jsx-props-no-spreading': 0,
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],

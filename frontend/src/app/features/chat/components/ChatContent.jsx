@@ -18,7 +18,7 @@ const ChatContent = () => {
   );
   const isLoading = useSelector((state) => state.messages.loading);
 
-  const { user: username } = useAuth(); // берем username из AuthContext
+  const { user: username } = useAuth(); // остаётся без изменений
 
   const channelMessages = useChannelMessages(channelId);
   const elementRef = useAutoScroll([channelMessages]);
@@ -48,9 +48,9 @@ const ChatContent = () => {
       </div>
 
       <div className="messages-area">
-        {channelMessages.map(({ id, body, username }) => (
+        {channelMessages.map(({ id, body, username: messageUsername }) => (
           <p key={id}>
-            {username}
+            {messageUsername}
             :
             {censorFilter(body)}
           </p>
