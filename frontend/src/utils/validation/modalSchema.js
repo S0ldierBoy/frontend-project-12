@@ -11,7 +11,7 @@ const modalSchema = (existingNames, currentName = '') => {
       .max(20, t('validation.modal.tooLong'))
       .notOneOf(
         existingNames.filter((name) => name !== currentName),
-        t('validation.modal.channelExists'),
+        t('validation.modal.channelExists')
       ),
   });
 };

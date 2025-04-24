@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 import i18n from '../../app/i18n.js';
 
-export const signupSchema = () => {
+const signupSchema = () => {
   const { t } = i18n;
   return Yup.object({
     name: Yup.string()
@@ -21,3 +21,5 @@ export const signupSchema = () => {
       .label(t('auth.formField.confirmPassword')),
   });
 };
+
+export default signupSchema;
