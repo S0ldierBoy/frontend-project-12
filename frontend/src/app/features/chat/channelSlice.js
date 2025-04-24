@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 import {
   getChannels,
