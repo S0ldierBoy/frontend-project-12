@@ -7,7 +7,6 @@ import {
   renameChannel,
 } from '../../../services/api/channelsApi.js';
 
-export const DEFAULT_CHANNEL_ID = '1';
 const channelsAdapter = createEntityAdapter();
 
 const initialState = channelsAdapter.getInitialState({
