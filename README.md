@@ -102,7 +102,7 @@ make fix
 
 ## 🛠️ Technologies Used
 
-- ⚛️ **React** — UI rendering
+- ⚛️ **React 19** — UI rendering
 - 📦 **Redux Toolkit** — State management
 - 🔁 **React Router** — SPA routing
 - 🧾 **Formik + Yup** — Form handling and validation
