@@ -72,7 +72,7 @@
       "menuItem": "Rename",
       "buttonCancel": "Cancel",
       "toastSuccess": "Channel renamed",
-      "labelText": "Rename"
+      "labelText": "Channel name"
     }
   },
   "chat": {
@@ -81,7 +81,8 @@
     "labelText": "New message"
   },
   "sidebar": {
-    "channels": "Channels:"
+    "channels": "Channels:",
+    "channelActions": "Channel actions"
   },
   "header": {
     "logoutBtn": "Log out"
