@@ -17,7 +17,7 @@ const ChatContent = () => {
     useSelector((state) => state.channels);
   const isLoading = useSelector((state) => state.messages.loading);
 
-  const { user: username } = useAuth(); // остаётся без изменений
+  const { user: username } = useAuth();
 
   const channelMessages = useChannelMessages(channelId);
   const elementRef = useAutoScroll([channelMessages]);
