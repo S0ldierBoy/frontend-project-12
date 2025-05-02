@@ -1,8 +1,8 @@
 ### Hexlet tests and linter status:
 
-[![Actions Status](https://github.com/S0ldierBoy/frontend-project-12/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/S0ldierBoy/frontend-project-12/actions)
-![Build](https://github.com/S0ldierBoy/frontend-project-12/actions/workflows/ci.yml/badge.svg)
-[![Maintainability](https://qlty.sh/badges/ee7bdf73-558d-4199-a83f-44218cb83477/maintainability.svg)](https://qlty.sh/gh/S0ldierBoy/projects/frontend-project-12)
+[![Actions Status](https://github.com/S0ldierBoy/Chat-Slack/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/S0ldierBoy/frontend-project-12/actions)
+![Build](https://github.com/S0ldierBoy/Chat-Slack/actions/workflows/ci.yml/badge.svg)
+[![Maintainability](https://qlty.sh/badges/ee7bdf73-558d-4199-a83f-44218cb83477/maintainability.svg)](https://qlty.sh/gh/S0ldierBoy/Chat-Slack)
 
 # 💬 Chat Application
 
@@ -60,7 +60,7 @@ To run this project, you will need:
 ### 📦 Installation
 
 ```bash
-git clone https://github.com/S0ldierBoy/frontend-project-12.git
+git clone git@github.com:S0ldierBoy/Chat-Slack.git
 cd frontend-project-12
 make install
 ```
