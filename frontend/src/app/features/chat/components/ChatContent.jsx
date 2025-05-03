@@ -46,7 +46,7 @@ const ChatContent = () => {
       <div className="messages-area">
         {channelMessages.map(({ id, body, username: messageUsername }) => (
           <p key={id}>
-            {messageUsername}:{censorFilter(body)}
+            {messageUsername}: {censorFilter(body)}
           </p>
         ))}
         <div ref={elementRef} />
